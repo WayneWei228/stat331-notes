@@ -4,6 +4,7 @@
 > Math is in LaTeX with \( \) and \[ \] delimiters.
 
 - All pages in one file: https://waynewei228.github.io/stat331-notes/stat331-all.md
+- M1: https://waynewei228.github.io/stat331-notes/text/M1.md
 - L01: https://waynewei228.github.io/stat331-notes/text/L01.md
 - L02: https://waynewei228.github.io/stat331-notes/text/L02.md
 - L03: https://waynewei228.github.io/stat331-notes/text/L03.md

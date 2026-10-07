@@ -163,3 +163,12 @@ details.ans summary{color:var(--accent);font-family:var(--sans);}
 .home h2,.home h3{border:none;padding:0;}
 .home h2{padding-top:0;}
 .lectures h3{padding-left:0;border-left:none;}
+
+/* index: midterm review link */
+a.review{display:block;margin-top:36px;padding:22px 24px;border-radius:12px;background:var(--accent);
+  color:#fff !important;text-decoration:none;font-family:var(--sans);}
+a.review b{display:block;font-size:22px;letter-spacing:-.01em;}
+a.review span{display:block;margin-top:6px;font-size:15.5px;opacity:.92;line-height:1.5;}
+a.review .units-line{font-size:13.5px;opacity:.8;}
+a.review:hover{background:#1D4687;}
+a.review mjx-container{color:#fff;}
