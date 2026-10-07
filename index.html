@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STAT 331 · Applied Linear Models</title>
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']], processEscapes: false },
+  options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code','svg'] }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<style>
+/* ---- page shell (from 3A ECE350 lecture pages) ---- */
+
+:root{
+  --color-bg:#FFFFFF; --color-surface:#F5F5F7; --color-text:#1D1D1F;
+  --color-text-secondary:#6E6E73; --color-border:#D2D2D7; --color-blue:#007AFF;
+  --color-green:#34C759; --color-orange:#FF9500; --color-purple:#AF52DE; --color-red:#FF3B30;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--color-bg);color:var(--color-text);
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue","PingFang SC","Microsoft YaHei",sans-serif;
+  font-size:16px;line-height:1.75;}
+.container{max-width:860px;margin:0 auto;padding:0 24px 80px;}
+nav.topbar{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--color-border);}
+nav.topbar .inner{max-width:860px;margin:0 auto;padding:10px 24px;display:flex;gap:16px;align-items:center;
+  font-size:14px;overflow-x:auto;white-space:nowrap;}
+nav.topbar a{color:var(--color-blue);text-decoration:none;}
+nav.topbar a:hover{text-decoration:underline;}
+nav.topbar .spacer{flex:1;}
+nav.topbar .dim{color:var(--color-text-secondary);}
+header.page{padding:44px 0 10px;}
+header.page h1{font-size:30px;font-weight:700;letter-spacing:-0.02em;}
+header.page p.sub{color:var(--color-text-secondary);margin-top:8px;font-size:15px;}
+.badge{display:inline-block;font-size:12px;font-weight:600;border-radius:20px;padding:2px 10px;vertical-align:middle;}
+.badge.final{background:#FFF3E0;color:#C2570A;border:1px solid #FFD9A8;}
+.meta{color:var(--color-text-secondary);font-size:14px;margin:6px 0 0;}
+.toccard{background:var(--color-surface);border:1px solid var(--color-border);border-radius:14px;
+  padding:16px 20px;margin:22px 0 30px;font-size:14.5px;}
+.toccard .t{font-weight:600;margin-bottom:6px;color:var(--color-text-secondary);
+  text-transform:uppercase;font-size:12px;letter-spacing:.05em;}
+.toccard a{color:var(--color-blue);text-decoration:none;display:inline-block;margin:2px 14px 2px 0;}
+.toccard a:hover{text-decoration:underline;}
+main h2{font-size:21px;font-weight:700;margin:38px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--color-border);}
+main h3{font-size:17.5px;font-weight:650;margin:26px 0 8px;}
+main p{margin:10px 0;}
+main ul,main ol{margin:8px 0 12px;padding-left:26px;}
+main li{margin:5px 0;}
+main li>ul,main li>ol{margin:4px 0;}
+.ts{font-family:"SF Mono",ui-monospace,Menlo,monospace;font-size:.72em;font-weight:500;color:var(--color-text-secondary);
+  background:var(--color-surface);border:1px solid var(--color-border);border-radius:6px;padding:1px 7px;
+  margin-left:8px;vertical-align:2px;white-space:nowrap;}
+code{font-family:"SF Mono",ui-monospace,Menlo,monospace;font-size:.88em;background:var(--color-surface);
+  color:#B25000;border-radius:5px;padding:1px 5px;}
+pre{background:var(--color-surface);border:1px solid var(--color-border);border-radius:10px;
+  padding:14px 16px;overflow-x:auto;margin:12px 0;}
+pre code{background:none;color:var(--color-text);padding:0;font-size:13.5px;line-height:1.6;}
+blockquote{border-left:3px solid var(--color-blue);background:var(--color-surface);
+  padding:8px 16px;margin:12px 0;border-radius:0 10px 10px 0;color:var(--color-text-secondary);}
+.tablewrap{overflow-x:auto;margin:12px 0;}
+table{border-collapse:collapse;font-size:14.5px;min-width:60%;}
+th,td{border:1px solid var(--color-border);padding:7px 12px;text-align:left;vertical-align:top;}
+th{background:var(--color-surface);font-weight:600;}
+hr{border:none;border-top:1px solid var(--color-border);margin:28px 0;}
+footer.pager{display:flex;justify-content:space-between;gap:12px;margin-top:48px;padding-top:18px;
+  border-top:1px solid var(--color-border);font-size:15px;}
+footer.pager a{color:var(--color-blue);text-decoration:none;}
+footer.pager a:hover{text-decoration:underline;}
+/* index page */
+.legend{background:var(--color-surface);border:1px solid var(--color-border);border-radius:14px;
+  padding:14px 20px;margin:20px 0 8px;font-size:14.5px;color:var(--color-text-secondary);}
+h2.month{font-size:22px;font-weight:700;margin:40px 0 14px;}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(360px,100%),1fr));gap:16px;}
+a.card{display:block;color:inherit;text-decoration:none;cursor:pointer;
+  background:var(--color-bg);border:1px solid var(--color-border);border-radius:14px;padding:16px 18px;
+  transition:box-shadow .15s,border-color .15s;}
+a.card:hover{box-shadow:0 4px 18px rgba(0,0,0,.08);border-color:var(--color-blue);}
+a.card:hover .d{color:var(--color-blue);}
+.card .d{font-size:18px;font-weight:700;margin-bottom:2px;}
+.card .len{color:var(--color-text-secondary);font-size:13px;margin-bottom:8px;}
+.card ul{padding-left:20px;font-size:13.8px;color:#3A3A3C;margin:0;}
+.card li{margin:3px 0;line-height:1.5;}
+.hints{margin-top:14px;}
+.hints li{margin:7px 0;font-size:14.8px;}
+.hints b{color:var(--color-text);}
+/* mobile */
+html{-webkit-text-size-adjust:100%;}
+@media (max-width:600px){
+  body{font-size:15.5px;}
+  .container{padding:0 16px 60px;}
+  nav.topbar .inner{padding:9px 16px;gap:12px;font-size:13.5px;}
+  header.page{padding:26px 0 8px;}
+  header.page h1{font-size:23px;}
+  header.page p.sub{font-size:14px;}
+  .meta{font-size:13px;}
+  .toccard{padding:12px 14px;font-size:13.5px;margin:16px 0 22px;}
+  main h2{font-size:19px;margin:30px 0 10px;}
+  main h3{font-size:16.5px;}
+  main ul,main ol{padding-left:20px;}
+  .ts{display:inline-block;margin-left:0;margin-top:2px;vertical-align:0;}
+  table{font-size:13px;}
+  th,td{padding:6px 8px;}
+  pre code{font-size:12.5px;}
+  a.card{padding:13px 14px;}
+  .card .d{font-size:17px;}
+  .card ul{font-size:13.2px;}
+  h2.month{font-size:20px;margin:30px 0 12px;}
+  footer.pager{font-size:14px;flex-wrap:wrap;}
+}
+
+/* ---- teaching environments (from 3A ECE380 current.html) ---- */
+
+:root{
+  --color-bg:#FFFFFF; --color-surface:#F5F5F7; --color-border:#E5E5EA;
+  --color-border-strong:#D1D1D6; --color-text:#1D1D1F; --color-text-secondary:#6E6E73;
+  --color-blue:#007AFF; --color-green:#34C759; --color-orange:#FF9500;
+  --color-red:#FF3B30; --color-purple:#5856D6;
+  --color-blue-bg:#EAF4FF; --color-green-bg:#EAF9EE; --color-orange-bg:#FFF4E5;
+  --color-red-bg:#FFECEB; --color-purple-bg:#F0EFFB;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--color-bg);color:var(--color-text);
+ font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue","PingFang SC","Microsoft YaHei",sans-serif;
+ font-size:16.5px;line-height:1.8;-webkit-font-smoothing:antialiased;}
+.wrap{max-width:900px;margin:0 auto;padding:0 24px 120px;}
+
+header.hero{border-bottom:1px solid var(--color-border);background:var(--color-surface);padding:40px 24px 30px;}
+header.hero .inner{max-width:900px;margin:0 auto;}
+header.hero .kicker{font-size:13px;letter-spacing:.08em;text-transform:uppercase;
+ color:var(--color-blue);font-weight:600;margin-bottom:8px;}
+header.hero h1{font-size:29px;line-height:1.3;margin:0 0 10px;letter-spacing:-.01em;}
+header.hero p.sub{margin:0;color:var(--color-text-secondary);font-size:15px;}
+
+nav.toc{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);
+ backdrop-filter:saturate(180%) blur(16px);-webkit-backdrop-filter:saturate(180%) blur(16px);
+ border-bottom:1px solid var(--color-border);margin-bottom:34px;}
+nav.toc ol{max-width:900px;margin:0 auto;padding:10px 24px;list-style:none;
+ display:flex;flex-wrap:wrap;gap:6px 14px;font-size:13.5px;}
+nav.toc a{color:var(--color-text-secondary);text-decoration:none;white-space:nowrap;}
+nav.toc a:hover{color:var(--color-blue);}
+
+h2{font-size:22px;margin:52px 0 16px;letter-spacing:-.01em;
+ border-top:3px solid var(--color-text);padding-top:16px;}
+h2 .num{color:var(--color-blue);margin-right:10px;font-variant-numeric:tabular-nums;}
+h3{font-size:18px;margin:36px 0 12px;padding-left:12px;border-left:4px solid var(--color-blue);}
+h4{font-size:15.5px;margin:26px 0 8px;font-weight:650;}
+p{margin:11px 0;}
+ul{margin:11px 0;padding-left:22px;} li{margin:5px 0;}
+
+/* ── 单行论断 ── */
+.claim{margin:7px 0;padding-left:15px;border-left:2px solid var(--color-border-strong);}
+
+/* ── 逐步推导链 ── */
+.drv{margin:22px 0;}
+.dstep{position:relative;display:flex;gap:15px;padding-bottom:20px;}
+.dstep:last-child{padding-bottom:2px;}
+.dstep::before{content:"";position:absolute;left:14px;top:32px;bottom:0;
+ width:2px;background:var(--color-border);}
+.dstep:last-child::before{display:none;}
+.dnum{flex:0 0 30px;width:30px;height:30px;border-radius:50%;
+ background:var(--color-blue);color:#fff;font-size:13.5px;font-weight:700;
+ display:flex;align-items:center;justify-content:center;position:relative;z-index:1;
+ margin-top:2px;}
+.dstep.fin .dnum{background:var(--color-green);}
+.dbody{flex:1 1 auto;min-width:0;}
+.dop{font-weight:650;margin:0 0 2px;}
+.deq{margin:2px 0 4px;overflow-x:auto;}
+.dnote{font-size:14.8px;color:var(--color-text-secondary);margin:4px 0 0;}
+.dlink{font-size:14.8px;color:#0060DF;margin:6px 0 0;padding-left:11px;
+ border-left:2px solid #BBDDFF;}
+.dlink b{color:#0060DF;}
+
+/* ── 「怎么做」操作框 ── */
+.how{background:#FFFFFF;border:1px solid var(--color-border-strong);
+ border-radius:9px;padding:10px 15px;margin:8px 0;}
+.how-h{font-size:12.5px;font-weight:700;letter-spacing:.06em;
+ color:var(--color-blue);margin-bottom:4px;}
+.how ol{margin:5px 0;padding-left:21px;}
+.how li{margin:4px 0;font-size:15.5px;}
+.how p{margin:5px 0;font-size:15.5px;}
+/* ── 自检 ── */
+.chk{font-size:14.8px;color:#1B7F35;margin:8px 0 0;padding-left:11px;
+ border-left:2px solid #B7E8C4;}
+.chk b{color:#1B7F35;}
+/* ── 规则回引：标签 + 依据行 ── */
+.rulechip{display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.03em;
+ background:var(--color-purple-bg);color:#3E3CB0;border:1px solid #CBC9F2;
+ border-radius:20px;padding:1px 9px;margin-left:8px;vertical-align:2px;white-space:nowrap;}
+.basis{font-size:14.5px;color:#3E3CB0;margin:6px 0 0;padding-left:11px;
+ border-left:2px solid #CBC9F2;}
+.basis b{color:#3E3CB0;}
+/* ── 定理/定义英文原文（statement 一律英文，解释才可中文） ── */
+.enstmt{background:#FFFFFF;border:1px solid var(--color-border-strong);
+ border-left:4px solid var(--color-text);border-radius:9px;
+ padding:11px 16px;margin:10px 0;font-size:15.5px;line-height:1.65;}
+.enstmt .who{display:block;font-size:12px;font-weight:700;letter-spacing:.05em;
+ text-transform:uppercase;color:var(--color-text-secondary);margin-bottom:4px;}
+/* ── 起点分流 ── */
+.entry{border-left:3px solid var(--color-orange);background:var(--color-orange-bg);
+ padding:9px 14px;margin:8px 0;border-radius:0 9px 9px 0;font-size:15.5px;}
+
+/* ── 分情形块 ── */
+.case{border:1px solid var(--color-border);border-radius:11px;
+ padding:13px 17px;margin:12px 0;background:var(--color-surface);}
+.case-h{font-weight:650;margin-bottom:3px;}
+.case p{margin:5px 0;}
+.case.hl{background:var(--color-blue-bg);border-color:#BBDDFF;}
+
+/* ── 定义 / 提示块 ── */
+.callout{border-radius:12px;padding:16px 20px;margin:22px 0;border:1px solid var(--color-border);}
+.callout .label{font-size:12.5px;font-weight:700;letter-spacing:.06em;
+ text-transform:uppercase;margin-bottom:6px;}
+.callout > :first-of-type + *{margin-top:6px;}
+.callout p:last-child{margin-bottom:0;}
+.c-key{background:var(--color-blue-bg);border-color:#BBDDFF;} .c-key .label{color:#0060DF;}
+.c-warn{background:var(--color-red-bg);border-color:#FFC9C6;} .c-warn .label{color:#C6291F;}
+.c-note{background:var(--color-orange-bg);border-color:#FFDFAF;} .c-note .label{color:#A85F00;}
+.c-ok{background:var(--color-green-bg);border-color:#B7E8C4;} .c-ok .label{color:#1B7F35;}
+.c-drv{background:var(--color-purple-bg);border-color:#CBC9F2;} .c-drv .label{color:#3E3CB0;}
+
+/* 数学变量区分大小写：uppercase 标题不能把 MathJax 输出一起大写（\(s\) 会变成 S） */
+.callout .label mjx-container, .enstmt .who mjx-container,
+.wr .tag mjx-container, .rt .tag mjx-container,
+header.hero .kicker mjx-container{text-transform:none;}
+
+
+/* ── 教科书环境（Ch6 v2 起用）── */
+.nav{margin:20px 0 10px;padding:8px 14px;background:var(--color-blue-bg);
+ border-left:3px solid var(--color-blue);border-radius:0 9px 9px 0;font-size:15px;}
+.envh{font-weight:700;font-size:16.5px;margin:28px 0 8px;}
+.envh .pg{font-weight:600;font-size:12px;color:var(--color-text-secondary);margin-left:9px;
+ letter-spacing:.03em;}
+.eqc{margin:10px 0 12px;padding:4px 0 4px 16px;border-left:2px solid var(--color-border-strong);}
+.eqr{display:grid;grid-template-columns:1fr auto;align-items:center;gap:14px;}
+.eqr .deq{margin:3px 0;overflow-x:auto;}
+.eqwhy{color:var(--color-text-secondary);font-size:13px;max-width:240px;text-align:right;}
+
+/* ── 正误对照 ── */
+.wr{border-left:3px solid var(--color-red);background:#FFF5F5;
+ padding:10px 15px;margin:9px 0;border-radius:0 9px 9px 0;}
+.rt{border-left:3px solid var(--color-green);background:#F2FCF5;
+ padding:10px 15px;margin:9px 0;border-radius:0 9px 9px 0;}
+.wr .tag,.rt .tag{font-size:12.5px;font-weight:700;letter-spacing:.05em;
+ text-transform:uppercase;display:block;margin-bottom:2px;}
+.wr .tag{color:#C6291F;} .rt .tag{color:#1B7F35;}
+
+code{background:var(--color-surface);color:#1D1D1F;border:1px solid var(--color-border);
+ border-radius:5px;padding:1px 5px;font-family:"SF Mono",Menlo,Consolas,monospace;font-size:13.5px;}
+
+.figwrap{margin:24px 0;text-align:center;}
+.figwrap svg{max-width:100%;height:auto;}
+.figcap{font-size:14px;color:var(--color-text-secondary);margin-top:9px;text-align:left;}
+
+details.ans{border:1px solid var(--color-border-strong);border-radius:11px;
+ padding:11px 17px;margin:13px 0;background:var(--color-surface);}
+details.ans summary{cursor:pointer;font-size:14.5px;font-weight:650;color:var(--color-blue);list-style:none;}
+details.ans summary::-webkit-details-marker{display:none;}
+details.ans summary::before{content:"▸ ";}
+details.ans[open] summary::before{content:"▾ ";}
+details.ans[open]{background:#FFFFFF;}
+details.ans .body{margin-top:11px;}
+.btns{margin:16px 0;display:flex;gap:10px;}
+.btns button{font:inherit;font-size:13.5px;padding:5px 14px;border-radius:8px;
+ border:1px solid var(--color-border-strong);background:#fff;color:var(--color-blue);cursor:pointer;}
+.btns button:hover{background:var(--color-blue-bg);}
+hr.soft{border:none;border-top:1px solid var(--color-border);margin:36px 0;}
+
+.callout .label mjx-container,.enstmt .who mjx-container,.tag mjx-container{text-transform:none;}
+/* stat331 extra */
+.tag{display:inline-block;font-size:12px;font-weight:600;color:var(--color-text-secondary);background:var(--color-surface);border:1px solid var(--color-border);border-radius:6px;padding:0 7px;margin-left:6px;vertical-align:2px;}
+.kicker{font-size:12px;font-weight:600;letter-spacing:.05em;color:var(--color-text-secondary);text-transform:uppercase;}
+</style>
+</head>
+<body>
+<nav class="topbar"><div class="inner"><a href="./">STAT 331 index</a><span class="spacer"></span><span class="dim">STAT 331 · Applied Linear Models</span></div></nav>
+<div class="container">
+<style>
+.lec{border:1px solid #D2D2D7;border-radius:14px;padding:14px 20px;margin:16px 0;background:#F5F5F7;}
+.lec h2{font-size:19px;margin:0 0 4px;border:none;}
+.lec h2 a{color:#007AFF;text-decoration:none;}
+.lec .sub{color:#6E6E73;font-size:14.5px;margin:2px 0 8px;}
+.lec .secs{list-style:none;padding-left:4px !important;font-size:14px;}
+</style>
+<h1>STAT 331 · Applied Linear Models</h1>
+<p>These pages follow the order of the lecture slides. Each page covers one lecture. Click a title to open the page.</p>
+<div class="lec"><h2><a href="L01.html">Lecture 1: Introduction and Motivation</a></h2><p class="sub">This lecture defines the outcome and the covariate, reviews summaries and distributions for regression, and gives the course plan (Lecture 1 · p.1–38).</p><ul class="secs"><li>01 · Nomenclature and data example</li><li>02 · Univariate summaries: mean and variance</li><li>03 · Bivariate summaries: covariance and correlation</li><li>04 · Toward linear regression: simple and multiple models</li><li>05 · Review: normal, chi-square, t, and F distributions</li><li>06 · Course overview and logistics</li></ul></div><div class="lec"><h2><a href="L02.html">Lecture 2: Simple Linear Regression: Estimation</a></h2><p class="sub">This lecture estimates \(\beta_0\), \(\beta_1\), and \(\sigma^2\) in the simple linear regression model with least squares and maximum likelihood (Lecture 2 · p.1–38).</p><ul class="secs"><li>01 · Recap: mean, variance, covariance, and correlation</li><li>02 · The simple linear regression model and its coefficients</li><li>03 · Least squares estimation</li><li>04 · Maximum likelihood estimation and its equality to least squares</li><li>05 · Fitted values and residuals</li><li>06 · Estimating \(\sigma^2\): the MLE and the unbiased estimator</li></ul></div><div class="lec"><h2><a href="L03.html">Lecture 3: Simple Linear Regression: Inference</a></h2><p class="sub">This lecture finds the distributions of \(\hat\beta_1\) and \(\hat\beta_0\) and uses them for confidence intervals and hypothesis tests (Lecture 3 · p.1–49).</p><ul class="secs"><li>01 · Recap: the SLR model, least squares, and the estimate of \(\sigma^2\)</li><li>02 · Sampling distribution and unbiasedness of \(\hat\beta_1\)</li><li>03 · Variance and distribution of \(\hat\beta_1\) and \(\hat\beta_0\)</li><li>04 · Confidence interval for \(\beta_1\): known \(\sigma\), unknown \(\sigma\) (t distribution), and standard error</li><li>05 · Interval estimation example and interpretation</li><li>06 · Hypothesis tests for \(\beta_1\): p-value, coefficient table, and one-sided tests</li></ul></div><div class="lec"><h2><a href="L04.html">Lecture 4: Simple Linear Regression: Prediction</a></h2><p class="sub">This lecture estimates the mean response at a given \(x_0\), gives a confidence interval for it, and gives a prediction interval for a new response (Lecture 4 · p.1–43).</p><ul class="secs"><li>01 · Recap: the model, the estimators, and inference for \(\beta_1\)</li><li>02 · Point estimate of the mean response and its distribution</li><li>03 · Confidence interval for the mean response</li><li>04 · Predicting a new response: the prediction interval</li><li>05 · Prediction intervals over a range of \(x\) values</li><li>06 · Practice questions Q1 and Q2</li></ul></div><div class="lec"><h2><a href="L05.html">Lecture 5: Random Vectors and Multivariate Normal</a></h2><p class="sub">This lecture writes regression in matrix form, reviews matrix rules, and defines random vectors and the multivariate normal distribution (Lecture 5 · p.1–48).</p><ul class="secs"><li>01 · Recap and multiple linear regression in matrix form</li><li>02 · Matrix review: transpose, inverse, trace</li><li>03 · Matrix calculus</li><li>04 · Random vectors: mean vector, covariance matrix, and linear transformations</li><li>05 · Multivariate normal distribution: definition and properties</li><li>06 · Exercises on the MVN, MLR as an MVN model, and practice</li></ul></div><div class="lec"><h2><a href="L06.html">Lecture 6: Multiple Linear Regression: Intro and Estimation</a></h2><p class="sub">This lecture writes multiple linear regression in matrix form, estimates \(\boldsymbol\beta\) and \(\sigma^2\), and finds the properties of the estimators (Lecture 6 · p.1–41).</p><ul class="secs"><li>01 · Recap: matrix calculus, random vectors, and the multivariate normal</li><li>02 · Data example and interpreting regression coefficients</li><li>03 · Estimating β: least squares and maximum likelihood</li><li>04 · Properties of the LS estimator, fitted values, and residuals</li><li>05 · Estimating σ², calculating the estimates, and practice</li></ul></div><div class="lec"><h2><a href="L07.html">Lecture 7: Multiple Linear Regression: Estimation and Inference I</a></h2><p class="sub">This lecture finds the distributions of \(\hat{\boldsymbol\beta}\), \(\boldsymbol e\), and \(\hat\sigma^2\) and uses them for t tests and confidence intervals for each \(\beta_j\) (Lecture 7 · p.1–55).</p><ul class="secs"><li>01 · Recap, fitted values, residuals, and the hat matrix</li><li>02 · Estimating \(\sigma^2\) and the joint distribution of \(\hat{\boldsymbol\beta}\) and \(\boldsymbol e\)</li><li>03 · The t statistic in MLR and property (3): independence</li><li>04 · Property (2): \(\frac{1}{\sigma^2}\boldsymbol e^T\boldsymbol e\sim\chi^2_{n-(p+1)}\)</li><li>05 · t tests and confidence intervals for each \(\beta_j\)</li><li>06 · Practice questions Q1–Q3</li></ul></div>
+</div>
+</body>
+</html>

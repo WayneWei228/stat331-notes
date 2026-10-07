@@ -1,0 +1,13 @@
+# STAT 331 · Applied Linear Models (University of Waterloo) — study notes
+
+> Student-written explanations of the STAT 331 lecture slides, one page per lecture.
+> Math is in LaTeX with \( \) and \[ \] delimiters.
+
+- All pages in one file: https://waynewei228.github.io/stat331-notes/stat331-all.md
+- L01: https://waynewei228.github.io/stat331-notes/text/L01.md
+- L02: https://waynewei228.github.io/stat331-notes/text/L02.md
+- L03: https://waynewei228.github.io/stat331-notes/text/L03.md
+- L04: https://waynewei228.github.io/stat331-notes/text/L04.md
+- L05: https://waynewei228.github.io/stat331-notes/text/L05.md
+- L06: https://waynewei228.github.io/stat331-notes/text/L06.md
+- L07: https://waynewei228.github.io/stat331-notes/text/L07.md
