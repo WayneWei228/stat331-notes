@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>STAT 331 · Lecture 6 · Multiple Linear Regression: Intro and Estimation</title>
+<title>Lecture 6: Multiple Linear Regression: Intro and Estimation | STAT 331</title>
 <script>
 window.MathJax = {
   tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']], processEscapes: false },
@@ -273,22 +273,16 @@ hr.soft{border:none;border-top:1px solid var(--color-border);margin:36px 0;}
 .tag{display:inline-block;font-size:12px;font-weight:600;color:var(--color-text-secondary);background:var(--color-surface);border:1px solid var(--color-border);border-radius:6px;padding:0 7px;margin-left:6px;vertical-align:2px;}
 .kicker{font-size:12px;font-weight:600;letter-spacing:.05em;color:var(--color-text-secondary);text-transform:uppercase;}
 </style>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400..700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400&display=swap"><link rel="stylesheet" href="site.css">
 </head>
-<body>
-<nav class="topbar"><div class="inner"><a href="./">STAT 331 index</a><a href="L05.html">L05</a><a href="L07.html">L07</a><span class="spacer"></span><span class="dim">STAT 331 · Lecture 6 · Multiple Linear Regression: Intro and Estimation</span></div></nav>
-<div class="container">
-<header class="page"><h1>Lecture 6: Multiple Linear Regression: Intro and Estimation</h1>
-<p class="sub">This lecture writes multiple linear regression in matrix form, estimates \(\boldsymbol\beta\) and \(\sigma^2\), and finds the properties of the estimators (Lecture 6 · p.1–41).</p></header>
-<div class="toccard"><div class="t">Contents</div>
-<a href="#u0601">01 · Recap: matrix calculus, random vectors, and the multivariate normal</a>
-<a href="#u0602">02 · Data example and interpreting regression coefficients</a>
-<a href="#u0603">03 · Estimating β: least squares and maximum likelihood</a>
-<a href="#u0604">04 · Properties of the LS estimator, fitted values, and residuals</a>
-<a href="#u0605">05 · Estimating σ², calculating the estimates, and practice</a>
-</div>
-<main>
+<body class="site">
+<a class="skip" href="#content">Skip to content</a>
+<div class="mbar"><button id="menu" aria-controls="side" aria-expanded="false">Contents</button><span class="t">Lecture 6: Multiple Linear Regression: Intro and Estimation</span></div>
+<aside class="side" id="side" aria-label="Course navigation"><a class="brand" href="./"><b>STAT 331</b><span>Applied Linear Models</span></a><nav><ol class="lecs"><li><a href="L01.html"><span class="n">1</span><span>Introduction and Motivation</span></a></li><li><a href="L02.html"><span class="n">2</span><span>Simple Linear Regression: Estimation</span></a></li><li><a href="L03.html"><span class="n">3</span><span>Simple Linear Regression: Inference</span></a></li><li><a href="L04.html"><span class="n">4</span><span>Simple Linear Regression: Prediction</span></a></li><li><a href="L05.html"><span class="n">5</span><span>Random Vectors and Multivariate Normal</span></a></li><li class="cur"><a href="L06.html" aria-current="page"><span class="n">6</span><span>Multiple Linear Regression: Intro and Estimation</span></a><ol class="units"><li><a href="#u0601" data-t="u0601"><span class="n">01</span><span>Recap: matrix calculus, random vectors, and the multivariate normal</span></a><ol class="subs"><li><a href="#u0601-1" data-t="u0601-1">01.1 Notation</a></li><li><a href="#u0601-2" data-t="u0601-2">01.2 Matrix calculus</a></li><li><a href="#u0601-3" data-t="u0601-3">01.3 Properties of random vectors</a></li><li><a href="#u0601-4" data-t="u0601-4">01.4 Multivariate normal distribution</a></li><li><a href="#u0601-5" data-t="u0601-5">01.5 Properties of \(\boldsymbol{y}\sim MVN(\boldsymbol\mu,\boldsymbol\Sigma)\)</a></li><li><a href="#u0601-6" data-t="u0601-6">01.6 Recap: multiple linear regression</a></li><li><a href="#u0601-7" data-t="u0601-7">01.7 Practice</a></li></ol></li><li><a href="#u0602" data-t="u0602"><span class="n">02</span><span>Data example and interpreting regression coefficients</span></a><ol class="subs"><li><a href="#u0602-1" data-t="u0602-1">02.1 Title page</a></li><li><a href="#u0602-2" data-t="u0602-2">02.2 Data example: satisfaction.csv</a></li><li><a href="#u0602-3" data-t="u0602-3">02.3 Exploratory data analysis: first rows and summary numbers</a></li><li><a href="#u0602-4" data-t="u0602-4">02.4 Scatter plot matrix</a></li><li><a href="#u0602-5" data-t="u0602-5">02.5 Motivating questions</a></li><li><a href="#u0602-6" data-t="u0602-6">02.6 The multiple linear regression model</a></li><li><a href="#u0602-7" data-t="u0602-7">02.7 Interpreting regression coefficients</a></li><li><a href="#u0602-8" data-t="u0602-8">02.8 Practice</a></li></ol></li><li><a href="#u0603" data-t="u0603"><span class="n">03</span><span>Estimating β: least squares and maximum likelihood</span></a><ol class="subs"><li><a href="#u0603-1" data-t="u0603-1">03.1 Title page: Estimating \(\boldsymbol\beta\)</a></li><li><a href="#u0603-2" data-t="u0603-2">03.2 Least squares estimation</a></li><li><a href="#u0603-3" data-t="u0603-3">03.3 Maximum likelihood</a></li><li><a href="#u0603-4" data-t="u0603-4">03.4 Practice</a></li></ol></li><li><a href="#u0604" data-t="u0604"><span class="n">04</span><span>Properties of the LS estimator, fitted values, and residuals</span></a><ol class="subs"><li><a href="#u0604-1" data-t="u0604-1">04.1 The mean of \(\hat{\boldsymbol\beta}\): unbiasedness</a></li><li><a href="#u0604-2" data-t="u0604-2">04.2 The covariance matrix of \(\hat{\boldsymbol\beta}\)</a></li><li><a href="#u0604-3" data-t="u0604-3">04.3 The distribution of \(\hat{\boldsymbol\beta}\)</a></li><li><a href="#u0604-4" data-t="u0604-4">04.4 Fitted values and the hat matrix \(\boldsymbol H\)</a></li><li><a href="#u0604-5" data-t="u0604-5">04.5 Residuals and \(\boldsymbol X^T\boldsymbol e=\boldsymbol 0\)</a></li><li><a href="#u0604-6" data-t="u0604-6">04.6 Practice</a></li></ol></li><li><a href="#u0605" data-t="u0605"><span class="n">05</span><span>Estimating σ², calculating the estimates, and practice</span></a><ol class="subs"><li><a href="#u0605-1" data-t="u0605-1">05.1 MLE of \(\sigma^2\)</a></li><li><a href="#u0605-2" data-t="u0605-2">05.2 Unbiased estimate of \(\sigma^2\)</a></li><li><a href="#u0605-3" data-t="u0605-3">05.3 Calculating \(\hat{\boldsymbol\beta}\) as a system of equations</a></li><li><a href="#u0605-4" data-t="u0605-4">05.4 Calculating \(\hat\sigma^2\) and the standard errors</a></li><li><a href="#u0605-5" data-t="u0605-5">05.5 Practice</a></li></ol></li></ol></li><li><a href="L07.html"><span class="n">7</span><span>Multiple Linear Regression: Estimation and Inference I</span></a></li></ol></nav><div class="foot"><a href="stat331-all.md">All notes as one text file</a><a href="https://github.com/WayneWei228/stat331-notes">Source on GitHub</a></div></aside><div class="scrim"></div>
+<div class="pagewrap" id="content"><article class="doc">
+<header class="page"><p class="lnum">Lecture 6</p><h1>Multiple Linear Regression: Intro and Estimation</h1><p class="sub">This lecture writes multiple linear regression in matrix form, estimates \(\boldsymbol\beta\) and \(\sigma^2\), and finds the properties of the estimators (Lecture 6 · p.1–41).</p></header><main>
 <section id="u0601">
-<h2>01 · Recap: matrix calculus, random vectors, and the multivariate normal</h2>
+<h2><span class="un">Unit 01</span>Recap: matrix calculus, random vectors, and the multivariate normal</h2>
 
 <p>This unit restates three matrix tools that Lecture 6 uses, and writes multiple linear regression in matrix form.</p>
 
@@ -303,7 +297,7 @@ hr.soft{border:none;border-top:1px solid var(--color-border);margin:36px 0;}
 </div>
 <p>The later units use these tools to estimate \(\boldsymbol\beta\) and to find the variance of the estimate.</p>
 
-<h3>01.1 Notation <span class="tag">Slides p.1–2</span></h3>
+<h3 id="u0601-1"><span class="sn">01.1</span>Notation <span class="tag">Slides p.1–2</span></h3>
 
 <p>This section sets the notation for the full unit. Slide p.1 is the title page: "Lecture 6: Multiple Linear Regression: Intro &amp; Estimation". Slide p.2 is the section page "Recap". This unit uses the notation of the slides. <span class="tag">Added</span></p>
 <div class="claim">Vector: a list of numbers. A vector has a bold lower-case name, for example \(\boldsymbol{y}=(y_1,\dots,y_k)^T\). Each vector is a column vector, which is one vertical column of numbers.</div>
@@ -314,7 +308,7 @@ hr.soft{border:none;border-top:1px solid var(--color-border);margin:36px 0;}
 <p>With this notation, you can read each formula below one entry at a time.</p>
 
 <!-- ================= p.3 ================= -->
-<h3>01.2 Matrix calculus <span class="tag">Slides p.3</span></h3>
+<h3 id="u0601-2"><span class="sn">01.2</span>Matrix calculus <span class="tag">Slides p.3</span></h3>
 
 <p>This section shows how to take the derivative of a scalar with respect to a vector. Unit 03 uses these two rules on the sum of squares \(S(\boldsymbol\beta)\).</p>
 
@@ -433,7 +427,7 @@ Let \(z=f(y_1,\dots,y_k)\) and \(\boldsymbol{y}=\left[\begin{array}{c}y_1\\ \vdo
 <p>This section gives two rules: \(\partial(\boldsymbol{a}^T\boldsymbol{y})/\partial\boldsymbol{y}=\boldsymbol{a}\), and \(\partial(\boldsymbol{y}^T\boldsymbol{A}\boldsymbol{y})/\partial\boldsymbol{y}=2\boldsymbol{A}\boldsymbol{y}\) for a symmetric \(\boldsymbol{A}\). Unit 03 uses them to take the derivative of \(S(\boldsymbol\beta)\).</p>
 
 <!-- ================= p.4 ================= -->
-<h3>01.3 Properties of random vectors <span class="tag">Slides p.4</span></h3>
+<h3 id="u0601-3"><span class="sn">01.3</span>Properties of random vectors <span class="tag">Slides p.4</span></h3>
 
 <p>This section restates the rules for the expectation and variance of a random vector. Unit 04 uses the last rule, \(\mathrm{Var}(\boldsymbol{A}\boldsymbol{y})=\boldsymbol{A}\mathrm{Var}(\boldsymbol{y})\boldsymbol{A}^T\), to find \(\mathrm{Var}[\hat{\boldsymbol\beta}]\).</p>
 
@@ -502,7 +496,7 @@ Let \(z=f(y_1,\dots,y_k)\) and \(\boldsymbol{y}=\left[\begin{array}{c}y_1\\ \vdo
 <p>This section gives the result: after a constant matrix \(\boldsymbol{A}\), the expectation is \(\boldsymbol{A}E[\boldsymbol{y}]\) and the variance is \(\boldsymbol{A}\mathrm{Var}(\boldsymbol{y})\boldsymbol{A}^T\). The next section uses these two rules to find the mean and variance of a multivariate normal vector.</p>
 
 <!-- ================= p.5 ================= -->
-<h3>01.4 Multivariate normal distribution <span class="tag">Slides p.5</span></h3>
+<h3 id="u0601-4"><span class="sn">01.4</span>Multivariate normal distribution <span class="tag">Slides p.5</span></h3>
 
 <p>This section defines the multivariate normal distribution. The regression model on p.7 assumes that \(\boldsymbol\epsilon\) has this distribution, so \(\boldsymbol{y}\) also has it.</p>
 
@@ -617,7 +611,7 @@ Then \(\boldsymbol{y}=\boldsymbol{A}\boldsymbol{z}+\boldsymbol\mu\) has multivar
 <p>This section gives the result: \(\boldsymbol{y}=\boldsymbol{A}\boldsymbol{z}+\boldsymbol\mu\) has the distribution \(MVN(\boldsymbol\mu,\boldsymbol{A}\boldsymbol{A}^T)\), and \(\boldsymbol\mu\) and \(\boldsymbol\Sigma\) set its density. The next section shows what stays multivariate normal after a linear change, a subset, or a condition.</p>
 
 <!-- ================= p.6 ================= -->
-<h3>01.5 Properties of \(\boldsymbol{y}\sim MVN(\boldsymbol\mu,\boldsymbol\Sigma)\) <span class="tag">Slides p.6</span></h3>
+<h3 id="u0601-5"><span class="sn">01.5</span>Properties of \(\boldsymbol{y}\sim MVN(\boldsymbol\mu,\boldsymbol\Sigma)\) <span class="tag">Slides p.6</span></h3>
 
 <p>This section gives four properties of the multivariate normal. Unit 04 uses the linearity property to get the distribution of \(\hat{\boldsymbol\beta}\).</p>
 
@@ -688,7 +682,7 @@ Then \(\boldsymbol{y}=\boldsymbol{A}\boldsymbol{z}+\boldsymbol\mu\) has multivar
 <p>This section gives the result: a multivariate normal vector stays multivariate normal after a linear change or a subset. Its parameters are \(\boldsymbol{C}\boldsymbol\mu+\boldsymbol{d}\) and \(\boldsymbol{C}\boldsymbol\Sigma\boldsymbol{C}^T\). The next section uses this property to write the regression model as one matrix statement.</p>
 
 <!-- ================= p.7 ================= -->
-<h3>01.6 Recap: multiple linear regression <span class="tag">Slides p.7</span></h3>
+<h3 id="u0601-6"><span class="sn">01.6</span>Recap: multiple linear regression <span class="tag">Slides p.7</span></h3>
 
 <p>This section writes the multiple linear regression model first as one matrix equation, then as one multivariate normal distribution. Units 02 to 05 all start from this form.</p>
 
@@ -764,7 +758,7 @@ Or more simply:
 <p>This section gives the result: the MLR model is \(\boldsymbol{y}\sim MVN(\boldsymbol{X}\boldsymbol\beta,\sigma^2\boldsymbol{I})\). Unit 02 shows a data example and the meaning of \(\boldsymbol\beta\), and Unit 03 uses the rules of Section 01.2 to estimate \(\boldsymbol\beta\).</p>
 
 <!-- ================= practice ================= -->
-<h3>01.7 Practice <span class="tag">Added</span></h3>
+<h3 id="u0601-7"><span class="sn">01.7</span>Practice <span class="tag">Added</span></h3>
 <p>The three questions below practise the vector derivative, the linearity of the multivariate normal, and the matrix sizes of the regression model.</p>
 
 <p><b>Q1.</b> Let \(z=\boldsymbol{y}^T\boldsymbol{A}\boldsymbol{y}\) with \(\boldsymbol{A}=\left[\begin{array}{cc}4&amp;1\\1&amp;2\end{array}\right]\). Find \(\frac{\partial z}{\partial\boldsymbol{y}}\) and evaluate it at \(\boldsymbol{y}=(1,-1)^T\). Check the result entry by entry.</p>
@@ -802,7 +796,7 @@ Or more simply:
 </section>
 
 <section id="u0602">
-<h2>02 · Data example and interpreting regression coefficients</h2>
+<h2><span class="un">Unit 02</span>Data example and interpreting regression coefficients</h2>
 
 <p>This unit uses a data set of hospital patients to start the multiple linear regression model. It then shows what each coefficient \(\beta_j\) of the model tells us.</p>
 
@@ -828,14 +822,14 @@ Or more simply:
 </div>
 
 <!-- ================= 6.2.1 p.8 ================= -->
-<h3>02.1 Title page <span class="tag">Slides p.8</span></h3>
+<h3 id="u0602-1"><span class="sn">02.1</span>Title page <span class="tag">Slides p.8</span></h3>
 <p>This section tells where the new topic starts.</p>
 <p class="claim"><span class="tag">Slides p.8</span> Slide p.8 repeats the title "Lecture 6: Multiple Linear Regression: Intro &amp; Estimation".</p>
 <p>Multiple linear regression (MLR) is a linear model in which more than one covariate explains the outcome. Slides p.1–7 are a recap. The new material starts on Slides p.9.</p>
 <p>The next section gives the data that the lecture uses for all of its examples.</p>
 
 <!-- ================= 6.2.2 p.9 ================= -->
-<h3>02.2 Data example: satisfaction.csv <span class="tag">Slides p.9</span></h3>
+<h3 id="u0602-2"><span class="sn">02.2</span>Data example: satisfaction.csv <span class="tag">Slides p.9</span></h3>
 <p>This section gives the data set. The model, the coefficients, and their interpretation in this unit all use these data.</p>
 
 <p><b>What</b> <span class="tag">Slides p.9</span></p>
@@ -856,7 +850,7 @@ Or more simply:
 <p>The data have \(n=46\) observations and \(p=3\) covariates. The next section looks at the values in the data.</p>
 
 <!-- ================= 6.2.3 p.10 ================= -->
-<h3>02.3 Exploratory data analysis: first rows and summary numbers <span class="tag">Slides p.10</span></h3>
+<h3 id="u0602-3"><span class="sn">02.3</span>Exploratory data analysis: first rows and summary numbers <span class="tag">Slides p.10</span></h3>
 <p>This section reads the first rows and the summary numbers that Slides p.10 prints. Exploratory data analysis (EDA) is a check of the range, center, and shape of the data before you make a model.</p>
 
 <p><b>What</b> <span class="tag">Slides p.10</span></p>
@@ -908,7 +902,7 @@ Or more simply:
 <p>The summary numbers give the range and center of each variable. The next section looks at pairs of variables.</p>
 
 <!-- ================= 6.2.4 p.11 ================= -->
-<h3>02.4 Scatter plot matrix <span class="tag">Slides p.11</span></h3>
+<h3 id="u0602-4"><span class="sn">02.4</span>Scatter plot matrix <span class="tag">Slides p.11</span></h3>
 <p>The summary numbers show one variable at a time. This section shows the relation between two variables.</p>
 
 <p><b>What</b> <span class="tag">Slides p.11</span></p>
@@ -959,7 +953,7 @@ Or more simply:
 <p>A scatter plot shows the association between two variables only. The next section asks questions that need all the covariates together.</p>
 
 <!-- ================= 6.2.5 p.12 ================= -->
-<h3>02.5 Motivating questions <span class="tag">Slides p.12</span></h3>
+<h3 id="u0602-5"><span class="sn">02.5</span>Motivating questions <span class="tag">Slides p.12</span></h3>
 <p>This section lists the questions of Slides p.12. A plot of two variables cannot answer them, so we need multiple linear regression.</p>
 
 <p><b>What</b> <span class="tag">Slides p.12</span></p>
@@ -982,7 +976,7 @@ Or more simply:
 <p>The questions need a model with all three covariates at the same time. The next section gives this model.</p>
 
 <!-- ================= 6.2.6 p.13 ================= -->
-<h3>02.6 The multiple linear regression model <span class="tag">Slides p.13</span></h3>
+<h3 id="u0602-6"><span class="sn">02.6</span>The multiple linear regression model <span class="tag">Slides p.13</span></h3>
 <p>This section gives the model of this lecture. The slides write it in two equivalent forms: a scalar form for each observation and a matrix form for all observations.</p>
 
 <p><b>What</b> <span class="tag">Slides p.13</span></p>
@@ -1077,7 +1071,7 @@ Or more simply:
 <p>The model has a scalar form and an equivalent matrix form. The next section tells what each coefficient in it means.</p>
 
 <!-- ================= 6.2.7 p.14-16 ================= -->
-<h3>02.7 Interpreting regression coefficients <span class="tag">Slides p.14–16</span></h3>
+<h3 id="u0602-7"><span class="sn">02.7</span>Interpreting regression coefficients <span class="tag">Slides p.14–16</span></h3>
 <p>This section tells what each coefficient means. The slides give one method: "To interpret a parameter, isolate it!"</p>
 <p class="claim"><span class="tag">Slides p.14–16</span> Slides p.14 and p.15 are the first parts of Slides p.16. This section follows the full text of p.16.</p>
 
@@ -1252,7 +1246,7 @@ Or more simply:
 <p>This section gives the interpretation of the coefficients. \(\beta_0\) is the mean outcome when all covariates are 0. \(\beta_j\) is the difference in mean outcome for a one-unit increase in covariate \(j\), with the other covariates held fixed. The practice questions below use these interpretations.</p>
 
 <!-- ================= practice ================= -->
-<h3>02.8 Practice <span class="tag">Added</span></h3>
+<h3 id="u0602-8"><span class="sn">02.8</span>Practice <span class="tag">Added</span></h3>
 <p>All questions use the model of the example in Section 02.6 and \(\hat{\boldsymbol\beta}=(158.491,\,-1.142,\,-0.442,\,-13.470)^T\).</p>
 
 <p><b>Q1.</b> Interpret \(\hat\beta_3=-13.470\), the coefficient of Stress. Two patients have the same Age and Severity, and their Stress values differ by 0.5. Find the difference in their estimated mean satisfaction.</p>
@@ -1313,7 +1307,7 @@ Or more simply:
 </section>
 
 <section id="u0603">
-<h2>03 · Estimating β: least squares and maximum likelihood</h2>
+<h2><span class="un">Unit 03</span>Estimating β: least squares and maximum likelihood</h2>
 
 <p>This unit uses two methods to estimate the coefficient vector \(\boldsymbol\beta\) of a multiple regression: least squares and maximum likelihood. Under the model assumptions of the slides, the two methods give the same formula \(\hat{\boldsymbol\beta}=(\boldsymbol{X}^T\boldsymbol{X})^{-1}\boldsymbol{X}^T\boldsymbol{y}\).</p>
 
@@ -1326,7 +1320,7 @@ Or more simply:
 </div>
 
 <!-- ============ 0. Title slide ============ -->
-<h3>03.1 Title page: Estimating \(\boldsymbol\beta\) <span class="tag">Slides p.17</span></h3>
+<h3 id="u0603-1"><span class="sn">03.1</span>Title page: Estimating \(\boldsymbol\beta\) <span class="tag">Slides p.17</span></h3>
 <p>Slide p.17 shows only the title "Estimating \(\boldsymbol\beta\)". This unit uses the model \(\boldsymbol{y}=\boldsymbol{X}\boldsymbol\beta+\boldsymbol\epsilon\) with \(\boldsymbol\epsilon\sim MVN(\boldsymbol{0},\sigma^2\boldsymbol{I})\). The next lines give each symbol again.</p>
 <div class="claim">\(\boldsymbol{y}\) is the \(n\times1\) outcome vector. It holds the outcome \(y_i\) of each of the \(n\) observations.</div>
 <div class="claim">\(\boldsymbol{X}\) is the \(n\times(p+1)\) design matrix. Its first column is all 1s. The other \(p\) columns hold the covariates.</div>
@@ -1336,7 +1330,7 @@ Or more simply:
 <p>The slides use the satisfaction data: \(n=46\) patients and three covariates (Age, Severity, Stress), so \(p=3\) (Slides p.9). The example in this unit uses a smaller data set so that you can do each step by hand. Section 03.2 now uses least squares to find \(\hat{\boldsymbol\beta}\).</p>
 
 <!-- ============ 1. Least squares ============ -->
-<h3>03.2 Least squares estimation <span class="tag">Slides p.18–20</span></h3>
+<h3 id="u0603-2"><span class="sn">03.2</span>Least squares estimation <span class="tag">Slides p.18–20</span></h3>
 <p>This section finds the \(\boldsymbol\beta\) that makes the total squared difference between the data \(\boldsymbol{y}\) and the model values \(\boldsymbol{X}\boldsymbol\beta\) as small as possible. Slides p.18–19 build up p.20 line by line, so p.20 holds all of the content.</p>
 
 <p><b>What</b> <span class="tag">Slides p.20</span></p>
@@ -1529,7 +1523,7 @@ assuming the columns of \(\boldsymbol{X}\) are linearly independent
 <p>This section gives the OLS estimate \(\hat{\boldsymbol\beta}=(\boldsymbol{X}^T\boldsymbol{X})^{-1}\boldsymbol{X}^T\boldsymbol{y}\). Section 03.3 starts from the probability model and gets the same formula.</p>
 
 <!-- ============ 2. Maximum likelihood ============ -->
-<h3>03.3 Maximum likelihood <span class="tag">Slides p.21–22</span></h3>
+<h3 id="u0603-3"><span class="sn">03.3</span>Maximum likelihood <span class="tag">Slides p.21–22</span></h3>
 <p>This section uses the probability distribution of the model to find the \(\boldsymbol\beta\) that makes the observed data most probable. Slide p.21 builds up p.22 line by line, so p.22 holds all of the content.</p>
 
 <p><b>What</b> <span class="tag">Slides p.22</span></p>
@@ -1640,7 +1634,7 @@ So \(\hat{\boldsymbol\beta}_{MLE}=\hat{\boldsymbol\beta}=(\boldsymbol{X}^T\bolds
 <p>This section shows that MLE = OLS when \(\boldsymbol{y}\sim MVN(\boldsymbol{X}\boldsymbol\beta,\sigma^2\boldsymbol{I})\). The next unit finds the mean and variance of this \(\hat{\boldsymbol\beta}\), and it defines fitted values and residuals.</p>
 
 <!-- ============ Practice ============ -->
-<h3>03.4 Practice <span class="tag">Added</span></h3>
+<h3 id="u0603-4"><span class="sn">03.4</span>Practice <span class="tag">Added</span></h3>
 <p>The three questions check two skills of this unit. You calculate \(\hat{\boldsymbol\beta}\) from \((\boldsymbol{X}^T\boldsymbol{X})\boldsymbol\beta=\boldsymbol{X}^T\boldsymbol{y}\), and you use \(\ell\) to show that MLE = OLS.</p>
 
 <p><b>Q1.</b> Use the data \(x=2,4,6\) and \(y=1,3,8\). Calculate \(\boldsymbol{X}^T\boldsymbol{X}\), \(\boldsymbol{X}^T\boldsymbol{y}\), and \(\hat{\boldsymbol\beta}=(\boldsymbol{X}^T\boldsymbol{X})^{-1}\boldsymbol{X}^T\boldsymbol{y}\).</p>
@@ -1676,7 +1670,7 @@ So \(\hat{\boldsymbol\beta}_{MLE}=\hat{\boldsymbol\beta}=(\boldsymbol{X}^T\bolds
 </section>
 
 <section id="u0604">
-<h2>04 · Properties of the LS estimator, fitted values, and residuals</h2>
+<h2><span class="un">Unit 04</span>Properties of the LS estimator, fitted values, and residuals</h2>
 
 <p>This unit finds three properties of the least squares estimator \(\hat{\boldsymbol\beta}\): its mean, its variance, and its distribution. Then it uses \(\hat{\boldsymbol\beta}\) to make the fitted values \(\hat{\boldsymbol y}\) and the residuals \(\boldsymbol e\).</p>
 
@@ -1720,7 +1714,7 @@ So \(\hat{\boldsymbol\beta}_{MLE}=\hat{\boldsymbol\beta}=(\boldsymbol{X}^T\bolds
 <p>We now have the notation and the numbers. The next section starts with the mean of \(\hat{\boldsymbol\beta}\).</p>
 
 <!-- ============ 1. E[beta.hat] p.23–25 ============ -->
-<h3>04.1 The mean of \(\hat{\boldsymbol\beta}\): unbiasedness <span class="tag">Slides p.23–25</span></h3>
+<h3 id="u0604-1"><span class="sn">04.1</span>The mean of \(\hat{\boldsymbol\beta}\): unbiasedness <span class="tag">Slides p.23–25</span></h3>
 <p>This section shows that the mean of \(\hat{\boldsymbol\beta}\) is equal to the true value \(\boldsymbol\beta\).</p>
 
 <p><b>What</b> <span class="tag">Slides p.25</span></p>
@@ -1781,7 +1775,7 @@ So \(\hat{\boldsymbol\beta}_{MLE}=\hat{\boldsymbol\beta}=(\boldsymbol{X}^T\bolds
 <p>The result of this section is that \(\hat{\boldsymbol\beta}\) is an unbiased estimator of \(\boldsymbol\beta\). The next section finds how much \(\hat{\boldsymbol\beta}\) varies around \(\boldsymbol\beta\).</p>
 
 <!-- ============ 2. Var[beta.hat] p.26–27 ============ -->
-<h3>04.2 The covariance matrix of \(\hat{\boldsymbol\beta}\) <span class="tag">Slides p.26–27</span></h3>
+<h3 id="u0604-2"><span class="sn">04.2</span>The covariance matrix of \(\hat{\boldsymbol\beta}\) <span class="tag">Slides p.26–27</span></h3>
 <p>This section finds the covariance matrix of \(\hat{\boldsymbol\beta}\). This matrix gives the variance of each \(\hat\beta_j\). Later units use it to make confidence intervals.</p>
 
 <p><b>What</b> <span class="tag">Slides p.27</span></p>
@@ -1839,7 +1833,7 @@ So \(\hat{\boldsymbol\beta}_{MLE}=\hat{\boldsymbol\beta}=(\boldsymbol{X}^T\bolds
 <p>The result of this section is \(\mathrm{Var}[\hat{\boldsymbol\beta}]=\sigma^2\boldsymbol V\), where \(\boldsymbol V=(\boldsymbol X^T\boldsymbol X)^{-1}\) depends only on \(\boldsymbol X\). The next section combines the mean and the variance into one distribution.</p>
 
 <!-- ============ 3. distribution p.28–29 ============ -->
-<h3>04.3 The distribution of \(\hat{\boldsymbol\beta}\) <span class="tag">Slides p.28–29</span></h3>
+<h3 id="u0604-3"><span class="sn">04.3</span>The distribution of \(\hat{\boldsymbol\beta}\) <span class="tag">Slides p.28–29</span></h3>
 <p>This section combines the mean from Section 04.1 and the variance from Section 04.2 into one distribution. We need this distribution to make inference about one \(\beta_j\).</p>
 
 <p><b>What</b> <span class="tag">Slides p.29</span></p>
@@ -1913,7 +1907,7 @@ Linearity: If \(\boldsymbol u=\boldsymbol C\boldsymbol y+\boldsymbol d\), then: 
 <p>The result of this section is \(\hat\beta_j\sim N(\beta_j,\sigma^2V_{jj})\) for each \(j\). The next section uses \(\hat{\boldsymbol\beta}\) to make the fitted values.</p>
 
 <!-- ============ 4. fitted values p.30 ============ -->
-<h3>04.4 Fitted values and the hat matrix \(\boldsymbol H\) <span class="tag">Slides p.30</span></h3>
+<h3 id="u0604-4"><span class="sn">04.4</span>Fitted values and the hat matrix \(\boldsymbol H\) <span class="tag">Slides p.30</span></h3>
 <p>This section uses \(\hat{\boldsymbol\beta}\) to calculate the fitted value of each observation. Then it writes all fitted values as one matrix times \(\boldsymbol y\).</p>
 
 <p><b>What</b> <span class="tag">Slides p.30</span></p>
@@ -1979,7 +1973,7 @@ where \(\boldsymbol H=\boldsymbol X(\boldsymbol X^T\boldsymbol X)^{-1}\boldsymbo
 <p>The result of this section is \(\hat{\boldsymbol y}=\boldsymbol H\boldsymbol y\), where \(\boldsymbol H\) depends only on \(\boldsymbol X\). The next section uses \(\boldsymbol H\) to write the residuals.</p>
 
 <!-- ============ 5. residuals p.31–32 ============ -->
-<h3>04.5 Residuals and \(\boldsymbol X^T\boldsymbol e=\boldsymbol 0\) <span class="tag">Slides p.31–32</span></h3>
+<h3 id="u0604-5"><span class="sn">04.5</span>Residuals and \(\boldsymbol X^T\boldsymbol e=\boldsymbol 0\) <span class="tag">Slides p.31–32</span></h3>
 <p>This section defines the residual vector and writes it as \((\boldsymbol I-\boldsymbol H)\boldsymbol y\). Then it shows that the residual vector is orthogonal to each column of \(\boldsymbol X\).</p>
 
 <p><b>What</b> <span class="tag">Slides p.32</span></p>
@@ -2098,7 +2092,7 @@ Note: \(\boldsymbol X^T\boldsymbol e=\boldsymbol 0\). Why?
 <p>\(\hat{\boldsymbol\beta}\) is unbiased: \(E[\hat{\boldsymbol\beta}]=\boldsymbol\beta\). Its covariance matrix is \(\sigma^2(\boldsymbol X^T\boldsymbol X)^{-1}=\sigma^2\boldsymbol V\). Each component has the distribution \(\hat\beta_j\sim N(\beta_j,\sigma^2V_{jj})\). The fitted values are \(\hat{\boldsymbol y}=\boldsymbol H\boldsymbol y\). The residuals are \(\boldsymbol e=(\boldsymbol I-\boldsymbol H)\boldsymbol y\), and \(\boldsymbol X^T\boldsymbol e=\boldsymbol 0\). Unit 05 estimates \(\sigma^2\), so that \(\sigma^2V_{jj}\) becomes a number.</p>
 </div>
 
-<h3>04.6 Practice <span class="tag">Added</span></h3>
+<h3 id="u0604-6"><span class="sn">04.6</span>Practice <span class="tag">Added</span></h3>
 <p>The three questions below test the three tasks of this unit. They are: write a distribution, calculate fitted values and residuals, and use \(\boldsymbol X^T\boldsymbol e=\boldsymbol 0\).</p>
 
 <p><b>Q1.</b> A data set has \(n=3\) observations with \(x=(1,\ 2,\ 3)\). The model is \(y_i=\beta_0+\beta_1x_i+\epsilon_i\). Find \(\boldsymbol V=(\boldsymbol X^T\boldsymbol X)^{-1}\). Then write the distribution of \(\hat\beta_1\) in terms of \(\sigma^2\).</p>
@@ -2145,7 +2139,7 @@ Note: \(\boldsymbol X^T\boldsymbol e=\boldsymbol 0\). Why?
 </section>
 
 <section id="u0605">
-<h2>05 · Estimating σ², calculating the estimates, and practice</h2>
+<h2><span class="un">Unit 05</span>Estimating σ², calculating the estimates, and practice</h2>
 
 <p>This unit estimates the last unknown parameter of the model: the error variance \(\sigma^2\). Then it uses the estimate to find the standard error of each \(\hat\beta_j\).</p>
 
@@ -2175,7 +2169,7 @@ Note: \(\boldsymbol X^T\boldsymbol e=\boldsymbol 0\). Why?
 <p>Every section of this unit uses these numbers. Section 5.3 calculates \(\hat{\boldsymbol\beta}=(2.2,\,0.6)^T\) from them in full.</p>
 
 <!-- ================= 5.1 MLE of sigma^2 ================= -->
-<h3>05.1 MLE of \(\sigma^2\) <span class="tag">Slides p.33–35</span></h3>
+<h3 id="u0605-1"><span class="sn">05.1</span>MLE of \(\sigma^2\) <span class="tag">Slides p.33–35</span></h3>
 
 <p>This section finds the number that estimates \(\sigma^2\) when \(\hat{\boldsymbol\beta}\) is known. The method is the same as for \(\boldsymbol\beta\): write the log-likelihood, take its derivative, and set the derivative to zero.</p>
 
@@ -2316,7 +2310,7 @@ Note: \(\boldsymbol X^T\boldsymbol e=\boldsymbol 0\). Why?
 <p>Result of this section: the MLE of \(\sigma^2\) is the residual sum of squares divided by \(n\). In the example it is 0.48. The next section shows that the course uses a different divisor.</p>
 
 <!-- ================= 5.2 Unbiased ================= -->
-<h3>05.2 Unbiased estimate of \(\sigma^2\) <span class="tag">Slides p.36</span></h3>
+<h3 id="u0605-2"><span class="sn">05.2</span>Unbiased estimate of \(\sigma^2\) <span class="tag">Slides p.36</span></h3>
 
 <p>This section changes the divisor from \(n\) to \(n-(p+1)\). It gives the definition, then a calculation, then the reason for the new divisor.</p>
 
@@ -2422,7 +2416,7 @@ Instead we usually use \(\hat\sigma^2=\frac{1}{n-(p+1)}\boldsymbol{e}^T\boldsymb
 <p>Result of this section: the course uses \(\hat\sigma^2=\boldsymbol{e}^T\boldsymbol{e}/(n-p-1)\). In the example it is 0.8. The next two sections use it to find the standard errors of \(\hat{\boldsymbol\beta}\).</p>
 
 <!-- ================= 5.3 Estimation ================= -->
-<h3>05.3 Calculating \(\hat{\boldsymbol\beta}\) as a system of equations <span class="tag">Slides p.37</span></h3>
+<h3 id="u0605-3"><span class="sn">05.3</span>Calculating \(\hat{\boldsymbol\beta}\) as a system of equations <span class="tag">Slides p.37</span></h3>
 
 <p>This section shows the method that the slides use to calculate \(\hat{\boldsymbol\beta}\). The method solves a system of linear equations. It does not calculate the full inverse matrix.</p>
 
@@ -2505,7 +2499,7 @@ Instead we usually use \(\hat\sigma^2=\frac{1}{n-(p+1)}\boldsymbol{e}^T\boldsymb
 <p>Result of this section: \(\hat{\boldsymbol\beta}\) is the solution of \((\boldsymbol{X}^T\boldsymbol{X})\hat{\boldsymbol\beta}=\boldsymbol{X}^T\boldsymbol{y}\). In the example, \(\hat{\boldsymbol\beta}=(2.2,\,0.6)^T\). The next section uses it to calculate residuals, \(\hat\sigma^2\), and standard errors.</p>
 
 <!-- ================= 5.4 Inference ================= -->
-<h3>05.4 Calculating \(\hat\sigma^2\) and the standard errors <span class="tag">Slides p.38</span></h3>
+<h3 id="u0605-4"><span class="sn">05.4</span>Calculating \(\hat\sigma^2\) and the standard errors <span class="tag">Slides p.38</span></h3>
 
 <p>This section calculates \(\hat\sigma^2\) and then the standard error of each \(\hat\beta_j\). Lecture 7 uses these standard errors for tests and confidence intervals.</p>
 
@@ -2580,7 +2574,7 @@ Instead we usually use \(\hat\sigma^2=\frac{1}{n-(p+1)}\boldsymbol{e}^T\boldsymb
 <p>Result of this section: \(\mathrm{SE}(\hat\beta_j)=\hat\sigma\sqrt{V_{jj}}\). In the example, \(\mathrm{SE}(\hat\beta_0)=0.9381\) and \(\mathrm{SE}(\hat\beta_1)=0.2828\), with 3 degrees of freedom. Lecture 7 uses these values for t tests and confidence intervals.</p>
 
 <!-- ================= 5.5 Practice ================= -->
-<h3>05.5 Practice <span class="tag">Slides p.39–41</span></h3>
+<h3 id="u0605-5"><span class="sn">05.5</span>Practice <span class="tag">Slides p.39–41</span></h3>
 
 <p>This section does the two practice questions of the slides and one added question. All three questions use \(p=1\), which is simple linear regression (SLR). They show that the matrix formulas give the SLR formulas of the earlier lectures.</p>
 
@@ -2734,7 +2728,8 @@ In the case of \(p=1\) covariate, find the covariance between \(\hat\beta_0\) an
 
 <p>Result of this unit: the MLE of \(\sigma^2\) is \(\boldsymbol{e}^T\boldsymbol{e}/n\), and the course uses the unbiased \(\boldsymbol{e}^T\boldsymbol{e}/(n-p-1)\). Multiply it by a diagonal entry of \((\boldsymbol{X}^T\boldsymbol{X})^{-1}\) and take the square root to get the SE of each \(\hat\beta_j\). When \(p=1\), these matrix formulas give the SLR formulas. Lecture 7 uses the SEs for tests and confidence intervals.</p>
 </section>
-</main>
-</div>
+</main><nav class="pager2" aria-label="Lectures"><a class="prev" href="L05.html"><span>Previous: Lecture 5</span>Random Vectors and Multivariate Normal</a><a class="next" href="L07.html"><span>Next: Lecture 7</span>Multiple Linear Regression: Estimation and Inference I</a></nav>
+</article></div>
+<script src="site.js"></script>
 </body>
 </html>

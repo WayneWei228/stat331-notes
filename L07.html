@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>STAT 331 · Lecture 7 · Multiple Linear Regression: Estimation and Inference I</title>
+<title>Lecture 7: Multiple Linear Regression: Estimation and Inference I | STAT 331</title>
 <script>
 window.MathJax = {
   tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']], processEscapes: false },
@@ -273,23 +273,16 @@ hr.soft{border:none;border-top:1px solid var(--color-border);margin:36px 0;}
 .tag{display:inline-block;font-size:12px;font-weight:600;color:var(--color-text-secondary);background:var(--color-surface);border:1px solid var(--color-border);border-radius:6px;padding:0 7px;margin-left:6px;vertical-align:2px;}
 .kicker{font-size:12px;font-weight:600;letter-spacing:.05em;color:var(--color-text-secondary);text-transform:uppercase;}
 </style>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400..700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400&display=swap"><link rel="stylesheet" href="site.css">
 </head>
-<body>
-<nav class="topbar"><div class="inner"><a href="./">STAT 331 index</a><a href="L06.html">L06</a><span class="spacer"></span><span class="dim">STAT 331 · Lecture 7 · Multiple Linear Regression: Estimation and Inference I</span></div></nav>
-<div class="container">
-<header class="page"><h1>Lecture 7: Multiple Linear Regression: Estimation and Inference I</h1>
-<p class="sub">This lecture finds the distributions of \(\hat{\boldsymbol\beta}\), \(\boldsymbol e\), and \(\hat\sigma^2\) and uses them for t tests and confidence intervals for each \(\beta_j\) (Lecture 7 · p.1–55).</p></header>
-<div class="toccard"><div class="t">Contents</div>
-<a href="#u0701">01 · Recap, fitted values, residuals, and the hat matrix</a>
-<a href="#u0702">02 · Estimating \(\sigma^2\) and the joint distribution of \(\hat{\boldsymbol\beta}\) and \(\boldsymbol e\)</a>
-<a href="#u0703">03 · The t statistic in MLR and property (3): independence</a>
-<a href="#u0704">04 · Property (2): \(\frac{1}{\sigma^2}\boldsymbol e^T\boldsymbol e\sim\chi^2_{n-(p+1)}\)</a>
-<a href="#u0705">05 · t tests and confidence intervals for each \(\beta_j\)</a>
-<a href="#u0706">06 · Practice questions Q1–Q3</a>
-</div>
-<main>
+<body class="site">
+<a class="skip" href="#content">Skip to content</a>
+<div class="mbar"><button id="menu" aria-controls="side" aria-expanded="false">Contents</button><span class="t">Lecture 7: Multiple Linear Regression: Estimation and Inference I</span></div>
+<aside class="side" id="side" aria-label="Course navigation"><a class="brand" href="./"><b>STAT 331</b><span>Applied Linear Models</span></a><nav><ol class="lecs"><li><a href="L01.html"><span class="n">1</span><span>Introduction and Motivation</span></a></li><li><a href="L02.html"><span class="n">2</span><span>Simple Linear Regression: Estimation</span></a></li><li><a href="L03.html"><span class="n">3</span><span>Simple Linear Regression: Inference</span></a></li><li><a href="L04.html"><span class="n">4</span><span>Simple Linear Regression: Prediction</span></a></li><li><a href="L05.html"><span class="n">5</span><span>Random Vectors and Multivariate Normal</span></a></li><li><a href="L06.html"><span class="n">6</span><span>Multiple Linear Regression: Intro and Estimation</span></a></li><li class="cur"><a href="L07.html" aria-current="page"><span class="n">7</span><span>Multiple Linear Regression: Estimation and Inference I</span></a><ol class="units"><li><a href="#u0701" data-t="u0701"><span class="n">01</span><span>Recap, fitted values, residuals, and the hat matrix</span></a><ol class="subs"><li><a href="#u0701-1" data-t="u0701-1">01.1 Recap: the multiple linear regression model</a></li><li><a href="#u0701-2" data-t="u0701-2">01.2 Recap: least squares estimation</a></li><li><a href="#u0701-3" data-t="u0701-3">01.3 Recap: properties of \(\hat{\boldsymbol\beta}\)</a></li><li><a href="#u0701-4" data-t="u0701-4">01.4 Fitted values and the hat matrix</a></li><li><a href="#u0701-5" data-t="u0701-5">01.5 Residuals and \(\boldsymbol{X}^T\boldsymbol{e}=\boldsymbol{0}\)</a></li><li><a href="#u0701-6" data-t="u0701-6">01.6 Practice</a></li></ol></li><li><a href="#u0702" data-t="u0702"><span class="n">02</span><span>Estimating \(\sigma^2\) and the joint distribution of \(\hat{\boldsymbol\beta}\) and \(\boldsymbol e\)</span></a><ol class="subs"><li><a href="#u0702-1" data-t="u0702-1">02.1 The MLE of \(\sigma^2\)</a></li><li><a href="#u0702-2" data-t="u0702-2">02.2 The unbiased estimate of \(\sigma^2\)</a></li><li><a href="#u0702-3" data-t="u0702-3">02.3 Stack \(\hat{\boldsymbol\beta}\) and \(\boldsymbol e\) into one vector</a></li><li><a href="#u0702-4" data-t="u0702-4">02.4 The mean of the stacked vector</a></li><li><a href="#u0702-5" data-t="u0702-5">02.5 The variance matrix of the stacked vector</a></li><li><a href="#u0702-6" data-t="u0702-6">02.6 Simplify the blocks \(\boldsymbol A\), \(\boldsymbol B\), \(\boldsymbol D\), and the Aside</a></li><li><a href="#u0702-7" data-t="u0702-7">02.7 Implications</a></li><li><a href="#u0702-8" data-t="u0702-8">02.8 Practice</a></li></ol></li><li><a href="#u0703" data-t="u0703"><span class="n">03</span><span>The t statistic in MLR and property (3): independence</span></a><ol class="subs"><li><a href="#u0703-1" data-t="u0703-1">03.1 Symbols and distributions</a></li><li><a href="#u0703-2" data-t="u0703-2">03.2 Recall: the t statistic in SLR</a></li><li><a href="#u0703-3" data-t="u0703-3">03.3 The matching result in MLR</a></li><li><a href="#u0703-4" data-t="u0703-4">03.4 Property (3): \(\hat{\boldsymbol\beta}\) and \(\boldsymbol e\) are independent</a></li><li><a href="#u0703-5" data-t="u0703-5">03.5 Practice</a></li></ol></li><li><a href="#u0704" data-t="u0704"><span class="n">04</span><span>Property (2): \(\frac{1}{\sigma^2}\boldsymbol e^T\boldsymbol e\sim\chi^2_{n-(p+1)}\)</span></a><ol class="subs"><li><a href="#u0704-1" data-t="u0704-1">04.1 The plan of the proof</a></li><li><a href="#u0704-2" data-t="u0704-2">04.2 Eigen decomposition and the distribution of \(\tilde{\boldsymbol e}=\boldsymbol\Gamma\boldsymbol e\)</a></li><li><a href="#u0704-3" data-t="u0704-3">04.3 Why \(\tilde{\boldsymbol e}\) is useful: \(\tilde{\boldsymbol e}^T\tilde{\boldsymbol e}=\boldsymbol e^T\boldsymbol e\)</a></li><li><a href="#u0704-4" data-t="u0704-4">04.4 Each \(\lambda_i\) is 0 or 1</a></li><li><a href="#u0704-5" data-t="u0704-5">04.5 \(\sum_i\lambda_i=n-(p+1)\): count the 1s with the trace</a></li><li><a href="#u0704-6" data-t="u0704-6">04.6 Recap: \(\frac{1}{\sigma^2}\boldsymbol e^T\boldsymbol e\sim\chi^2_{n-(p+1)}\)</a></li><li><a href="#u0704-7" data-t="u0704-7">04.7 Practice</a></li></ol></li><li><a href="#u0705" data-t="u0705"><span class="n">05</span><span>t tests and confidence intervals for each \(\beta_j\)</span></a><ol class="subs"><li><a href="#u0705-1" data-t="u0705-1">05.1 The t distribution of the standardized \(\hat\beta_j\)</a></li><li><a href="#u0705-2" data-t="u0705-2">05.2 Calculate \(\hat{\boldsymbol\beta}\) from the normal equations</a></li><li><a href="#u0705-3" data-t="u0705-3">05.3 Calculate \(\hat\sigma^2\) and the standard errors</a></li><li><a href="#u0705-4" data-t="u0705-4">05.4 Inference rules for \(\beta_j\): test and confidence interval</a></li><li><a href="#u0705-5" data-t="u0705-5">05.5 The p-value for each coefficient</a></li><li><a href="#u0705-6" data-t="u0705-6">05.6 The 95% confidence interval for each coefficient</a></li><li><a href="#u0705-7" data-t="u0705-7">05.7 Practice</a></li></ol></li><li><a href="#u0706" data-t="u0706"><span class="n">06</span><span>Practice questions Q1–Q3</span></a><ol class="subs"><li><a href="#u0706-1" data-t="u0706-1">06.1 Q1: a linear combination of coefficients and its SE</a></li><li><a href="#u0706-2" data-t="u0706-2">06.2 Q2: find \(\hat{\boldsymbol\beta}\) and an SE from an incomplete \((\boldsymbol{X}'\boldsymbol{X})^{-1}\)</a></li><li><a href="#u0706-3" data-t="u0706-3">06.3 Q3: three equations about residuals</a></li><li><a href="#u0706-4" data-t="u0706-4">06.4 Practice</a></li></ol></li></ol></li></ol></nav><div class="foot"><a href="stat331-all.md">All notes as one text file</a><a href="https://github.com/WayneWei228/stat331-notes">Source on GitHub</a></div></aside><div class="scrim"></div>
+<div class="pagewrap" id="content"><article class="doc">
+<header class="page"><p class="lnum">Lecture 7</p><h1>Multiple Linear Regression: Estimation and Inference I</h1><p class="sub">This lecture finds the distributions of \(\hat{\boldsymbol\beta}\), \(\boldsymbol e\), and \(\hat\sigma^2\) and uses them for t tests and confidence intervals for each \(\beta_j\) (Lecture 7 · p.1–55).</p></header><main>
 <section id="u0701">
-<h2>01 · Recap, fitted values, residuals, and the hat matrix</h2>
+<h2><span class="un">Unit 01</span>Recap, fitted values, residuals, and the hat matrix</h2>
 
 <p>This unit first repeats the multiple linear regression model and the least squares estimate from Lecture 6. Then it defines two new vectors: the fitted values \(\hat{\boldsymbol{y}}\) and the residuals \(\boldsymbol{e}\). All examples in this unit use data set 1. It has \(n=5\) observations, so you can do each step by hand.</p>
 
@@ -303,7 +296,7 @@ hr.soft{border:none;border-top:1px solid var(--color-border);margin:36px 0;}
 </div>
 
 <!-- ================= 1.1 p.1-3 model ================= -->
-<h3>01.1 Recap: the multiple linear regression model <span class="tag">Slides p.1–3</span></h3>
+<h3 id="u0701-1"><span class="sn">01.1</span>Recap: the multiple linear regression model <span class="tag">Slides p.1–3</span></h3>
 
 <p>This section writes the model that all of Lecture 7 uses. Page 1 is the title page: "Multiple Linear Regression—Estimation and Inference I". Page 2 is a section page with the title "Recap". Pages 3–5 repeat results from Lecture 6.</p>
 
@@ -387,7 +380,7 @@ Or more simply:
 <p>Result of this section: the model is one matrix equation \(\boldsymbol{y}=\boldsymbol{X}\boldsymbol\beta+\boldsymbol\epsilon\). The next section uses it to estimate \(\boldsymbol\beta\).</p>
 
 <!-- ================= 1.2 p.4 least squares ================= -->
-<h3>01.2 Recap: least squares estimation <span class="tag">Slides p.4</span></h3>
+<h3 id="u0701-2"><span class="sn">01.2</span>Recap: least squares estimation <span class="tag">Slides p.4</span></h3>
 
 <p>This section repeats how to calculate the estimate \(\hat{\boldsymbol\beta}\) from the data. An estimate is a value that we calculate from the data to approximate an unknown parameter. The hat symbol marks an estimate.</p>
 
@@ -499,7 +492,7 @@ assuming the columns of \(\boldsymbol{X}\) are linearly independent
 <p>Result of this section: \(\hat{\boldsymbol\beta}=(\boldsymbol{X}^T\boldsymbol{X})^{-1}\boldsymbol{X}^T\boldsymbol{y}\). For data set 1, \(\hat{\boldsymbol\beta}=(7,\,2.3,\,0.75)^T\). The next section gives the distribution of \(\hat{\boldsymbol\beta}\).</p>
 
 <!-- ================= 1.3 p.5 properties ================= -->
-<h3>01.3 Recap: properties of \(\hat{\boldsymbol\beta}\) <span class="tag">Slides p.5</span></h3>
+<h3 id="u0701-3"><span class="sn">01.3</span>Recap: properties of \(\hat{\boldsymbol\beta}\) <span class="tag">Slides p.5</span></h3>
 
 <p>This section repeats the sampling distribution of \(\hat{\boldsymbol\beta}\). The sampling distribution is the distribution of \(\hat{\boldsymbol\beta}\) over many new data sets with the same \(\boldsymbol{X}\). Tests and confidence intervals later in this lecture use it.</p>
 
@@ -575,7 +568,7 @@ Note: the notation here is a little funky due to 0-indexing \(\boldsymbol\beta\)
 <p>Result of this section: \(\hat\beta_j\sim N(\beta_j,\sigma^2V_{jj})\). The recap stops here. The next section starts the new material of Lecture 7.</p>
 
 <!-- ================= 1.4 p.6-7 fitted values ================= -->
-<h3>01.4 Fitted values and the hat matrix <span class="tag">Slides p.6–7</span></h3>
+<h3 id="u0701-4"><span class="sn">01.4</span>Fitted values and the hat matrix <span class="tag">Slides p.6–7</span></h3>
 
 <p>Page 6 repeats the title page. It shows that the new material starts here. This section defines the fitted values and writes them as one matrix times \(\boldsymbol{y}\).</p>
 
@@ -665,7 +658,7 @@ where \(\boldsymbol{H}=\boldsymbol{X}(\boldsymbol{X}^T\boldsymbol{X})^{-1}\bolds
 <p>Result of this section: \(\hat{\boldsymbol{y}}=\boldsymbol{H}\boldsymbol{y}\), and \(\boldsymbol{H}\) is an \(n\times n\) matrix that depends only on \(\boldsymbol{X}\). The next section uses \(\boldsymbol{H}\) to write the residuals.</p>
 
 <!-- ================= 1.5 p.8-9 residuals ================= -->
-<h3>01.5 Residuals and \(\boldsymbol{X}^T\boldsymbol{e}=\boldsymbol{0}\) <span class="tag">Slides p.8–9</span></h3>
+<h3 id="u0701-5"><span class="sn">01.5</span>Residuals and \(\boldsymbol{X}^T\boldsymbol{e}=\boldsymbol{0}\) <span class="tag">Slides p.8–9</span></h3>
 
 <p>This section defines the residuals. Then it shows that the residual vector is orthogonal to each column of \(\boldsymbol{X}\). Unit 02 uses this property to estimate \(\sigma^2\).</p>
 
@@ -813,7 +806,7 @@ Note: \(\boldsymbol{X}^T\boldsymbol{e}=\boldsymbol{0}\). Why?
 <p>Result of this section: \(\boldsymbol{e}=(\boldsymbol{I}-\boldsymbol{H})\boldsymbol{y}\) and \(\boldsymbol{X}^T\boldsymbol{e}=\boldsymbol{0}\). Data set 1 confirms that the three sums are exactly 0.</p>
 
 <!-- ================= practice ================= -->
-<h3>01.6 Practice <span class="tag">Added</span></h3>
+<h3 id="u0701-6"><span class="sn">01.6</span>Practice <span class="tag">Added</span></h3>
 <p>These three questions practice three skills of this unit. They are the scalar form of \(\boldsymbol{X}^T\boldsymbol{e}=\boldsymbol{0}\), a full hand calculation of \(\hat{\boldsymbol\beta}\), \(\hat{\boldsymbol{y}}\) and \(\boldsymbol{e}\), and one use of \(\boldsymbol{X}^T\boldsymbol{e}=\boldsymbol{0}\).</p>
 
 <p><b>Q1.</b> Consider simple linear regression, \(y_i=\beta_0+\beta_1x_i+\epsilon_i\). Here \(\boldsymbol{X}\) has a column of 1s and a column of the \(x_i\). Write \(\boldsymbol{X}^T\boldsymbol{e}=\boldsymbol{0}\) as two scalar equations.</p>
@@ -904,7 +897,7 @@ Note: \(\boldsymbol{X}^T\boldsymbol{e}=\boldsymbol{0}\). Why?
 </section>
 
 <section id="u0702">
-<h2>02 · Estimating \(\sigma^2\) and the joint distribution of \(\hat{\boldsymbol\beta}\) and \(\boldsymbol e\)</h2>
+<h2><span class="un">Unit 02</span>Estimating \(\sigma^2\) and the joint distribution of \(\hat{\boldsymbol\beta}\) and \(\boldsymbol e\)</h2>
 
 <p>This unit gives two estimators of the error variance \(\sigma^2\). Then it finds the joint distribution of \(\hat{\boldsymbol\beta}\) and the residual vector \(\boldsymbol e\).</p>
 
@@ -957,7 +950,7 @@ Note: \(\boldsymbol{X}^T\boldsymbol{e}=\boldsymbol{0}\). Why?
 <p>Self-check: \((\boldsymbol I-\boldsymbol H)\boldsymbol y\) must give \(\boldsymbol e\). Row 1 gives \(0.3(1)-0.4(3)-0.1(2)+0.2(5)=0.3-1.2-0.2+1.0=-0.1\). This value is equal to \(e_1\). With these numbers, each section below has a complete example.</p>
 
 <!-- ================= p.10–12 ================= -->
-<h3>02.1 The MLE of \(\sigma^2\) <span class="tag">Slides p.10–12</span></h3>
+<h3 id="u0702-1"><span class="sn">02.1</span>The MLE of \(\sigma^2\) <span class="tag">Slides p.10–12</span></h3>
 
 <p>This section finds the first estimator of \(\sigma^2\) with the maximum likelihood method. Slide p.10 is the section page "Estimating \(\sigma^2\)".</p>
 <p>Lecture 6 gives the estimate \(\hat{\boldsymbol\beta}\). The parameter \(\sigma^2\) is still unknown. The variance of \(\hat{\boldsymbol\beta}\) contains \(\sigma^2\). Thus, you must estimate \(\sigma^2\) before you can calculate standard errors and confidence intervals.</p>
@@ -1079,7 +1072,7 @@ Note: \(\boldsymbol{X}^T\boldsymbol{e}=\boldsymbol{0}\). Why?
 <p>The MLE of \(\sigma^2\) is the sum of squared residuals divided by \(n\). For data set 2, it is 0.675. The next section gives the estimator that the course uses.</p>
 
 <!-- ================= p.13 ================= -->
-<h3>02.2 The unbiased estimate of \(\sigma^2\) <span class="tag">Slides p.13</span></h3>
+<h3 id="u0702-2"><span class="sn">02.2</span>The unbiased estimate of \(\sigma^2\) <span class="tag">Slides p.13</span></h3>
 
 <p>This section gives the estimator of \(\sigma^2\) that the course uses for inference.</p>
 
@@ -1138,7 +1131,7 @@ Note: \(\boldsymbol{X}^T\boldsymbol{e}=\boldsymbol{0}\). Why?
 <p>The course uses \(\hat\sigma^2=\frac{1}{n-(p+1)}\boldsymbol e^T\boldsymbol e\) for inference. To answer "Why?", the next section starts to find the distribution of \(\boldsymbol e\).</p>
 
 <!-- ================= p.14 ================= -->
-<h3>02.3 Stack \(\hat{\boldsymbol\beta}\) and \(\boldsymbol e\) into one vector <span class="tag">Slides p.14</span></h3>
+<h3 id="u0702-3"><span class="sn">02.3</span>Stack \(\hat{\boldsymbol\beta}\) and \(\boldsymbol e\) into one vector <span class="tag">Slides p.14</span></h3>
 
 <p>This section writes \(\hat{\boldsymbol\beta}\) and \(\boldsymbol e\) together as one constant matrix times \(\boldsymbol y\). Then one property of the MVN gives their joint distribution. A joint distribution is the distribution of several random quantities together.</p>
 
@@ -1195,7 +1188,7 @@ Note: \(\boldsymbol{X}^T\boldsymbol{e}=\boldsymbol{0}\). Why?
 <p>The stacked vector \(\left[\begin{array}{c}\hat{\boldsymbol\beta}\\ \boldsymbol e\end{array}\right]\) is MVN. A mean vector and a variance matrix fully specify an MVN distribution. The next two sections find these two items.</p>
 
 <!-- ================= p.15–16 ================= -->
-<h3>02.4 The mean of the stacked vector <span class="tag">Slides p.15–16</span></h3>
+<h3 id="u0702-4"><span class="sn">02.4</span>The mean of the stacked vector <span class="tag">Slides p.15–16</span></h3>
 
 <p>This section finds the expected value of the stacked vector. The expected value is the long-run mean of a random quantity. Lecture 6 shows \(E[\hat{\boldsymbol\beta}]=\boldsymbol\beta\), so only \(E[\boldsymbol e]\) is necessary.</p>
 
@@ -1266,7 +1259,7 @@ Note: \(\boldsymbol{X}^T\boldsymbol{e}=\boldsymbol{0}\). Why?
 <p>The mean of the stacked vector is \(\left[\begin{array}{c}\boldsymbol\beta\\ \boldsymbol 0\end{array}\right]\). The next section finds its variance matrix.</p>
 
 <!-- ================= p.17–18 ================= -->
-<h3>02.5 The variance matrix of the stacked vector <span class="tag">Slides p.17–18</span></h3>
+<h3 id="u0702-5"><span class="sn">02.5</span>The variance matrix of the stacked vector <span class="tag">Slides p.17–18</span></h3>
 
 <p>This section finds the variance matrix of the stacked vector. The result is a matrix with four blocks.</p>
 <p>A covariance measures how two random quantities change together. Entry \((i,j)\) of a variance matrix is the covariance of component \(i\) and component \(j\). The diagonal entries are the variances of the components.</p>
@@ -1347,7 +1340,7 @@ Note: \(\boldsymbol{X}^T\boldsymbol{e}=\boldsymbol{0}\). Why?
 <p>The variance matrix is \(\sigma^2\) times a \(2\times2\) block matrix. The next section makes each block as simple as possible.</p>
 
 <!-- ================= p.19–22 ================= -->
-<h3>02.6 Simplify the blocks \(\boldsymbol A\), \(\boldsymbol B\), \(\boldsymbol D\), and the Aside <span class="tag">Slides p.19–22</span></h3>
+<h3 id="u0702-6"><span class="sn">02.6</span>Simplify the blocks \(\boldsymbol A\), \(\boldsymbol B\), \(\boldsymbol D\), and the Aside <span class="tag">Slides p.19–22</span></h3>
 
 <p>This section simplifies each block. The results are \(\boldsymbol A=(\boldsymbol X^T\boldsymbol X)^{-1}\), \(\boldsymbol B=\boldsymbol 0\) and \(\boldsymbol D=\boldsymbol I-\boldsymbol H\).</p>
 
@@ -1483,7 +1476,7 @@ Note: \(\boldsymbol{X}^T\boldsymbol{e}=\boldsymbol{0}\). Why?
 <p>The blocks are \(\boldsymbol A=(\boldsymbol X^T\boldsymbol X)^{-1}\), \(\boldsymbol B=\boldsymbol C=\boldsymbol 0\) and \(\boldsymbol D=\boldsymbol I-\boldsymbol H\). The next section puts them into the joint distribution and reads three results.</p>
 
 <!-- ================= p.23–25 ================= -->
-<h3>02.7 Implications <span class="tag">Slides p.23–25</span></h3>
+<h3 id="u0702-7"><span class="sn">02.7</span>Implications <span class="tag">Slides p.23–25</span></h3>
 
 <p>This section joins the mean and the variance matrix into the full joint distribution. Then it reads three results from it.</p>
 
@@ -1618,7 +1611,7 @@ Note: \(\boldsymbol{X}^T\boldsymbol{e}=\boldsymbol{0}\). Why?
 </div>
 
 <!-- ================= Practice ================= -->
-<h3>02.8 Practice <span class="tag">Added</span></h3>
+<h3 id="u0702-8"><span class="sn">02.8</span>Practice <span class="tag">Added</span></h3>
 <p>The three questions below test three skills of this unit. The skills are: calculate the two estimators of \(\sigma^2\), simplify a product with \(\boldsymbol H\), and give the distribution of a residual.</p>
 
 <p><b>Q1.</b> A multiple linear regression has \(n=12\) observations and \(p=2\) covariates. The sum of squared residuals is \(\boldsymbol e^T\boldsymbol e=45\). Calculate \(\hat\sigma^2_{MLE}\), the unbiased estimate \(\hat\sigma^2\), and \(\hat\sigma\).</p>
@@ -1661,7 +1654,7 @@ Note: \(\boldsymbol{X}^T\boldsymbol{e}=\boldsymbol{0}\). Why?
 </section>
 
 <section id="u0703">
-<h2>03 · The t statistic in MLR and property (3): independence</h2>
+<h2><span class="un">Unit 03</span>The t statistic in MLR and property (3): independence</h2>
 
 <p>This unit finds the distribution of the standardized \(\hat\beta_j\) in multiple regression when \(\hat\sigma\) replaces the unknown \(\sigma\). The answer is the \(t_{n-(p+1)}\) distribution, but only when three properties are true. This unit shows the plan and proves property (3): \(\hat{\boldsymbol\beta}\) and \(\boldsymbol e\) are independent.</p>
 
@@ -1674,7 +1667,7 @@ Note: \(\boldsymbol{X}^T\boldsymbol{e}=\boldsymbol{0}\). Why?
 </div>
 
 <!-- ============ 0. Notation ============ -->
-<h3>03.1 Symbols and distributions <span class="tag">Added</span></h3>
+<h3 id="u0703-1"><span class="sn">03.1</span>Symbols and distributions <span class="tag">Added</span></h3>
 <p>This section defines the distributions and symbols of this unit. Units 01–02 define the MLR model, \(\hat{\boldsymbol\beta}\), \(\boldsymbol H\), \(\boldsymbol e\), \(\boldsymbol V\), and \(\hat\sigma^2\) (Sections 01.1–01.5 and 02.2).</p>
 
 <div class="claim">Random variable: a number whose value comes from a random experiment. A new data set gives a new value. \(\hat\beta_1\), \(\hat\sigma^2\), and \(e_i\) are random variables.</div>
@@ -1688,7 +1681,7 @@ Note: \(\boldsymbol{X}^T\boldsymbol{e}=\boldsymbol{0}\). Why?
 <p>All symbols are now defined. Section 03.2 recalls how SLR gets its t statistic, because MLR uses the same plan.</p>
 
 <!-- ============ 1. SLR recall ============ -->
-<h3>03.2 Recall: the t statistic in SLR <span class="tag">Slides p.26</span></h3>
+<h3 id="u0703-2"><span class="sn">03.2</span>Recall: the t statistic in SLR <span class="tag">Slides p.26</span></h3>
 <p>This section states again the result of Lecture 3. Three facts and one combination rule give \(\dfrac{\hat\beta_1-\beta_1}{\hat\sigma/\sqrt{S_{xx}}}\sim t_{n-2}\).</p>
 
 <p><b>What</b> <span class="tag">Slides p.26</span></p>
@@ -1801,7 +1794,7 @@ Then if (1) \(Z\sim N(0,1)\), (2) \(V\sim\chi^2_\nu\) and (3) \(V\) independent 
 <p>The result of this section: the t statistic comes from three facts. \(Z\) is normal, \(V\) is chi-squared, and the two are independent. Section 03.3 writes the three matching properties for MLR.</p>
 
 <!-- ============ 2. MLR ============ -->
-<h3>03.3 The matching result in MLR <span class="tag">Slides p.27</span></h3>
+<h3 id="u0703-3"><span class="sn">03.3</span>The matching result in MLR <span class="tag">Slides p.27</span></h3>
 <p>This section uses the four SLR steps in MLR. The result is \(\dfrac{\hat\beta_j-\beta_j}{\sqrt{\hat\sigma^2V_{jj}}}\sim t_{n-(p+1)}\), when properties (2) and (3) are true.</p>
 
 <p><b>What</b> <span class="tag">Slides p.27</span></p>
@@ -1947,7 +1940,7 @@ Let's (finally) prove properties (2) &amp; (3)!
 <p>The result of this section: \(\dfrac{\hat\beta_j-\beta_j}{\sqrt{\hat\sigma^2V_{jj}}}\sim t_{n-(p+1)}\) is true when properties (2) and (3) are true. Section 03.4 proves property (3) first.</p>
 
 <!-- ============ 3. Independence ============ -->
-<h3>03.4 Property (3): \(\hat{\boldsymbol\beta}\) and \(\boldsymbol e\) are independent <span class="tag">Slides p.28</span></h3>
+<h3 id="u0703-4"><span class="sn">03.4</span>Property (3): \(\hat{\boldsymbol\beta}\) and \(\boldsymbol e\) are independent <span class="tag">Slides p.28</span></h3>
 <p>This section proves that \(\frac{1}{\sigma^2}\boldsymbol e^T\boldsymbol e\) is independent of \(\hat{\boldsymbol\beta}\). The proof uses two known results: the joint distribution of \((\hat{\boldsymbol\beta},\boldsymbol e)\), and the independence property of the multivariate normal.</p>
 
 <p><b>What</b> <span class="tag">Slides p.28</span></p>
@@ -2054,7 +2047,7 @@ Recall:
 <p>Unit summary: the MLR statistic \(\dfrac{\hat\beta_j-\beta_j}{\sqrt{\hat\sigma^2V_{jj}}}\sim t_{n-(p+1)}\) uses the same plan as the SLR \(t_{n-2}\) result. \(Z\) is normal, \(V\) is chi-squared, and the two are independent. This unit proved the independence. The next unit proves property (2), and Unit 05 uses the result for tests and confidence intervals for \(\beta_j\).</p>
 
 <!-- ============ Practice ============ -->
-<h3>03.5 Practice <span class="tag">Added</span></h3>
+<h3 id="u0703-5"><span class="sn">03.5</span>Practice <span class="tag">Added</span></h3>
 <p>The three questions below check the three main points of this unit. The points are the t statistic and its degrees of freedom, the three properties, and the proof of independence.</p>
 
 <p><b>Q1.</b> Consider the MLR model \(\boldsymbol y=\boldsymbol X\boldsymbol\beta+\boldsymbol\epsilon\), \(\boldsymbol\epsilon\sim N(\boldsymbol 0,\sigma^2\boldsymbol I)\), with \(n=6\) observations and \(p=2\) covariates. For one data set, \(\hat\beta_1=2\), \(V_{11}=0.25\) where \(\boldsymbol V=(\boldsymbol X^T\boldsymbol X)^{-1}\), and \(\boldsymbol e^T\boldsymbol e=6\). Suppose the true value is \(\beta_1=1.5\).</p>
@@ -2107,7 +2100,7 @@ show that \(\hat\sigma^2=\frac{1}{n-(p+1)}\boldsymbol e^T\boldsymbol e\) is inde
 </section>
 
 <section id="u0704">
-<h2>04 · Property (2): \(\frac{1}{\sigma^2}\boldsymbol e^T\boldsymbol e\sim\chi^2_{n-(p+1)}\)</h2>
+<h2><span class="un">Unit 04</span>Property (2): \(\frac{1}{\sigma^2}\boldsymbol e^T\boldsymbol e\sim\chi^2_{n-(p+1)}\)</h2>
 
 <p>This unit proves that the residual sum of squares, divided by \(\sigma^2\), has a chi-squared distribution with \(n-(p+1)\) degrees of freedom. The t statistic for \(\beta_j\) needs this result as property (2).</p>
 
@@ -2137,7 +2130,7 @@ show that \(\hat\sigma^2=\frac{1}{n-(p+1)}\boldsymbol e^T\boldsymbol e\) is inde
 <p>These results are now ready. The proof starts with its plan.</p>
 
 <!-- ============ 1. Plan p.29–30 ============ -->
-<h3>04.1 The plan of the proof <span class="tag">Slides p.29–30</span></h3>
+<h3 id="u0704-1"><span class="sn">04.1</span>The plan of the proof <span class="tag">Slides p.29–30</span></h3>
 <p>This section states the goal and the problem. The goal is to write \(\frac{1}{\sigma^2}\boldsymbol e^T\boldsymbol e\) in the form of the chi-squared definition.</p>
 
 <p><b>What</b> <span class="tag">Slides p.29–30</span></p>
@@ -2189,7 +2182,7 @@ Solution: let's rewrite \(\frac{1}{\sigma^2}\boldsymbol e^T\boldsymbol e\) as a 
 <p>Result: the terms \(e_i/\sigma\) are not independent. Section 04.2 uses an eigen decomposition to make a set of independent variables.</p>
 
 <!-- ============ 2. Eigen decomposition p.31–36 ============ -->
-<h3>04.2 Eigen decomposition and the distribution of \(\tilde{\boldsymbol e}=\boldsymbol\Gamma\boldsymbol e\) <span class="tag">Slides p.31–36</span></h3>
+<h3 id="u0704-2"><span class="sn">04.2</span>Eigen decomposition and the distribution of \(\tilde{\boldsymbol e}=\boldsymbol\Gamma\boldsymbol e\) <span class="tag">Slides p.31–36</span></h3>
 <p>This section multiplies \(\boldsymbol e\) by an orthogonal matrix \(\boldsymbol\Gamma\) to get \(\tilde{\boldsymbol e}\). It then shows that the entries of \(\tilde{\boldsymbol e}\) are independent.</p>
 
 <p><b>What</b> <span class="tag">Slides p.31–36</span></p>
@@ -2289,7 +2282,7 @@ and \(\tilde{\boldsymbol e}\sim N(\boldsymbol 0,\sigma^2\boldsymbol D)\) (why?)
 <p>Result: the entries of \(\tilde{\boldsymbol e}\) are independent, with variances \(\sigma^2\lambda_i\). Section 04.3 shows that the change to \(\tilde{\boldsymbol e}\) keeps the sum of squares.</p>
 
 <!-- ============ 3. Why useful p.37–38 ============ -->
-<h3>04.3 Why \(\tilde{\boldsymbol e}\) is useful: \(\tilde{\boldsymbol e}^T\tilde{\boldsymbol e}=\boldsymbol e^T\boldsymbol e\) <span class="tag">Slides p.37–38</span></h3>
+<h3 id="u0704-3"><span class="sn">04.3</span>Why \(\tilde{\boldsymbol e}\) is useful: \(\tilde{\boldsymbol e}^T\tilde{\boldsymbol e}=\boldsymbol e^T\boldsymbol e\) <span class="tag">Slides p.37–38</span></h3>
 <p>This section shows that multiplication by \(\boldsymbol\Gamma\) does not change the sum of squares. Thus, \(\frac{1}{\sigma^2}\boldsymbol e^T\boldsymbol e\) becomes a sum of squared independent normal variables.</p>
 
 <p><b>What</b> <span class="tag">Slides p.37–38</span></p>
@@ -2351,7 +2344,7 @@ where \(Z_i\overset{indep}{\sim}N(0,\lambda_i)\).
 <p>Result: \(\frac{1}{\sigma^2}\boldsymbol e^T\boldsymbol e\) is a sum of \(n\) squared independent normal variables. Two conditions remain: each variance must be 1, and the count of terms must be \(n-(p+1)\). Section 04.4 starts with the variances.</p>
 
 <!-- ============ 4. lambda in {0,1} p.39–40 ============ -->
-<h3>04.4 Each \(\lambda_i\) is 0 or 1 <span class="tag">Slides p.39–40</span></h3>
+<h3 id="u0704-4"><span class="sn">04.4</span>Each \(\lambda_i\) is 0 or 1 <span class="tag">Slides p.39–40</span></h3>
 <p>This section works on the condition "variance 1". It shows that each eigenvalue of \(\boldsymbol I-\boldsymbol H\) is 0 or 1.</p>
 
 <p><b>What</b> <span class="tag">Slides p.39–40</span></p>
@@ -2485,7 +2478,7 @@ Thus all \(\lambda_i\) are either 0 or 1.
 <p>Result: each \(Z_i\) is \(N(0,1)\) or is always 0. Section 04.5 counts how many \(\lambda_i\) are equal to 1.</p>
 
 <!-- ============ 5. Trace p.41–42 ============ -->
-<h3>04.5 \(\sum_i\lambda_i=n-(p+1)\): count the 1s with the trace <span class="tag">Slides p.41–42</span></h3>
+<h3 id="u0704-5"><span class="sn">04.5</span>\(\sum_i\lambda_i=n-(p+1)\): count the 1s with the trace <span class="tag">Slides p.41–42</span></h3>
 <p>This section works on the condition "exactly \(n-(p+1)\) terms". Each \(\lambda_i\) is 0 or 1, so their sum is the count of 1s.</p>
 
 <p><b>What</b> <span class="tag">Slides p.41–42</span></p>
@@ -2565,7 +2558,7 @@ and we are done.
 <p>Result: exactly \(n-(p+1)\) of the \(\lambda_i\) are 1, and the other \(p+1\) are 0. All parts of the proof are now ready. Section 04.6 puts them together.</p>
 
 <!-- ============ 6. Recap p.43 ============ -->
-<h3>04.6 Recap: \(\frac{1}{\sigma^2}\boldsymbol e^T\boldsymbol e\sim\chi^2_{n-(p+1)}\) <span class="tag">Slides p.43</span></h3>
+<h3 id="u0704-6"><span class="sn">04.6</span>Recap: \(\frac{1}{\sigma^2}\boldsymbol e^T\boldsymbol e\sim\chi^2_{n-(p+1)}\) <span class="tag">Slides p.43</span></h3>
 <p>This section puts the results of Sections 04.3, 04.4, and 04.5 together into the final result.</p>
 
 <p><b>What</b> <span class="tag">Slides p.43</span></p>
@@ -2615,7 +2608,7 @@ We showed:<br>
 <p>This unit proved that \(\frac{1}{\sigma^2}\boldsymbol e^T\boldsymbol e\sim\chi^2_{n-(p+1)}\). The eigen decomposition made independent terms, and the idempotent property and the trace counted \(n-(p+1)\) standard normal terms. The next unit combines this result with the normal distribution of \(\hat\beta_j\) and with independence. This gives the t test and the confidence interval for \(\beta_j\).</p>
 
 <!-- ============ Practice ============ -->
-<h3>04.7 Practice <span class="tag">Added</span></h3>
+<h3 id="u0704-7"><span class="sn">04.7</span>Practice <span class="tag">Added</span></h3>
 <p>These questions practise the count of degrees of freedom, the eigenvalues of an idempotent matrix, and the link between \(\hat\sigma^2\) and the chi-squared distribution.</p>
 
 <p><b>Q1.</b> A multiple regression has \(n=20\) observations and \(p=3\) covariates. How many eigenvalues of \(\boldsymbol I-\boldsymbol H\) are equal to 1, and how many are equal to 0? What is the distribution of \(\frac{1}{\sigma^2}\boldsymbol e^T\boldsymbol e\)?</p>
@@ -2670,7 +2663,7 @@ We showed:<br>
 </section>
 
 <section id="u0705">
-<h2>05 · t tests and confidence intervals for each \(\beta_j\)</h2>
+<h2><span class="un">Unit 05</span>t tests and confidence intervals for each \(\beta_j\)</h2>
 
 <p>This unit makes one tool from the results of the earlier units. The tool gives a t test and a confidence interval for each regression coefficient \(\beta_j\).</p>
 
@@ -2697,7 +2690,7 @@ We showed:<br>
 <p>We now have the notation and the data. The next section gives the one distribution result that all later sections use.</p>
 
 <!-- ================= 1 · p.44 ================= -->
-<h3>05.1 The t distribution of the standardized \(\hat\beta_j\) <span class="tag">Slides p.44</span></h3>
+<h3 id="u0705-1"><span class="sn">05.1</span>The t distribution of the standardized \(\hat\beta_j\) <span class="tag">Slides p.44</span></h3>
 <p>This section gives the only theory result of the unit. All tests and intervals in the later sections use it.</p>
 
 <p><b>What</b> <span class="tag">Slides p.44</span></p>
@@ -2743,7 +2736,7 @@ and when we estimate the variance with \(\hat\sigma^2=\frac{1}{n-(p+1)}\boldsymb
 <p>This section gives the result: with \(\hat\sigma^2\) in place of \(\sigma^2\), the standardized \(\hat\beta_j\) has the \(t_{n-(p+1)}\) distribution. The next two sections calculate each number that this statistic needs.</p>
 
 <!-- ================= 2 · p.45 ================= -->
-<h3>05.2 Calculate \(\hat{\boldsymbol\beta}\) from the normal equations <span class="tag">Slides p.45</span></h3>
+<h3 id="u0705-2"><span class="sn">05.2</span>Calculate \(\hat{\boldsymbol\beta}\) from the normal equations <span class="tag">Slides p.45</span></h3>
 <p>This section calculates the numerator input \(\hat\beta_j\). It solves a system of linear equations and does not calculate an inverse matrix first.</p>
 
 <p><b>What</b> <span class="tag">Slides p.45</span></p>
@@ -2830,7 +2823,7 @@ and when we estimate the variance with \(\hat\sigma^2=\frac{1}{n-(p+1)}\boldsymb
 <p>This section gives \(\hat\beta_0=0.6\) and \(\hat\beta_1=0.8\) for data set 4. These are the numerators of the t statistics; the next section calculates the denominators.</p>
 
 <!-- ================= 3 · p.46 ================= -->
-<h3>05.3 Calculate \(\hat\sigma^2\) and the standard errors <span class="tag">Slides p.46</span></h3>
+<h3 id="u0705-3"><span class="sn">05.3</span>Calculate \(\hat\sigma^2\) and the standard errors <span class="tag">Slides p.46</span></h3>
 <p>This section calculates the denominator \(\sqrt{\hat\sigma^2V_{jj}}\) of the t statistic. This number is the standard error of \(\hat\beta_j\).</p>
 
 <p><b>What</b> <span class="tag">Slides p.46</span></p>
@@ -2920,7 +2913,7 @@ and when we estimate the variance with \(\hat\sigma^2=\frac{1}{n-(p+1)}\boldsymb
 <p>This section gives \(\mathrm{SE}(\hat\beta_0)=1.148913\) and \(\mathrm{SE}(\hat\beta_1)=0.3464102\) for data set 4. The next section uses \(\hat\beta_j\) and \(\mathrm{SE}(\hat\beta_j)\) in the rules for tests and intervals.</p>
 
 <!-- ================= 4 · p.47–49 ================= -->
-<h3>05.4 Inference rules for \(\beta_j\): test and confidence interval <span class="tag">Slides p.47–49</span></h3>
+<h3 id="u0705-4"><span class="sn">05.4</span>Inference rules for \(\beta_j\): test and confidence interval <span class="tag">Slides p.47–49</span></h3>
 <p>This section shows that inference for \(\beta_j\) uses the same rules as simple linear regression (SLR). Only two items change: the standard error and the degrees of freedom.</p>
 
 <p><b>What</b> <span class="tag">Slides p.47–49</span></p>
@@ -3027,7 +3020,7 @@ This is identical to the result for SLR except with updated
 <p>This section gives the two inference rules. The next section uses the test rule for each coefficient.</p>
 
 <!-- ================= 5 · p.50 ================= -->
-<h3>05.5 The p-value for each coefficient <span class="tag">Slides p.50</span></h3>
+<h3 id="u0705-5"><span class="sn">05.5</span>The p-value for each coefficient <span class="tag">Slides p.50</span></h3>
 <p>This section tests \(H_0:\beta_j=0\) for each \(j=0,1,\dots,p\), and it calculates each p-value.</p>
 
 <p><b>What</b> <span class="tag">Slides p.50</span></p>
@@ -3123,7 +3116,7 @@ p-value: want \(P(|T|>|t^{obs}|)\).
 <p>This section gives a p-value for each coefficient. The next section calculates a confidence interval for each coefficient from the same inputs.</p>
 
 <!-- ================= 6 · p.51 ================= -->
-<h3>05.6 The 95% confidence interval for each coefficient <span class="tag">Slides p.51</span></h3>
+<h3 id="u0705-6"><span class="sn">05.6</span>The 95% confidence interval for each coefficient <span class="tag">Slides p.51</span></h3>
 <p>This section calculates the 95% CI for each \(\beta_j\) of the satisfaction data. It uses the interval endpoints that slide p.51 prints.</p>
 
 <p><b>What</b> <span class="tag">Slides p.51</span></p>
@@ -3224,7 +3217,7 @@ p-value: want \(P(|T|>|t^{obs}|)\).
 <p>This section gives the 95% CI of each coefficient of the satisfaction data. Only the Age CI and the intercept CI do not contain 0, and the practice questions below use these numbers.</p>
 
 <!-- ================= Practice ================= -->
-<h3>05.7 Practice <span class="tag">Added</span></h3>
+<h3 id="u0705-7"><span class="sn">05.7</span>Practice <span class="tag">Added</span></h3>
 <p>These three questions test the rules of Sections 05.4–05.6. All questions use the satisfaction data: \(n=46\), \(p=3\), \(T\sim t_{42}\).</p>
 <p>Use these values from Section 05.6: \(\hat\beta_1=-1.141612\), \(\mathrm{SE}(\hat\beta_1)=0.214799\), \(\hat\beta_3=-13.470163\), \(\mathrm{SE}(\hat\beta_3)=7.099661\).</p>
 
@@ -3293,7 +3286,7 @@ p-value: want \(P(|T|>|t^{obs}|)\).
 </section>
 
 <section id="u0706">
-<h2>06 · Practice questions Q1–Q3</h2>
+<h2><span class="un">Unit 06</span>Practice questions Q1–Q3</h2>
 
 <p>This unit solves the three practice questions at the end of Lecture 7. Slide p.52 is the section title "Practice". Slide p.53 (Q1) asks for estimates and standard errors of \(2\beta_3\) and \(\beta_2+\beta_3\). Slide p.54 (Q2) gives part of \((\boldsymbol{X}'\boldsymbol{X})^{-1}\) and asks for \(\hat{\boldsymbol\beta}\) and \(\mathrm{SE}(\hat\beta_1)\). Slide p.55 (Q3) asks for three proofs that use \(\boldsymbol{X}'\boldsymbol{e}=\boldsymbol{0}\). Three added practice questions follow at the end.</p>
 
@@ -3302,7 +3295,7 @@ p-value: want \(P(|T|>|t^{obs}|)\).
 </div>
 
 <!-- ================= 6.1 p.53 Q1 ================= -->
-<h3>06.1 Q1: a linear combination of coefficients and its SE <span class="tag">Slides p.52–53</span></h3>
+<h3 id="u0706-1"><span class="sn">06.1</span>Q1: a linear combination of coefficients and its SE <span class="tag">Slides p.52–53</span></h3>
 
 <p>This section answers Q1. Q1 does not ask for one \(\beta_j\). It asks for a combination of several \(\beta_j\). First, the section gives a general procedure for the estimate and the standard error of a combination. Then it applies the procedure to \(2\beta_3\) and \(\beta_2+\beta_3\).</p>
 
@@ -3478,7 +3471,7 @@ and we estimate the variance with \(\hat\sigma^2=\frac{1}{n-(p+1)}\boldsymbol{e}
 <p>Result: the estimate of \(\boldsymbol{a}^T\boldsymbol\beta\) is \(\boldsymbol{a}^T\hat{\boldsymbol\beta}\), and its SE is \(\sqrt{\boldsymbol{a}^T\widehat{\mathrm{Var}}(\hat{\boldsymbol\beta})\boldsymbol{a}}\). For a sum of two or more coefficients, the covariance terms enter the SE. The next section calculates \(\hat{\boldsymbol\beta}\) and an SE from matrices only, with no data.</p>
 
 <!-- ================= 6.2 p.54 Q2 ================= -->
-<h3>06.2 Q2: find \(\hat{\boldsymbol\beta}\) and an SE from an incomplete \((\boldsymbol{X}'\boldsymbol{X})^{-1}\) <span class="tag">Slides p.54</span></h3>
+<h3 id="u0706-2"><span class="sn">06.2</span>Q2: find \(\hat{\boldsymbol\beta}\) and an SE from an incomplete \((\boldsymbol{X}'\boldsymbol{X})^{-1}\) <span class="tag">Slides p.54</span></h3>
 
 <p>This section answers Q2. The question gives matrices but no data. The important fact is that \((\boldsymbol{X}'\boldsymbol{X})^{-1}\) is a symmetric matrix. Thus we can find the lost entries.</p>
 
@@ -3577,7 +3570,7 @@ but unfortunately the values of the elements in the lower corner of \((\boldsymb
 <p>Result: \((\boldsymbol{X}'\boldsymbol{X})^{-1}\) is symmetric, so the upper entries and \(\boldsymbol{X}'\boldsymbol{y}\) give \(\hat{\boldsymbol\beta}=(1.55,1.85,-5.80)'\). The residual sum of squares then gives \(\mathrm{SE}(\hat\beta_1)=0.1630820\). The next section uses \(\boldsymbol{X}'\boldsymbol{e}=\boldsymbol{0}\) to prove three equations about residuals.</p>
 
 <!-- ================= 6.3 p.55 Q3 ================= -->
-<h3>06.3 Q3: three equations about residuals <span class="tag">Slides p.55</span></h3>
+<h3 id="u0706-3"><span class="sn">06.3</span>Q3: three equations about residuals <span class="tag">Slides p.55</span></h3>
 
 <p>This section answers Q3. The three parts use two things only. The first is the definitions \(\hat{\boldsymbol{y}}=\boldsymbol{X}\hat{\boldsymbol\beta}\) and \(\boldsymbol{e}=\boldsymbol{y}-\hat{\boldsymbol{y}}\). The second is the result \(\boldsymbol{X}'\boldsymbol{e}=\boldsymbol{0}\) from slide p.9.</p>
 
@@ -3802,7 +3795,7 @@ Note: \(\boldsymbol{X}^T\boldsymbol{e}=\boldsymbol{0}\). Why?
 <p>Result: \(\hat{\boldsymbol{y}}'\boldsymbol{e}=0\), \(\boldsymbol{e}'\boldsymbol{e}=\boldsymbol{y}'\boldsymbol{y}-\hat{\boldsymbol\beta}'\boldsymbol{X}'\boldsymbol{X}\hat{\boldsymbol\beta}\), and \(\boldsymbol{a}'\boldsymbol{X}'\boldsymbol{e}=0\). All three results come from \(\boldsymbol{X}'\boldsymbol{e}=\boldsymbol{0}\). The next section gives practice questions of the same types as Q1 and Q2.</p>
 
 <!-- ================= 6.4 exercises ================= -->
-<h3>06.4 Practice <span class="tag">Added</span></h3>
+<h3 id="u0706-4"><span class="sn">06.4</span>Practice <span class="tag">Added</span></h3>
 
 <p>This section gives three questions of the same types as Q1 and Q2. Calculate each answer first. Then open the answer.</p>
 
@@ -3879,7 +3872,8 @@ Note: \(\boldsymbol{X}^T\boldsymbol{e}=\boldsymbol{0}\). Why?
 
 <p>Result of this unit: the estimate of \(\boldsymbol{a}^T\boldsymbol\beta\) is \(\boldsymbol{a}^T\hat{\boldsymbol\beta}\), and its SE uses all of \(\widehat{\mathrm{Var}}(\hat{\boldsymbol\beta})\). \((\boldsymbol{X}'\boldsymbol{X})^{-1}\) is symmetric, so its upper entries are sufficient. The residuals have inner product 0 with each column of \(\boldsymbol{X}\) and with \(\hat{\boldsymbol{y}}\). These results complete the inference tools of Lecture 7.</p>
 </section>
-</main>
-</div>
+</main><nav class="pager2" aria-label="Lectures"><a class="prev" href="L06.html"><span>Previous: Lecture 6</span>Multiple Linear Regression: Intro and Estimation</a></nav>
+</article></div>
+<script src="site.js"></script>
 </body>
 </html>

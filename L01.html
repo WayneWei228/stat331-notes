@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>STAT 331 · Lecture 1 · Introduction and Motivation</title>
+<title>Lecture 1: Introduction and Motivation | STAT 331</title>
 <script>
 window.MathJax = {
   tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']], processEscapes: false },
@@ -273,23 +273,16 @@ hr.soft{border:none;border-top:1px solid var(--color-border);margin:36px 0;}
 .tag{display:inline-block;font-size:12px;font-weight:600;color:var(--color-text-secondary);background:var(--color-surface);border:1px solid var(--color-border);border-radius:6px;padding:0 7px;margin-left:6px;vertical-align:2px;}
 .kicker{font-size:12px;font-weight:600;letter-spacing:.05em;color:var(--color-text-secondary);text-transform:uppercase;}
 </style>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400..700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400&display=swap"><link rel="stylesheet" href="site.css">
 </head>
-<body>
-<nav class="topbar"><div class="inner"><a href="./">STAT 331 index</a><a href="L02.html">L02</a><span class="spacer"></span><span class="dim">STAT 331 · Lecture 1 · Introduction and Motivation</span></div></nav>
-<div class="container">
-<header class="page"><h1>Lecture 1: Introduction and Motivation</h1>
-<p class="sub">This lecture defines the outcome and the covariate, reviews summaries and distributions for regression, and gives the course plan (Lecture 1 · p.1–38).</p></header>
-<div class="toccard"><div class="t">Contents</div>
-<a href="#u0101">01 · Nomenclature and data example</a>
-<a href="#u0102">02 · Univariate summaries: mean and variance</a>
-<a href="#u0103">03 · Bivariate summaries: covariance and correlation</a>
-<a href="#u0104">04 · Toward linear regression: simple and multiple models</a>
-<a href="#u0105">05 · Review: normal, chi-square, t, and F distributions</a>
-<a href="#u0106">06 · Course overview and logistics</a>
-</div>
-<main>
+<body class="site">
+<a class="skip" href="#content">Skip to content</a>
+<div class="mbar"><button id="menu" aria-controls="side" aria-expanded="false">Contents</button><span class="t">Lecture 1: Introduction and Motivation</span></div>
+<aside class="side" id="side" aria-label="Course navigation"><a class="brand" href="./"><b>STAT 331</b><span>Applied Linear Models</span></a><nav><ol class="lecs"><li class="cur"><a href="L01.html" aria-current="page"><span class="n">1</span><span>Introduction and Motivation</span></a><ol class="units"><li><a href="#u0101" data-t="u0101"><span class="n">01</span><span>Nomenclature and data example</span></a><ol class="subs"><li><a href="#u0101-1" data-t="u0101-1">01.1 Title page</a></li><li><a href="#u0101-2" data-t="u0101-2">01.2 The outcome \(y\)</a></li><li><a href="#u0101-3" data-t="u0101-3">01.3 The covariate \(x\)</a></li><li><a href="#u0101-4" data-t="u0101-4">01.4 Data example: Gladstone (1905)</a></li><li><a href="#u0101-5" data-t="u0101-5">01.5 The two variables and the first rows of the data</a></li><li><a href="#u0101-6" data-t="u0101-6">01.6 The scatterplot</a></li><li><a href="#u0101-7" data-t="u0101-7">01.7 Practice</a></li></ol></li><li><a href="#u0102" data-t="u0102"><span class="n">02</span><span>Univariate summaries: mean and variance</span></a><ol class="subs"><li><a href="#u0102-1" data-t="u0102-1">02.1 How can we describe the data?</a></li><li><a href="#u0102-2" data-t="u0102-2">02.2 Mean (expectation) and linearity</a></li><li><a href="#u0102-3" data-t="u0102-3">02.3 Sample mean</a></li><li><a href="#u0102-4" data-t="u0102-4">02.4 Variance and its two properties</a></li><li><a href="#u0102-5" data-t="u0102-5">02.5 Sample variance</a></li><li><a href="#u0102-6" data-t="u0102-6">02.6 Why: derivations of the two variance formulas</a></li><li><a href="#u0102-7" data-t="u0102-7">02.7 Practice</a></li></ol></li><li><a href="#u0103" data-t="u0103"><span class="n">03</span><span>Bivariate summaries: covariance and correlation</span></a><ol class="subs"><li><a href="#u0103-1" data-t="u0103-1">03.1 Covariance</a></li><li><a href="#u0103-2" data-t="u0103-2">03.2 Properties of covariance</a></li><li><a href="#u0103-3" data-t="u0103-3">03.3 Sample covariance</a></li><li><a href="#u0103-4" data-t="u0103-4">03.4 Correlation</a></li><li><a href="#u0103-5" data-t="u0103-5">03.5 Practice</a></li></ol></li><li><a href="#u0104" data-t="u0104"><span class="n">04</span><span>Toward linear regression: simple and multiple models</span></a><ol class="subs"><li><a href="#u0104-1" data-t="u0104-1">04.1 Three questions and the simple linear regression model</a></li><li><a href="#u0104-2" data-t="u0104-2">04.2 A line on the scatterplot</a></li><li><a href="#u0104-3" data-t="u0104-3">04.3 More than one covariate</a></li><li><a href="#u0104-4" data-t="u0104-4">04.4 Simple and multiple linear regression</a></li><li><a href="#u0104-5" data-t="u0104-5">04.5 Practice</a></li></ol></li><li><a href="#u0105" data-t="u0105"><span class="n">05</span><span>Review: normal, chi-square, t, and F distributions</span></a><ol class="subs"><li><a href="#u0105-1" data-t="u0105-1">05.1 Normal distribution</a></li><li><a href="#u0105-2" data-t="u0105-2">05.2 Chi-square distribution</a></li><li><a href="#u0105-3" data-t="u0105-3">05.3 t distribution</a></li><li><a href="#u0105-4" data-t="u0105-4">05.4 F distribution</a></li><li><a href="#u0105-5" data-t="u0105-5">05.5 Practice</a></li></ol></li><li><a href="#u0106" data-t="u0106"><span class="n">06</span><span>Course overview and logistics</span></a><ol class="subs"><li><a href="#u0106-1" data-t="u0106-1">06.1 Section title page</a></li><li><a href="#u0106-2" data-t="u0106-2">06.2 Course content and reference books</a></li><li><a href="#u0106-3" data-t="u0106-3">06.3 Grading</a></li><li><a href="#u0106-4" data-t="u0106-4">06.4 Assignments</a></li><li><a href="#u0106-5" data-t="u0106-5">06.5 Midterms and final exam</a></li><li><a href="#u0106-6" data-t="u0106-6">06.6 Participation</a></li><li><a href="#u0106-7" data-t="u0106-7">06.7 Communication</a></li><li><a href="#u0106-8" data-t="u0106-8">06.8 Tutorials</a></li><li><a href="#u0106-9" data-t="u0106-9">06.9 Schedule</a></li><li><a href="#u0106-10" data-t="u0106-10">06.10 Tips for success</a></li><li><a href="#u0106-11" data-t="u0106-11">06.11 Practice</a></li></ol></li></ol></li><li><a href="L02.html"><span class="n">2</span><span>Simple Linear Regression: Estimation</span></a></li><li><a href="L03.html"><span class="n">3</span><span>Simple Linear Regression: Inference</span></a></li><li><a href="L04.html"><span class="n">4</span><span>Simple Linear Regression: Prediction</span></a></li><li><a href="L05.html"><span class="n">5</span><span>Random Vectors and Multivariate Normal</span></a></li><li><a href="L06.html"><span class="n">6</span><span>Multiple Linear Regression: Intro and Estimation</span></a></li><li><a href="L07.html"><span class="n">7</span><span>Multiple Linear Regression: Estimation and Inference I</span></a></li></ol></nav><div class="foot"><a href="stat331-all.md">All notes as one text file</a><a href="https://github.com/WayneWei228/stat331-notes">Source on GitHub</a></div></aside><div class="scrim"></div>
+<div class="pagewrap" id="content"><article class="doc">
+<header class="page"><p class="lnum">Lecture 1</p><h1>Introduction and Motivation</h1><p class="sub">This lecture defines the outcome and the covariate, reviews summaries and distributions for regression, and gives the course plan (Lecture 1 · p.1–38).</p></header><main>
 <section id="u0101">
-<h2>01 · Nomenclature and data example</h2>
+<h2><span class="un">Unit 01</span>Nomenclature and data example</h2>
 
 <p>This unit defines the two basic words of the course: the outcome \(y\) and the covariate \(x\). Then it applies the two words to the brainhead data of Gladstone (1905).</p>
 
@@ -304,14 +297,14 @@ hr.soft{border:none;border-top:1px solid var(--color-border);margin:36px 0;}
 </div>
 
 <!-- ============ p.1 ============ -->
-<h3>01.1 Title page <span class="tag">Slides p.1</span></h3>
+<h3 id="u0101-1"><span class="sn">01.1</span>Title page <span class="tag">Slides p.1</span></h3>
 <p>Page 1 has no mathematical content.</p>
 <div class="claim">Course: STAT 331: Applied Linear Models.</div>
 <div class="claim">Lecture: Lecture 1: Intro &amp; Motivation. Instructor: Glen McGee, Fall 2026.</div>
 <p>The next section starts with the first technical word on page 2.</p>
 
 <!-- ============ p.2 outcome ============ -->
-<h3>01.2 The outcome \(y\) <span class="tag">Slides p.2</span></h3>
+<h3 id="u0101-2"><span class="sn">01.2</span>The outcome \(y\) <span class="tag">Slides p.2</span></h3>
 <p>This section defines the variable that a study wants to explain. Every model in the course has this variable on its left side.</p>
 
 <p><b>What</b> <span class="tag">Slides p.2</span></p>
@@ -361,7 +354,7 @@ Outcome: \(y\)
 <p>Result: \(y\) is the variable that we explain. The next section defines the variable that explains it, \(x\).</p>
 
 <!-- ============ p.3 covariate ============ -->
-<h3>01.3 The covariate \(x\) <span class="tag">Slides p.3</span></h3>
+<h3 id="u0101-3"><span class="sn">01.3</span>The covariate \(x\) <span class="tag">Slides p.3</span></h3>
 <p>This section defines the variable that explains \(y\). With the two roles \(x\) and \(y\), we can use \(x\) to predict \(y\).</p>
 
 <p><b>What</b> <span class="tag">Slides p.3</span></p>
@@ -409,7 +402,7 @@ Covariate: \(x\)
 <p>Result: \(x\) explains the mean of \(y\). The next section shows the real data that gives these two variables.</p>
 
 <!-- ============ p.4 data background ============ -->
-<h3>01.4 Data example: Gladstone (1905) <span class="tag">Slides p.4</span></h3>
+<h3 id="u0101-4"><span class="sn">01.4</span>Data example: Gladstone (1905) <span class="tag">Slides p.4</span></h3>
 <p>This section gives the data set that Lectures 1 and 2 use many times. You must know the source of the data before you read it.</p>
 
 <p><b>What</b> <span class="tag">Slides p.4</span></p>
@@ -431,7 +424,7 @@ Covariate: \(x\)
 <p>Result: in this data, \(y\) is brain weight, \(x\) is head size, and there are 236 observations. The next section shows the two variables in the data.</p>
 
 <!-- ============ p.5 variables ============ -->
-<h3>01.5 The two variables and the first rows of the data <span class="tag">Slides p.5</span></h3>
+<h3 id="u0101-5"><span class="sn">01.5</span>The two variables and the first rows of the data <span class="tag">Slides p.5</span></h3>
 <p>This section states what Slides p.5 does with the data. It also shows the first six observations, which Slides p.23 prints.</p>
 
 <p><b>What</b> <span class="tag">Slides p.5</span></p>
@@ -486,7 +479,7 @@ Covariate: \(x\)
 <p>Result: the data gives 236 pairs \((x_i,y_i)\). The next section draws all the pairs in one plot.</p>
 
 <!-- ============ p.6 scatter ============ -->
-<h3>01.6 The scatterplot <span class="tag">Slides p.6</span></h3>
+<h3 id="u0101-6"><span class="sn">01.6</span>The scatterplot <span class="tag">Slides p.6</span></h3>
 <p>This section reads the plot on Slides p.6. A scatterplot shows how \(y\) changes with \(x\).</p>
 
 <p><b>What</b> <span class="tag">Slides p.6</span></p>
@@ -784,7 +777,7 @@ Covariate: \(x\)
 <p>Unit summary: the outcome \(y\) is the variable whose mean we explain. The covariate \(x\) explains or predicts \(y\). In the brainhead data, \(y\) is brain weight, \(x\) is head size, and there are 236 observations. Unit 02 (from Slides p.7) summarizes these numbers with the mean and the variance.</p>
 
 <!-- ============ Practice ============ -->
-<h3>01.7 Practice <span class="tag">Added</span></h3>
+<h3 id="u0101-7"><span class="sn">01.7</span>Practice <span class="tag">Added</span></h3>
 <p>These questions test the two definitions and the data table.</p>
 
 <p><b>Q1.</b> In the Gladstone (1905) study, which variable is the outcome and which is the covariate? Give two other names for each.</p>
@@ -818,7 +811,7 @@ Covariate: \(x\)
 </section>
 
 <section id="u0102">
-<h2>02 · Univariate summaries: mean and variance</h2>
+<h2><span class="un">Unit 02</span>Univariate summaries: mean and variance</h2>
 
 <p>This unit uses two numbers to describe one column of data. The mean gives the center of the data. The variance gives the spread of the data. We calculate each formula on brain weights from the brainhead data. The last section shows why the two variance formulas are true.</p>
 
@@ -833,7 +826,7 @@ Covariate: \(x\)
 </div>
 
 <!-- ============ 0. Overview ============ -->
-<h3>02.1 How can we describe the data? <span class="tag">Slides p.7–9</span></h3>
+<h3 id="u0102-1"><span class="sn">02.1</span>How can we describe the data? <span class="tag">Slides p.7–9</span></h3>
 <p>These three slides give a list. The list shows the four summaries that this lecture reviews, in two groups.</p>
 <p><b>What</b> <span class="tag">Slides p.7–9</span></p>
 <div class="enstmt"><span class="who">How Can we Describe The Data? · Lecture 1 · p.9</span>
@@ -852,7 +845,7 @@ You have by now seen a few ways of describing the data:
 <p>Slides p.7 and p.8 show the same list as p.9, one part at a time. We start with the first univariate summary, the mean.</p>
 
 <!-- ============ 1. Expectation ============ -->
-<h3>02.2 Mean (expectation) and linearity <span class="tag">Slides p.10–11</span></h3>
+<h3 id="u0102-2"><span class="sn">02.2</span>Mean (expectation) and linearity <span class="tag">Slides p.10–11</span></h3>
 <p>This section defines the population average, the expectation. Linearity of expectation is a calculation rule that all later derivations use.</p>
 
 <p><b>What</b> <span class="tag">Slides p.10–11</span></p>
@@ -893,7 +886,7 @@ Linearity of expectation: For random variables \(Y_1,\dots,Y_m\) and constants \
 <p>The result 7 contains no random variable, so the self-check passes. Linearity changes "the expectation of a transformation" into "the transformation of the expectation". The next section applies the same idea to data.</p>
 
 <!-- ============ 2. Sample mean ============ -->
-<h3>02.3 Sample mean <span class="tag">Slides p.12</span></h3>
+<h3 id="u0102-3"><span class="sn">02.3</span>Sample mean <span class="tag">Slides p.12</span></h3>
 <p>The population value \(E[Y]\) is usually unknown. This section calculates one number from the observed data to estimate it. This number is the sample mean.</p>
 
 <p><b>What</b> <span class="tag">Slides p.12</span></p>
@@ -944,7 +937,7 @@ For observations \(y_1,\dots,y_n\), the sample mean is:
 <p>The mean changes by the same factor \(a\) as the data. The next section gives the second univariate summary, the variance.</p>
 
 <!-- ============ 3. Variance ============ -->
-<h3>02.4 Variance and its two properties <span class="tag">Slides p.13–14</span></h3>
+<h3 id="u0102-4"><span class="sn">02.4</span>Variance and its two properties <span class="tag">Slides p.13–14</span></h3>
 <p>The mean gives only the center. This section defines the variance. The variance measures how far \(Y\) is from its own mean.</p>
 
 <p><b>What</b> <span class="tag">Slides p.13–14</span></p>
@@ -997,7 +990,7 @@ Properties:
 <p>The two properties give the variance of a transformation without a new integral. The next section calculates a variance from data.</p>
 
 <!-- ============ 4. Sample variance ============ -->
-<h3>02.5 Sample variance <span class="tag">Slides p.15–16</span></h3>
+<h3 id="u0102-5"><span class="sn">02.5</span>Sample variance <span class="tag">Slides p.15–16</span></h3>
 <p>Like \(E[Y]\), the population value \(\mathrm{Var}[Y]\) is usually unknown. This section calculates the sample variance from data to estimate it. Slide p.16 is the same as p.15.</p>
 
 <p><b>What</b> <span class="tag">Slides p.15</span></p>
@@ -1127,7 +1120,7 @@ For observations \(y_1,\dots,y_n\), the sample variance is:
 <p>The sample mean and the sample variance are estimates of \(E[Y]\) and \(\mathrm{Var}[Y]\) from data. The next unit uses the same idea for two variables, with covariance and correlation.</p>
 
 <!-- ============ 5. Why ============ -->
-<h3>02.6 Why: derivations of the two variance formulas <span class="tag">Added</span></h3>
+<h3 id="u0102-6"><span class="sn">02.6</span>Why: derivations of the two variance formulas <span class="tag">Added</span></h3>
 <p>This section uses only the definition of expectation and linearity. It derives the second form on Slides p.13 and Property 1 on Slides p.14. To make the lines short, let \(\mu=E[Y]\). The value \(\mu\) is a constant, not random.</p>
 
 <p><b>Derivation 1: \(\mathrm{Var}[Y]=E[Y^2]-E[Y]^2\)</b></p>
@@ -1157,7 +1150,7 @@ For observations \(y_1,\dots,y_n\), the sample variance is:
 <p>∎ In line 5, \(b\) cancels, so a shift does not change the variance. In line 7, \(a\) becomes \(a^2\), so a scale factor multiplies the variance by \(a^2\). This is the source of the factor \(0.001^2\) in Section 02.5, Example 3.</p>
 
 <!-- ============ Practice ============ -->
-<h3>02.7 Practice <span class="tag">Added</span></h3>
+<h3 id="u0102-7"><span class="sn">02.7</span>Practice <span class="tag">Added</span></h3>
 <p>These three questions check the three procedures of this unit: linearity, the variance properties, and the sample variance.</p>
 
 <p><b>Q1.</b> Let \(Y_1\) and \(Y_2\) be random variables with \(E[Y_1]=2\) and \(E[Y_2]=5\). Calculate \(E[3Y_1-2Y_2+4]\).</p>
@@ -1202,7 +1195,7 @@ For observations \(y_1,\dots,y_n\), the sample variance is:
 </section>
 
 <section id="u0103">
-<h2>03 · Bivariate summaries: covariance and correlation</h2>
+<h2><span class="un">Unit 03</span>Bivariate summaries: covariance and correlation</h2>
 
 <p>This unit shows how to measure how two quantities change together. The mean and the variance describe one quantity only. Covariance and correlation describe the linear relation between two quantities. The next unit uses the sums \(S_{xy}\), \(S_{xx}\), and \(S_{yy}\) that this unit defines.</p>
 
@@ -1226,7 +1219,7 @@ For observations \(y_1,\dots,y_n\), the sample variance is:
 <p>The unit starts with the definition of covariance on Slides p.17.</p>
 
 <!-- ============ 1. Covariance ============ -->
-<h3>03.1 Covariance <span class="tag">Slides p.17</span></h3>
+<h3 id="u0103-1"><span class="sn">03.1</span>Covariance <span class="tag">Slides p.17</span></h3>
 <p>This section defines covariance. Covariance shows if two random variables are high together and low together. The slide gives two forms, and the two forms have the same value.</p>
 
 <p><b>What</b> <span class="tag">Slides p.17</span></p>
@@ -1286,7 +1279,7 @@ Covariance
 <p>∎ Covariance has two equal forms: the expectation of the product of deviations, or \(E[XY]\) minus \(E[X]E[Y]\). The next section uses the first form to get three properties.</p>
 
 <!-- ============ 2. Properties ============ -->
-<h3>03.2 Properties of covariance <span class="tag">Slides p.18</span></h3>
+<h3 id="u0103-2"><span class="sn">03.2</span>Properties of covariance <span class="tag">Slides p.18</span></h3>
 <p>This section gives the three properties of covariance. With them, you can simplify expressions with covariances and variances without the definition.</p>
 
 <p><b>What</b> <span class="tag">Slides p.18</span></p>
@@ -1391,7 +1384,7 @@ Properties:
 <p>∎ With the three properties, you expand a covariance like a product: shifts go away, multipliers move outside, and sums split into pairs. The next section moves covariance from a population to data.</p>
 
 <!-- ============ 3. Sample covariance ============ -->
-<h3>03.3 Sample covariance <span class="tag">Slides p.19</span></h3>
+<h3 id="u0103-3"><span class="sn">03.3</span>Sample covariance <span class="tag">Slides p.19</span></h3>
 <p>This section applies covariance to data. In real problems, we do not know \(E[X]\) and \(E[Y]\). We only have \(n\) pairs of observations. The sample covariance uses the sample means in place of the expectations.</p>
 
 <p><b>What</b> <span class="tag">Slides p.19</span></p>
@@ -1712,7 +1705,7 @@ For observations \((y_1,x_1),\dots,(y_n,x_n)\), the sample covariance is:
 <p>∎ The sample covariance is an average of deviation products, and the quadrant sums set its sign. Its size has the unit g·cm³, so the next section divides it by two standard deviations.</p>
 
 <!-- ============ 4. Correlation ============ -->
-<h3>03.4 Correlation <span class="tag">Slides p.20</span></h3>
+<h3 id="u0103-4"><span class="sn">03.4</span>Correlation <span class="tag">Slides p.20</span></h3>
 <p>This section defines the correlation coefficient. The size of a covariance depends on the units, so it cannot show "strong" or "weak". The correlation coefficient divides the covariance by two standard deviations and has no unit.</p>
 
 <p><b>What</b> <span class="tag">Slides p.20</span></p>
@@ -1789,7 +1782,7 @@ Correlation quantifies strength of linear relationship
 <p>∎ The numerator and the denominator each have one factor \(1/(n-1)\), and the two factors cancel. Thus \(r\) depends only on \(S_{xy}\), \(S_{xx}\), and \(S_{yy}\), which the next unit uses again.</p>
 
 <!-- ============ Practice ============ -->
-<h3>03.5 Practice <span class="tag">Added</span></h3>
+<h3 id="u0103-5"><span class="sn">03.5</span>Practice <span class="tag">Added</span></h3>
 <p>These three questions review the covariance properties and the correlation. Q1 is the exercise on Slides p.18.</p>
 
 <p><b>Q1 (Slides p.18 Exercise).</b> What is \(\mathrm{Var}(X+Y)\)? Write it with \(\mathrm{Var}(X)\), \(\mathrm{Var}(Y)\), and \(\mathrm{cov}(X,Y)\). Then check it on the 5-person population from Section 03.1.</p>
@@ -1837,7 +1830,7 @@ Correlation quantifies strength of linear relationship
 </section>
 
 <section id="u0104">
-<h2>04 · Toward linear regression: simple and multiple models</h2>
+<h2><span class="un">Unit 04</span>Toward linear regression: simple and multiple models</h2>
 
 <p>This unit writes the scatterplot of the brainhead data as an equation. This equation is the simple linear regression model. Then the unit finds more columns in the data. It extends the equation to the multiple linear regression model. This unit gives only the form of each model. Lecture 2 shows how to calculate the line.</p>
 
@@ -1850,7 +1843,7 @@ Correlation quantifies strength of linear relationship
 </div>
 
 <!-- ============ p.21 ============ -->
-<h3>04.1 Three questions and the simple linear regression model <span class="tag">Slides p.21</span></h3>
+<h3 id="u0104-1"><span class="sn">04.1</span>Three questions and the simple linear regression model <span class="tag">Slides p.21</span></h3>
 <p>This section gives three questions that a researcher asks. Then it gives the equation that answers them.</p>
 
 <p><b>What</b> <span class="tag">Slides p.21</span></p>
@@ -1917,7 +1910,7 @@ We can answer questions like these with simple linear regression:
 <p>Thus, the line height increases by \(\beta_1a\) when \(x\) increases by \(a\). Lecture 2 adds model assumptions. Then it connects this line height to the mean of \(y\). This section gave the form of the model. The next section draws the line on the scatterplot.</p>
 
 <!-- ============ p.22 ============ -->
-<h3>04.2 A line on the scatterplot <span class="tag">Slides p.22</span></h3>
+<h3 id="u0104-2"><span class="sn">04.2</span>A line on the scatterplot <span class="tag">Slides p.22</span></h3>
 <p>This section shows the equation of p.21 as a picture: a straight line \(\beta_0+\beta_1x\) on the scatterplot.</p>
 
 <p><b>What</b> <span class="tag">Slides p.22</span></p>
@@ -1969,7 +1962,7 @@ Simple Linear Regression: \(y_i=\beta_0+\beta_1x_i+\epsilon_i\)<br>
 <p>Thus, the part of the model without the error is a straight line. This is the line in the picture. The next section looks at the other columns of the data.</p>
 
 <!-- ============ p.23 ============ -->
-<h3>04.3 More than one covariate <span class="tag">Slides p.23</span></h3>
+<h3 id="u0104-3"><span class="sn">04.3</span>More than one covariate <span class="tag">Slides p.23</span></h3>
 <p>This section looks at all four columns of the brainhead data. Two more columns can be covariates, in addition to head size.</p>
 
 <p><b>What</b> <span class="tag">Slides p.23</span></p>
@@ -2028,7 +2021,7 @@ The columns gender and age contain text, not numbers. Each has length 236.
 <p>Simple linear regression uses only one of the three. The other two columns can also have a relationship with brain weight. Thus, we need a model with more than one \(x\). The next section gives this model.</p>
 
 <!-- ============ p.24 ============ -->
-<h3>04.4 Simple and multiple linear regression <span class="tag">Slides p.24</span></h3>
+<h3 id="u0104-4"><span class="sn">04.4</span>Simple and multiple linear regression <span class="tag">Slides p.24</span></h3>
 <p>This section extends the equation of p.21 to three covariates. Then it gives the four aims of the course for multiple linear regression.</p>
 
 <p><b>What</b> <span class="tag">Slides p.24</span></p>
@@ -2090,7 +2083,7 @@ This course will focus on developing multiple linear regression
 <p>Thus, when you know multiple linear regression, you also know simple linear regression. This section gave the main model of the course. Lecture 2 starts to estimate the \(\beta\) values.</p>
 
 <!-- ============ practice ============ -->
-<h3>04.5 Practice <span class="tag">Added</span></h3>
+<h3 id="u0104-5"><span class="sn">04.5</span>Practice <span class="tag">Added</span></h3>
 <p>These three questions check the two models and their symbols.</p>
 
 <p><b>Q1.</b> Row 3 on Slides p.23 is: M, 20-46, head size 4261, brain weight 1335. Write the simple linear regression model \(y_i=\beta_0+\beta_1x_i+\epsilon_i\) for \(i=3\). Use \(y=\) brain weight and \(x=\) head size. Which values in your equation are unknown?</p>
@@ -2119,7 +2112,7 @@ This course will focus on developing multiple linear regression
 </section>
 
 <section id="u0105">
-<h2>05 · Review: normal, chi-square, t, and F distributions</h2>
+<h2><span class="un">Unit 05</span>Review: normal, chi-square, t, and F distributions</h2>
 
 <p>This unit reviews four distributions: the normal, the chi-square, the t, and the F distribution. Later lectures use them for inference about regression. For each distribution, the unit gives the PDF, the mean, the variance, and how other random variables make it.</p>
 
@@ -2140,7 +2133,7 @@ This course will focus on developing multiple linear regression
 <p>With these terms, we start with the normal distribution.</p>
 
 <!-- ============ p.25 Normal ============ -->
-<h3>05.1 Normal distribution <span class="tag">Slides p.25</span></h3>
+<h3 id="u0105-1"><span class="sn">05.1</span>Normal distribution <span class="tag">Slides p.25</span></h3>
 <p>This section reviews the normal distribution. The other three distributions start from it. Lecture 3 shows that \(\hat\beta_1\) is a linear combination of independent normals, and then uses the result of this section.</p>
 
 <p><b>What</b> <span class="tag">Slides p.25</span></p>
@@ -2264,7 +2257,7 @@ For <i>independent</i> \(Z_i\overset{ind}{\sim}N(\mu_i,\sigma^2)\), \(U=\sum_i^n
 <p>∎ Result: a linear combination of independent normals is normal, and its mean and variance follow the two sums. The next section squares standard normals and adds them to get the chi-square distribution.</p>
 
 <!-- ============ p.26 Chi-square ============ -->
-<h3>05.2 Chi-square distribution <span class="tag">Slides p.26</span></h3>
+<h3 id="u0105-2"><span class="sn">05.2</span>Chi-square distribution <span class="tag">Slides p.26</span></h3>
 <p>This section reviews the chi-square distribution. It is the sum of squared standard normals. Lecture 3 uses it for inference about \(\sigma^2\).</p>
 
 <p><b>What</b> <span class="tag">Slides p.26</span></p>
@@ -2392,7 +2385,7 @@ For \(Z_i\overset{iid}{\sim}N(0,1)\):
 <p>∎ Result: the sum of \(n\) iid squared standard normals is \(\chi^2_n\), with mean \(n\) and variance \(2n\). The next section divides a standard normal by the square root of a chi-square to get the t distribution.</p>
 
 <!-- ============ p.27 t ============ -->
-<h3>05.3 t distribution <span class="tag">Slides p.27</span></h3>
+<h3 id="u0105-3"><span class="sn">05.3</span>t distribution <span class="tag">Slides p.27</span></h3>
 <p>This section reviews the t distribution. It comes from one standard normal and one chi-square. Lecture 3 uses this construction for the test statistics of the regression coefficients.</p>
 
 <p><b>What</b> <span class="tag">Slides p.27</span></p>
@@ -2518,7 +2511,7 @@ For <i>independent</i> \(Z\sim N(0,1)\) and \(X\sim\chi^2_\nu\)
 <p>∎ Result: the t distribution is a standard normal divided by the square root of a chi-square over its degrees of freedom. Its mean is 0 and its variance is \(\nu/(\nu-2)\). The next section takes a ratio of two chi-squares to get the F distribution.</p>
 
 <!-- ============ p.28 F ============ -->
-<h3>05.4 F distribution <span class="tag">Slides p.28</span></h3>
+<h3 id="u0105-4"><span class="sn">05.4</span>F distribution <span class="tag">Slides p.28</span></h3>
 <p>This section reviews the F distribution. It comes from two independent chi-squares. It is the last distribution in this review.</p>
 
 <p><b>What</b> <span class="tag">Slides p.28</span></p>
@@ -2617,7 +2610,7 @@ For <i>independent</i> \(X_1\sim\chi^2_{\nu_1}\) and \(X_2\sim\chi^2_{\nu_2}\),
 </div>
 
 <!-- ============ Practice ============ -->
-<h3>05.5 Practice <span class="tag">Added</span></h3>
+<h3 id="u0105-5"><span class="sn">05.5</span>Practice <span class="tag">Added</span></h3>
 <p>The three questions below test the four construction rules of this unit. Each answer is hidden under its question.</p>
 
 <p><b>Q1.</b> Let \(Z_1\overset{ind}{\sim}N(1,4)\) and \(Z_2\overset{ind}{\sim}N(3,4)\). Find the distribution of \(U=3Z_1-2Z_2+5\).</p>
@@ -2656,7 +2649,7 @@ For (a) and (b), also give the mean and the variance.</p>
 </section>
 
 <section id="u0106">
-<h2>06 · Course overview and logistics</h2>
+<h2><span class="un">Unit 06</span>Course overview and logistics</h2>
 
 <p>This unit gives the course plan from Slides p.29–38. The plan includes the content, the grading, the assignments, and the exams. It also includes participation, communication, tutorials, the weekly schedule, and study tips. This unit has no statistical model. It has facts and some short additions that check the facts.</p>
 
@@ -2675,12 +2668,12 @@ For (a) and (b), also give the mean and the variance.</p>
 </div>
 
 <!-- ============ p.29 ============ -->
-<h3>06.1 Section title page <span class="tag">Slides p.29</span></h3>
+<h3 id="u0106-1"><span class="sn">06.1</span>Section title page <span class="tag">Slides p.29</span></h3>
 <p>Slide p.29 shows only the section title "Course Overview".</p>
 <div class="claim">The slides in this section have footer numbers 19/27 to 27/27. The footer number is different from the PDF page number. PDF page 30 has the footer 19/27, and PDF page 38 has the footer 27/27. This unit always uses the PDF page number.</div>
 
 <!-- ============ p.30 ============ -->
-<h3>06.2 Course content and reference books <span class="tag">Slides p.30</span></h3>
+<h3 id="u0106-2"><span class="sn">06.2</span>Course content and reference books <span class="tag">Slides p.30</span></h3>
 <p>This section lists the five content blocks of the term and the reference books.</p>
 
 <p><b>What</b> <span class="tag">Slides p.30</span></p>
@@ -2736,7 +2729,7 @@ Textbook: None required. If you want a different perspective:
 <p>Result: the course has five blocks, from simple to complex. The next section gives the weight of each grade component.</p>
 
 <!-- ============ p.31 ============ -->
-<h3>06.3 Grading <span class="tag">Slides p.31</span></h3>
+<h3 id="u0106-3"><span class="sn">06.3</span>Grading <span class="tag">Slides p.31</span></h3>
 <p>This section lists the five components of the final grade and the weight of each component.</p>
 
 <p><b>What</b> <span class="tag">Slides p.31</span></p>
@@ -2800,7 +2793,7 @@ Textbook: None required. If you want a different perspective:
 <p>Result: the final exam gives 50%, and the two midterms together give 30%. The next section gives the rules for the assignments.</p>
 
 <!-- ============ p.32 ============ -->
-<h3>06.4 Assignments <span class="tag">Slides p.32</span></h3>
+<h3 id="u0106-4"><span class="sn">06.4</span>Assignments <span class="tag">Slides p.32</span></h3>
 <p>This section gives the due dates, the question types, and the late rule for the three assignments.</p>
 
 <p><b>What</b> <span class="tag">Slides p.32</span></p>
@@ -2854,7 +2847,7 @@ Assignments up to 24 hours late will receive a penalty of 50%. If you are unable
 <p>Result: each assignment gives 5%, and a submission up to 24 hours late receives a penalty of 50%. The next section gives the rules for the exams.</p>
 
 <!-- ============ p.33 ============ -->
-<h3>06.5 Midterms and final exam <span class="tag">Slides p.33</span></h3>
+<h3 id="u0106-5"><span class="sn">06.5</span>Midterms and final exam <span class="tag">Slides p.33</span></h3>
 <p>This section gives the length, the date, the weight, and the rules of the two midterms and the final exam.</p>
 
 <p><b>What</b> <span class="tag">Slides p.33</span></p>
@@ -2907,7 +2900,7 @@ If you are unable to attend a midterm due to severe illness or extenuating circu
 <p>Result: Midterm 1 is in class on October 8, and you must bring a non-programmable calculator. The next section gives the participation grade.</p>
 
 <!-- ============ p.34 ============ -->
-<h3>06.6 Participation <span class="tag">Slides p.34</span></h3>
+<h3 id="u0106-6"><span class="sn">06.6</span>Participation <span class="tag">Slides p.34</span></h3>
 <p>This section gives the rule that changes your Piazza posts into the 5% participation grade.</p>
 
 <p><b>What</b> <span class="tag">Slides p.34</span></p>
@@ -2942,7 +2935,7 @@ If you are unable to attend a midterm due to severe illness or extenuating circu
 <p>Result: the participation grade uses only public discussion on Piazza. The next section tells you where to send each type of question.</p>
 
 <!-- ============ p.35 ============ -->
-<h3>06.7 Communication <span class="tag">Slides p.35</span></h3>
+<h3 id="u0106-7"><span class="sn">06.7</span>Communication <span class="tag">Slides p.35</span></h3>
 <p>This section gives the channel for materials, announcements, and questions.</p>
 <p><b>What</b> <span class="tag">Slides p.35</span></p>
 <div class="enstmt"><span class="who">Communication · Lecture 1 · p.35</span>
@@ -2962,7 +2955,7 @@ If you are unable to attend a midterm due to severe illness or extenuating circu
 <p>Result: all questions about content go to Piazza. The next section gives the tutorials.</p>
 
 <!-- ============ p.36 ============ -->
-<h3>06.8 Tutorials <span class="tag">Slides p.36</span></h3>
+<h3 id="u0106-8"><span class="sn">06.8</span>Tutorials <span class="tag">Slides p.36</span></h3>
 <p>This section gives the tutorial time and the dates of the four formal tutorials.</p>
 <p><b>What</b> <span class="tag">Slides p.36</span></p>
 <div class="enstmt"><span class="who">Tutorials · Lecture 1 · p.36</span>
@@ -2979,7 +2972,7 @@ If you are unable to attend a midterm due to severe illness or extenuating circu
 <p>Result: the Friday 2:30 slot is a tutorial or a TA office hour. The next section puts all the dates on one weekly schedule.</p>
 
 <!-- ============ p.37 ============ -->
-<h3>06.9 Schedule <span class="tag">Slides p.37</span></h3>
+<h3 id="u0106-9"><span class="sn">06.9</span>Schedule <span class="tag">Slides p.37</span></h3>
 <p>This section lists the topic, the Friday slot, and the due dates for each of the 13 weeks, in slide order.</p>
 
 <p><b>What</b> <span class="tag">Slides p.37</span></p>
@@ -3026,7 +3019,7 @@ If you are unable to attend a midterm due to severe illness or extenuating circu
 <p>Result: the schedule puts the dates from Slides p.32, p.33, and p.36 on one timeline.</p>
 
 <!-- ============ p.38 ============ -->
-<h3>06.10 Tips for success <span class="tag">Slides p.38</span></h3>
+<h3 id="u0106-10"><span class="sn">06.10</span>Tips for success <span class="tag">Slides p.38</span></h3>
 <p>The last slide gives study tips.</p>
 <p><b>What</b> <span class="tag">Slides p.38</span></p>
 <div class="enstmt"><span class="who">Tips for Success · Lecture 1 · p.38</span>
@@ -3055,7 +3048,7 @@ If you are unable to attend a midterm due to severe illness or extenuating circu
 <p>Result: the slide gives three groups of tips. Take part in class, stay current, and use the recovery steps when you fall behind.</p>
 
 <!-- ============ practice ============ -->
-<h3>06.11 Practice <span class="tag">Added</span></h3>
+<h3 id="u0106-11"><span class="sn">06.11</span>Practice <span class="tag">Added</span></h3>
 <p>These four questions test the grading rules and the schedule.</p>
 
 <p><b>Q1.</b> List the five components of the final grade and their weights. Show that they add to 100%.</p>
@@ -3096,7 +3089,8 @@ If you are unable to attend a midterm due to severe illness or extenuating circu
 
 <p>This unit gave the structure and the dates of the term: five content blocks, five grade components, three assignments, two midterms, and four tutorials. The next lectures start with simple linear regression in Week 2.</p>
 </section>
-</main>
-</div>
+</main><nav class="pager2" aria-label="Lectures"><a class="next" href="L02.html"><span>Next: Lecture 2</span>Simple Linear Regression: Estimation</a></nav>
+</article></div>
+<script src="site.js"></script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>STAT 331 · Lecture 3 · Simple Linear Regression: Inference</title>
+<title>Lecture 3: Simple Linear Regression: Inference | STAT 331</title>
 <script>
 window.MathJax = {
   tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']], processEscapes: false },
@@ -273,23 +273,16 @@ hr.soft{border:none;border-top:1px solid var(--color-border);margin:36px 0;}
 .tag{display:inline-block;font-size:12px;font-weight:600;color:var(--color-text-secondary);background:var(--color-surface);border:1px solid var(--color-border);border-radius:6px;padding:0 7px;margin-left:6px;vertical-align:2px;}
 .kicker{font-size:12px;font-weight:600;letter-spacing:.05em;color:var(--color-text-secondary);text-transform:uppercase;}
 </style>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400..700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400&display=swap"><link rel="stylesheet" href="site.css">
 </head>
-<body>
-<nav class="topbar"><div class="inner"><a href="./">STAT 331 index</a><a href="L02.html">L02</a><a href="L04.html">L04</a><span class="spacer"></span><span class="dim">STAT 331 · Lecture 3 · Simple Linear Regression: Inference</span></div></nav>
-<div class="container">
-<header class="page"><h1>Lecture 3: Simple Linear Regression: Inference</h1>
-<p class="sub">This lecture finds the distributions of \(\hat\beta_1\) and \(\hat\beta_0\) and uses them for confidence intervals and hypothesis tests (Lecture 3 · p.1–49).</p></header>
-<div class="toccard"><div class="t">Contents</div>
-<a href="#u0301">01 · Recap: the SLR model, least squares, and the estimate of \(\sigma^2\)</a>
-<a href="#u0302">02 · Sampling distribution and unbiasedness of \(\hat\beta_1\)</a>
-<a href="#u0303">03 · Variance and distribution of \(\hat\beta_1\) and \(\hat\beta_0\)</a>
-<a href="#u0304">04 · Confidence interval for \(\beta_1\): known \(\sigma\), unknown \(\sigma\) (t distribution), and standard error</a>
-<a href="#u0305">05 · Interval estimation example and interpretation</a>
-<a href="#u0306">06 · Hypothesis tests for \(\beta_1\): p-value, coefficient table, and one-sided tests</a>
-</div>
-<main>
+<body class="site">
+<a class="skip" href="#content">Skip to content</a>
+<div class="mbar"><button id="menu" aria-controls="side" aria-expanded="false">Contents</button><span class="t">Lecture 3: Simple Linear Regression: Inference</span></div>
+<aside class="side" id="side" aria-label="Course navigation"><a class="brand" href="./"><b>STAT 331</b><span>Applied Linear Models</span></a><nav><ol class="lecs"><li><a href="L01.html"><span class="n">1</span><span>Introduction and Motivation</span></a></li><li><a href="L02.html"><span class="n">2</span><span>Simple Linear Regression: Estimation</span></a></li><li class="cur"><a href="L03.html" aria-current="page"><span class="n">3</span><span>Simple Linear Regression: Inference</span></a><ol class="units"><li><a href="#u0301" data-t="u0301"><span class="n">01</span><span>Recap: the SLR model, least squares, and the estimate of \(\sigma^2\)</span></a><ol class="subs"><li><a href="#u0301-1" data-t="u0301-1">01.1 Title page and section page</a></li><li><a href="#u0301-2" data-t="u0301-2">01.2 The simple linear regression model and its assumptions</a></li><li><a href="#u0301-3" data-t="u0301-3">01.3 The interpretation of \(\beta_1\)</a></li><li><a href="#u0301-4" data-t="u0301-4">01.4 Least squares estimation</a></li><li><a href="#u0301-5" data-t="u0301-5">01.5 Fitted values, residuals, and \(\hat\sigma^2\)</a></li><li><a href="#u0301-6" data-t="u0301-6">01.6 Practice</a></li></ol></li><li><a href="#u0302" data-t="u0302"><span class="n">02</span><span>Sampling distribution and unbiasedness of \(\hat\beta_1\)</span></a><ol class="subs"><li><a href="#u0302-1" data-t="u0302-1">02.1 Title page</a></li><li><a href="#u0302-2" data-t="u0302-2">02.2 Why we need inference</a></li><li><a href="#u0302-3" data-t="u0302-3">02.3 Section page: properties of the LS estimator</a></li><li><a href="#u0302-4" data-t="u0302-4">02.4 Write \(\hat\beta_1\) as a linear combination of the \(y_i\)</a></li><li><a href="#u0302-5" data-t="u0302-5">02.5 The sampling distribution of \(\hat\beta_1\)</a></li><li><a href="#u0302-6" data-t="u0302-6">02.6 The mean of \(\hat\beta_1\): unbiasedness</a></li><li><a href="#u0302-7" data-t="u0302-7">02.7 Practice</a></li></ol></li><li><a href="#u0303" data-t="u0303"><span class="n">03</span><span>Variance and distribution of \(\hat\beta_1\) and \(\hat\beta_0\)</span></a><ol class="subs"><li><a href="#u0303-1" data-t="u0303-1">03.1 Variance of \(\hat\beta_1\)</a></li><li><a href="#u0303-2" data-t="u0303-2">03.2 Distribution of \(\hat\beta_1\)</a></li><li><a href="#u0303-3" data-t="u0303-3">03.3 Distribution of \(\hat\beta_0\)</a></li><li><a href="#u0303-4" data-t="u0303-4">03.4 Practice</a></li></ol></li><li><a href="#u0304" data-t="u0304"><span class="n">04</span><span>Confidence interval for \(\beta_1\): known \(\sigma\), unknown \(\sigma\) (t distribution), and standard error</span></a><ol class="subs"><li><a href="#u0304-1" data-t="u0304-1">04.1 Standardize \(\hat\beta_1\)</a></li><li><a href="#u0304-2" data-t="u0304-2">04.2 95% CI for \(\beta_1\) with known \(\sigma\)</a></li><li><a href="#u0304-3" data-t="u0304-3">04.3 Unknown \(\sigma\): use \(\hat\sigma\) and get the t distribution</a></li><li><a href="#u0304-4" data-t="u0304-4">04.4 Make the interval with a t quantile \(q=t_{1-\alpha/2,n-2}\)</a></li><li><a href="#u0304-5" data-t="u0304-5">04.5 Standard deviation and standard error: \(\mathrm{SD}(\hat\beta_1)\) and \(\mathrm{SE}(\hat\beta_1)\)</a></li><li><a href="#u0304-6" data-t="u0304-6">04.6 Practice</a></li></ol></li><li><a href="#u0305" data-t="u0305"><span class="n">05</span><span>Interval estimation example and interpretation</span></a><ol class="subs"><li><a href="#u0305-1" data-t="u0305-1">05.1 Calculate the confidence intervals for \(\beta_1\) and \(\beta_0\)</a></li><li><a href="#u0305-2" data-t="u0305-2">05.2 The printed intervals and the question</a></li><li><a href="#u0305-3" data-t="u0305-3">05.3 Interpretation of the confidence interval</a></li><li><a href="#u0305-4" data-t="u0305-4">05.4 Practice</a></li></ol></li><li><a href="#u0306" data-t="u0306"><span class="n">06</span><span>Hypothesis tests for \(\beta_1\): p-value, coefficient table, and one-sided tests</span></a><ol class="subs"><li><a href="#u0306-1" data-t="u0306-1">06.1 Hypothesis test setup and test statistic</a></li><li><a href="#u0306-2" data-t="u0306-2">06.2 The p-value</a></li><li><a href="#u0306-3" data-t="u0306-3">06.3 Example: test \(H_0:\beta_1=0\)</a></li><li><a href="#u0306-4" data-t="u0306-4">06.4 Read the coefficient table</a></li><li><a href="#u0306-5" data-t="u0306-5">06.5 Interpret the p-value</a></li><li><a href="#u0306-6" data-t="u0306-6">06.6 One-sided tests</a></li><li><a href="#u0306-7" data-t="u0306-7">06.7 Practice</a></li></ol></li></ol></li><li><a href="L04.html"><span class="n">4</span><span>Simple Linear Regression: Prediction</span></a></li><li><a href="L05.html"><span class="n">5</span><span>Random Vectors and Multivariate Normal</span></a></li><li><a href="L06.html"><span class="n">6</span><span>Multiple Linear Regression: Intro and Estimation</span></a></li><li><a href="L07.html"><span class="n">7</span><span>Multiple Linear Regression: Estimation and Inference I</span></a></li></ol></nav><div class="foot"><a href="stat331-all.md">All notes as one text file</a><a href="https://github.com/WayneWei228/stat331-notes">Source on GitHub</a></div></aside><div class="scrim"></div>
+<div class="pagewrap" id="content"><article class="doc">
+<header class="page"><p class="lnum">Lecture 3</p><h1>Simple Linear Regression: Inference</h1><p class="sub">This lecture finds the distributions of \(\hat\beta_1\) and \(\hat\beta_0\) and uses them for confidence intervals and hypothesis tests (Lecture 3 · p.1–49).</p></header><main>
 <section id="u0301">
-<h2>01 · Recap: the SLR model, least squares, and the estimate of \(\sigma^2\)</h2>
+<h2><span class="un">Unit 01</span>Recap: the SLR model, least squares, and the estimate of \(\sigma^2\)</h2>
 
 <p>This unit reviews four items from Lecture 2: the model, the meaning of \(\beta_1\), the least squares estimates, and the estimate of \(\sigma^2\). Units 02–06 build intervals and tests from these estimates. Thus, this unit calculates \(\hat\beta_0\), \(\hat\beta_1\), and \(\hat\sigma\) by hand first.</p>
 
@@ -310,7 +303,7 @@ hr.soft{border:none;border-top:1px solid var(--color-border);margin:36px 0;}
 </div>
 
 <!-- ============ 01.1 title pages ============ -->
-<h3>01.1 Title page and section page <span class="tag">Slides p.1–2</span></h3>
+<h3 id="u0301-1"><span class="sn">01.1</span>Title page and section page <span class="tag">Slides p.1–2</span></h3>
 <p>These two pages give only names. They have no new mathematics.</p>
 <div class="claim">Slides p.1 is the title page: "Lecture 3: Simple Linear Regression: Inference".</div>
 <div class="claim">Inference is the use of sample data to make statements about unknown population parameters. Confidence intervals and hypothesis tests are two types of inference.</div>
@@ -318,7 +311,7 @@ hr.soft{border:none;border-top:1px solid var(--color-border);margin:36px 0;}
 <p>The next section starts with the model on Slides p.3.</p>
 
 <!-- ============ 01.2 model ============ -->
-<h3>01.2 The simple linear regression model and its assumptions <span class="tag">Slides p.3–4</span></h3>
+<h3 id="u0301-2"><span class="sn">01.2</span>The simple linear regression model and its assumptions <span class="tag">Slides p.3–4</span></h3>
 <p>This section writes the base model of the course. All inference results in this lecture are correct only when the four assumptions are true.</p>
 
 <p><b>What</b> <span class="tag">Slides p.3–4</span></p>
@@ -395,7 +388,7 @@ Assumptions:
 <p>This section gives a model with three unknown parameters and four assumptions. The next section explains the most important parameter, \(\beta_1\).</p>
 
 <!-- ============ 01.3 interpretation ============ -->
-<h3>01.3 The interpretation of \(\beta_1\) <span class="tag">Slides p.5</span></h3>
+<h3 id="u0301-3"><span class="sn">01.3</span>The interpretation of \(\beta_1\) <span class="tag">Slides p.5</span></h3>
 <p>This section gives the meaning of \(\beta_1\) in a real problem. The intervals and tests in Units 04–06 all give information about this quantity.</p>
 
 <p><b>What</b> <span class="tag">Slides p.5</span></p>
@@ -445,7 +438,7 @@ Assumptions:
 <p>∎ The result does not contain \(x^*\). Thus, the comparison gives the same \(\beta_1\) at each value of \(x\). The next section calculates \(\hat\beta_1\) from the data.</p>
 
 <!-- ============ 01.4 least squares ============ -->
-<h3>01.4 Least squares estimation <span class="tag">Slides p.6–7</span></h3>
+<h3 id="u0301-4"><span class="sn">01.4</span>Least squares estimation <span class="tag">Slides p.6–7</span></h3>
 <p>This section calculates \(\hat\beta_0\) and \(\hat\beta_1\) from the data. The method selects the line with the smallest sum of squared vertical distances from the points.</p>
 
 <p><b>What</b> <span class="tag">Slides p.6–7</span></p>
@@ -582,7 +575,7 @@ OLS=MLE under the assumption of Normality
 <p>This section gives \(\hat\beta_0=2.2\) and \(\hat\beta_1=0.6\) for the small data set. The next section uses them to calculate the residuals and \(\hat\sigma^2\).</p>
 
 <!-- ============ 01.5 fitted values, residuals, sigma ============ -->
-<h3>01.5 Fitted values, residuals, and \(\hat\sigma^2\) <span class="tag">Slides p.8</span></h3>
+<h3 id="u0301-5"><span class="sn">01.5</span>Fitted values, residuals, and \(\hat\sigma^2\) <span class="tag">Slides p.8</span></h3>
 <p>This section estimates the third parameter, \(\sigma^2\). First, it calculates the residual of each point. Then it adds the squared residuals and divides by \(n-2\). Units 04–06 use \(\hat\sigma\) in the standard error and in the \(t\) statistic.</p>
 
 <p><b>What</b> <span class="tag">Slides p.8</span></p>
@@ -712,7 +705,7 @@ Residuals:
 <p>This section gives \(\hat\sigma=0.8944\) for the small data set and \(\hat\sigma=72.35\) for the brainhead data. Unit 02 uses \(S_{xx}\) and \(\hat\sigma\) to study the distribution of \(\hat\beta_1\).</p>
 
 <!-- ============ practice ============ -->
-<h3>01.6 Practice <span class="tag">Added</span></h3>
+<h3 id="u0301-6"><span class="sn">01.6</span>Practice <span class="tag">Added</span></h3>
 <p>These three questions use the small data set and the brainhead results from Slides p.45.</p>
 
 <p><b>Q1.</b> A data set has \(x=(1,2,3,4,5)\) and \(y=(2,4,5,4,5)\). The least squares line is \(\hat y=2.2+0.6x\). Calculate the fitted value \(\hat y_3\) and the residual \(e_3\). Is point 3 above or below the fitted line?</p>
@@ -750,7 +743,7 @@ Residuals:
 </section>
 
 <section id="u0302">
-<h2>02 · Sampling distribution and unbiasedness of \(\hat\beta_1\)</h2>
+<h2><span class="un">Unit 02</span>Sampling distribution and unbiasedness of \(\hat\beta_1\)</h2>
 
 <p>This unit shows how \(\hat\beta_1\) changes from one sample to a different sample. It has three steps. First, we write \(\hat\beta_1\) as a weighted sum of the \(y_i\). Then we find its distribution. Last, we show that its mean is \(\beta_1\).</p>
 
@@ -765,13 +758,13 @@ Residuals:
 </div>
 
 <!-- ============ p.9 ============ -->
-<h3>02.1 Title page <span class="tag">Slides p.9</span></h3>
+<h3 id="u0302-1"><span class="sn">02.1</span>Title page <span class="tag">Slides p.9</span></h3>
 <p>Page 9 repeats the title page of Lecture 3. The recap (p.1–8) stops here, and the new material starts.</p>
 <div class="claim">Title: Lecture 3: Simple Linear Regression: Inference.</div>
 <p>This page has no formulas. The next section starts with the question on p.10.</p>
 
 <!-- ============ p.10 ============ -->
-<h3>02.2 Why we need inference <span class="tag">Slides p.10</span></h3>
+<h3 id="u0302-2"><span class="sn">02.2</span>Why we need inference <span class="tag">Slides p.10</span></h3>
 <p>This section shows one fact: an estimate changes when the sample changes. All later sections of this lecture measure the size of this change.</p>
 
 <p><b>What</b> <span class="tag">Slides p.10</span></p>
@@ -854,14 +847,14 @@ How do we characterize uncertainty in our estimates?<br>
 <p>Thus \(\hat\beta_1\) is a random variable. A random variable is a quantity whose value comes from a random outcome. The next sections find its distribution.</p>
 
 <!-- ============ p.11 ============ -->
-<h3>02.3 Section page: properties of the LS estimator <span class="tag">Slides p.11</span></h3>
+<h3 id="u0302-3"><span class="sn">02.3</span>Section page: properties of the LS estimator <span class="tag">Slides p.11</span></h3>
 <p>Page 11 is a section page with the title "Properties of LS Estimator".</p>
 <div class="claim">LS estimator (least squares estimator): the formula that makes the sum of squared residuals as small as possible. For the slope, it is \(\hat\beta_1=S_{xy}/S_{xx}\).</div>
 <div class="claim">The estimator is a function of the random \(y_i\). Thus it is a random variable. One data set gives one estimate.</div>
 <p>This section studies the properties of this estimator. It starts with \(\hat\beta_1\).</p>
 
 <!-- ============ p.12 ============ -->
-<h3>02.4 Write \(\hat\beta_1\) as a linear combination of the \(y_i\) <span class="tag">Slides p.12</span></h3>
+<h3 id="u0302-4"><span class="sn">02.4</span>Write \(\hat\beta_1\) as a linear combination of the \(y_i\) <span class="tag">Slides p.12</span></h3>
 <p>This section writes \(\hat\beta_1\) as \(\sum w_iy_i\). With this form, we can get the distribution of \(\hat\beta_1\) from the distribution of the \(y_i\).</p>
 
 <p><b>What</b> <span class="tag">Slides p.12</span></p>
@@ -1228,7 +1221,7 @@ Hence \(\hat\beta_1\) is a linear combination of <i>independent</i> Normals!
 <p>These three chains together give the full line on p.12. The next section uses \(\hat\beta_1=\sum w_iy_i\) to find the distribution of \(\hat\beta_1\).</p>
 
 <!-- ============ p.13 ============ -->
-<h3>02.5 The sampling distribution of \(\hat\beta_1\) <span class="tag">Slides p.13</span></h3>
+<h3 id="u0302-5"><span class="sn">02.5</span>The sampling distribution of \(\hat\beta_1\) <span class="tag">Slides p.13</span></h3>
 <p>This section gives the full distribution of \(\hat\beta_1\). It uses the result of Section 02.4: \(\hat\beta_1\) is a linear combination of independent Normal variables.</p>
 
 <p><b>What</b> <span class="tag">Slides p.13</span></p>
@@ -1349,7 +1342,7 @@ Hence \(\hat\beta_1\) is a linear combination of <i>independent</i> Normals!
 <p>These two chains give the two parameters on p.13. The next section simplifies the mean to \(\beta_1\).</p>
 
 <!-- ============ p.14-18 ============ -->
-<h3>02.6 The mean of \(\hat\beta_1\): unbiasedness <span class="tag">Slides p.14–18</span></h3>
+<h3 id="u0302-6"><span class="sn">02.6</span>The mean of \(\hat\beta_1\): unbiasedness <span class="tag">Slides p.14–18</span></h3>
 <p>This section simplifies the mean \(\sum w_i(\beta_0+\beta_1x_i)\) from Section 02.5. The result is \(\beta_1\). Thus, on average, \(\hat\beta_1\) is equal to the true value.</p>
 
 <p><b>What</b> <span class="tag">Slides p.14–18</span></p>
@@ -1409,7 +1402,7 @@ Hence it is unbiased.
 <p>Thus \(E[\hat\beta_1]=\beta_1\), and \(\hat\beta_1\) is an unbiased estimator of \(\beta_1\). With Section 02.5, the result of p.13 becomes \(\hat\beta_1\sim N(\beta_1,\ \sigma^2\sum w_i^2)\). The next unit simplifies the variance \(\sigma^2\sum w_i^2\).</p>
 
 <!-- ============ Practice ============ -->
-<h3>02.7 Practice <span class="tag">Added</span></h3>
+<h3 id="u0302-7"><span class="sn">02.7</span>Practice <span class="tag">Added</span></h3>
 <p>These three questions test the three parts of this unit: the weights \(w_i\), their two properties, and the distribution of \(\hat\beta_1\).</p>
 
 <p><b>Q1.</b> A data set has three pairs: \((x_i,y_i)=(1,2),\ (3,3),\ (5,7)\). Calculate \(w_1,w_2,w_3\). Then calculate \(\hat\beta_1=\sum w_iy_i\) and compare it with \(S_{xy}/S_{xx}\).</p>
@@ -1455,7 +1448,7 @@ Hence it is unbiased.
 </section>
 
 <section id="u0303">
-<h2>03 · Variance and distribution of \(\hat\beta_1\) and \(\hat\beta_0\)</h2>
+<h2><span class="un">Unit 03</span>Variance and distribution of \(\hat\beta_1\) and \(\hat\beta_0\)</h2>
 
 <p>This unit calculates the variance of \(\hat\beta_1\). Then it states the full distributions of \(\hat\beta_1\) and \(\hat\beta_0\). The next unit uses these distributions to make a confidence interval for \(\beta_1\).</p>
 
@@ -1482,7 +1475,7 @@ Hence it is unbiased.
 <div class="claim">The true \(\sigma\) is not known. For the examples, this unit supposes \(\sigma=72.35\) g, the value of \(\hat\sigma\) on Slides p.45. Thus \(\sigma^2=72.35^2=5234.5225\). Unit 02 supposes the same value. Unit 04 shows the method when \(\sigma\) is not known.</div>
 
 <!-- ============ 1. Var of beta1hat ============ -->
-<h3>03.1 Variance of \(\hat\beta_1\) <span class="tag">Slides p.19–23</span></h3>
+<h3 id="u0303-1"><span class="sn">03.1</span>Variance of \(\hat\beta_1\) <span class="tag">Slides p.19–23</span></h3>
 <p>This section tells how much \(\hat\beta_1\) changes from sample to sample. The answer is a formula that uses only \(\sigma^2\) and the \(x\) values.</p>
 
 <div class="claim">\(S_{xx}=\sum_{j=1}^n(x_j-\bar x)^2\): the sum of the squared distances between each \(x_j\) and \(\bar x\). It uses only the \(x\) values.</div>
@@ -1591,7 +1584,7 @@ Hence it is unbiased.
 <p>This section gives \(\mathrm{Var}[\hat\beta_1]=\sigma^2/S_{xx}\). The next section puts it together with \(E[\hat\beta_1]=\beta_1\) to state the full distribution.</p>
 
 <!-- ============ 2. Distribution of beta1hat ============ -->
-<h3>03.2 Distribution of \(\hat\beta_1\) <span class="tag">Slides p.24</span></h3>
+<h3 id="u0303-2"><span class="sn">03.2</span>Distribution of \(\hat\beta_1\) <span class="tag">Slides p.24</span></h3>
 <p>This section puts three results into one statement: \(\hat\beta_1\) is Normal, with mean \(\beta_1\) and variance \(\sigma^2/S_{xx}\).</p>
 
 <p><b>What</b> <span class="tag">Slides p.24</span></p>
@@ -1666,7 +1659,7 @@ So the distribution of \(\hat\beta_1\) is:
 <p>This section gives the full distribution of \(\hat\beta_1\). Unit 04 uses it to make a confidence interval for \(\beta_1\).</p>
 
 <!-- ============ 3. Distribution of beta0hat ============ -->
-<h3>03.3 Distribution of \(\hat\beta_0\) <span class="tag">Slides p.24</span></h3>
+<h3 id="u0303-3"><span class="sn">03.3</span>Distribution of \(\hat\beta_0\) <span class="tag">Slides p.24</span></h3>
 <p>Slides p.24 then asks: "what about \(\hat\beta_0\)?" This section gives the answer and calculates the values for the 6 observations.</p>
 
 <p><b>What</b> <span class="tag">Slides p.24</span></p>
@@ -1740,7 +1733,7 @@ Question: what about \(\hat\beta_0\)?
 <p>This section gives the distribution of \(\hat\beta_0\). It has the same form as the distribution of \(\hat\beta_1\). Unit 04 uses the same method to make a confidence interval for \(\beta_0\).</p>
 
 <!-- ============ Exercises ============ -->
-<h3>03.4 Practice <span class="tag">Added</span></h3>
+<h3 id="u0303-4"><span class="sn">03.4</span>Practice <span class="tag">Added</span></h3>
 <p>These three questions test the three results of this unit: the variance formula, the effect of \(S_{xx}\), and the parts of \(\mathrm{Var}[\hat\beta_0]\).</p>
 
 <p><b>Q1.</b> Use the model \(y_i\overset{indep}{\sim}N(\beta_0+\beta_1x_i,\sigma^2)\), with \(\hat\beta_1=\sum_{i=1}^n w_iy_i\) and \(w_i=\frac{x_i-\bar x}{\sum_{j=1}^n(x_j-\bar x)^2}\). Show that \(\mathrm{Var}[\hat\beta_1]=\sigma^2/S_{xx}\). Tell where the derivation uses independence.</p>
@@ -1767,7 +1760,7 @@ Question: what about \(\hat\beta_0\)?
 </section>
 
 <section id="u0304">
-<h2>04 · Confidence interval for \(\beta_1\): known \(\sigma\), unknown \(\sigma\) (t distribution), and standard error</h2>
+<h2><span class="un">Unit 04</span>Confidence interval for \(\beta_1\): known \(\sigma\), unknown \(\sigma\) (t distribution), and standard error</h2>
 
 <p>This unit makes an interval estimate for the unknown slope \(\beta_1\). It starts from the Normal distribution of \(\hat\beta_1\). First it uses a known \(\sigma\) and the number 1.96. Then it replaces \(\sigma\) with \(\hat\sigma\), and 1.96 changes to a t quantile. At the end, it gives the name "standard error".</p>
 
@@ -1793,7 +1786,7 @@ Question: what about \(\hat\beta_0\)?
 </div>
 
 <!-- ================= Concept 1 ================= -->
-<h3>04.1 Standardize \(\hat\beta_1\) <span class="tag">Slides p.25–26</span></h3>
+<h3 id="u0304-1"><span class="sn">04.1</span>Standardize \(\hat\beta_1\) <span class="tag">Slides p.25–26</span></h3>
 
 <p>This section changes \(\hat\beta_1\) into a quantity \(Z\) with the fixed distribution \(N(0,1)\). All the confidence intervals in this unit start from this \(Z\).</p>
 <p>Slides p.25 is the section page "Confidence Interval for \(\beta_1\)". It has no formulas.</p>
@@ -1843,7 +1836,7 @@ Question: what about \(\hat\beta_0\)?
 <p>The result is \(Z\sim N(0,1)\). Section 04.2 uses the probabilities of \(Z\) to get an interval for \(\beta_1\).</p>
 
 <!-- ================= Concept 2 ================= -->
-<h3>04.2 95% CI for \(\beta_1\) with known \(\sigma\) <span class="tag">Slides p.27–30</span></h3>
+<h3 id="u0304-2"><span class="sn">04.2</span>95% CI for \(\beta_1\) with known \(\sigma\) <span class="tag">Slides p.27–30</span></h3>
 
 <p>This section uses a known \(\sigma\). It starts from \(P(-1.96\le Z\le1.96)=0.95\) and changes the inequality until \(\beta_1\) is alone in the middle. The result is the 95% confidence interval.</p>
 
@@ -1896,7 +1889,7 @@ I.e. the random interval \(\hat\beta_1\pm1.96\dfrac{\sigma}{\sqrt{S_{xx}}}\) wil
 <p>With known \(\sigma\), the 95% CI is \(\hat\beta_1\pm1.96\,\sigma/\sqrt{S_{xx}}\). In practice \(\sigma\) is unknown, and Section 04.3 solves this problem.</p>
 
 <!-- ================= Concept 3 ================= -->
-<h3>04.3 Unknown \(\sigma\): use \(\hat\sigma\) and get the t distribution <span class="tag">Slides p.31–33</span></h3>
+<h3 id="u0304-3"><span class="sn">04.3</span>Unknown \(\sigma\): use \(\hat\sigma\) and get the t distribution <span class="tag">Slides p.31–33</span></h3>
 
 <p>This section replaces \(\sigma\) in \(Z\) with \(\hat\sigma\) from the data. The new quantity does not have the distribution \(N(0,1)\). It has a t distribution with \(n-2\) degrees of freedom. This distribution is fully known, so we can still make an interval.</p>
 
@@ -1957,7 +1950,7 @@ Note that for independent \(Z\sim N(0,1)\) and \(V\sim\chi^2_\nu\), \(\Longright
 <p>\(\sigma\) cancels, so we can use \(\dfrac{\hat\beta_1-\beta_1}{\hat\sigma/\sqrt{S_{xx}}}\sim t_{(n-2)}\) with data. Section 04.4 uses its quantile to make the interval.</p>
 
 <!-- ================= Concept 4 ================= -->
-<h3>04.4 Make the interval with a t quantile \(q=t_{1-\alpha/2,n-2}\) <span class="tag">Slides p.34</span></h3>
+<h3 id="u0304-4"><span class="sn">04.4</span>Make the interval with a t quantile \(q=t_{1-\alpha/2,n-2}\) <span class="tag">Slides p.34</span></h3>
 
 <p>This section does the same inequality steps as Section 04.2. The difference: 1.96 changes to a quantile \(q\) of \(t_{(n-2)}\), and \(\sigma\) changes to \(\hat\sigma\).</p>
 
@@ -2078,7 +2071,7 @@ Often written \(t_{1-\alpha/2,n-2}\), as in: \(\hat\beta_1\pm t_{1-\alpha/2,n-2}
 <p>With unknown \(\sigma\), the \(1-\alpha\) CI is \(\hat\beta_1\pm t_{1-\alpha/2,n-2}\,\hat\sigma/\sqrt{S_{xx}}\). Section 04.5 gives a name to \(\hat\sigma/\sqrt{S_{xx}}\).</p>
 
 <!-- ================= Concept 5 ================= -->
-<h3>04.5 Standard deviation and standard error: \(\mathrm{SD}(\hat\beta_1)\) and \(\mathrm{SE}(\hat\beta_1)\) <span class="tag">Slides p.35</span></h3>
+<h3 id="u0304-5"><span class="sn">04.5</span>Standard deviation and standard error: \(\mathrm{SD}(\hat\beta_1)\) and \(\mathrm{SE}(\hat\beta_1)\) <span class="tag">Slides p.35</span></h3>
 
 <p>This section names two quantities. The first is the true standard deviation of \(\hat\beta_1\), which contains \(\sigma\). The second is its estimate, the standard error, which contains \(\hat\sigma\). The interval uses the standard error.</p>
 
@@ -2126,7 +2119,7 @@ Can write a CI as \(\hat\beta_1\pm t_{1-\alpha/2,n-2}\mathrm{SE}(\hat\beta_1)\)
 <p>SD contains the unknown \(\sigma\), and SE is its estimate from data. Unit 05 calculates the interval \(\hat\beta_1\pm t_{1-\alpha/2,n-2}\mathrm{SE}(\hat\beta_1)\) for the brainhead data.</p>
 
 <!-- ================= Exercises ================= -->
-<h3>04.6 Practice <span class="tag">Added</span></h3>
+<h3 id="u0304-6"><span class="sn">04.6</span>Practice <span class="tag">Added</span></h3>
 <p>The three questions below practice the three procedures of this unit: find a t quantile, derive the interval, and calculate SE.</p>
 
 <p><b>Q1.</b> The brainhead data have \(n=236\). Do this for a 90% CI and for a 99% CI. Give \(\alpha\), \(\alpha/2\), df and the name of the quantile \(t_{1-\alpha/2,n-2}\). The values are \(t_{0.95,234}=1.651391\) and \(t_{0.995,234}=2.597002\). Compare each value with the \(N(0,1)\) quantiles 1.644854 and 2.575829.</p>
@@ -2161,7 +2154,7 @@ Can write a CI as \(\hat\beta_1\pm t_{1-\alpha/2,n-2}\mathrm{SE}(\hat\beta_1)\)
 </section>
 
 <section id="u0305">
-<h2>05 · Interval estimation example and interpretation</h2>
+<h2><span class="un">Unit 05</span>Interval estimation example and interpretation</h2>
 
 <p>This unit calculates the 95% confidence intervals for \(\beta_1\) and \(\beta_0\) in the brainhead data. Then it shows what "95%" means.</p>
 
@@ -2183,7 +2176,7 @@ Can write a CI as \(\hat\beta_1\pm t_{1-\alpha/2,n-2}\mathrm{SE}(\hat\beta_1)\)
 </div>
 
 <!-- ================= 5.1 p.36 ================= -->
-<h3>05.1 Calculate the confidence intervals for \(\beta_1\) and \(\beta_0\) <span class="tag">Slides p.36</span></h3>
+<h3 id="u0305-1"><span class="sn">05.1</span>Calculate the confidence intervals for \(\beta_1\) and \(\beta_0\) <span class="tag">Slides p.36</span></h3>
 
 <p>This section calculates two 95% intervals from the brainhead numbers. The results are [0.235, 0.287] for \(\beta_1\) and [241.305, 429.559] for \(\beta_0\).</p>
 
@@ -2307,7 +2300,7 @@ Can write a CI as \(\hat\beta_1\pm t_{1-\alpha/2,n-2}\mathrm{SE}(\hat\beta_1)\)
 <p>Thus the 95% CI for \(\beta_0\) is \(\hat\beta_0\pm t_{0.975,\,n-2}\,\mathrm{SE}(\hat\beta_0)\). ∎ This section gives \(\beta_1\in[0.235,0.287]\) and \(\beta_0\in[241.305,429.559]\). The next section checks the same two intervals with more decimal places.</p>
 
 <!-- ================= 5.2 p.37-38 ================= -->
-<h3>05.2 The printed intervals and the question <span class="tag">Slides p.37–38</span></h3>
+<h3 id="u0305-2"><span class="sn">05.2</span>The printed intervals and the question <span class="tag">Slides p.37–38</span></h3>
 
 <p>This section checks the two intervals that Slides p.37 prints. Then it states the question on Slides p.38: what does "95%" mean?</p>
 
@@ -2343,7 +2336,7 @@ Can write a CI as \(\hat\beta_1\pm t_{1-\alpha/2,n-2}\mathrm{SE}(\hat\beta_1)\)
 <p>Slides p.38 asks if [0.235, 0.287] contains \(\beta_1\) with probability 95%. The answer on the slide is "No!". The next section gives the correct meaning of 95%.</p>
 
 <!-- ================= 5.3 p.39 ================= -->
-<h3>05.3 Interpretation of the confidence interval <span class="tag">Slides p.39</span></h3>
+<h3 id="u0305-3"><span class="sn">05.3</span>Interpretation of the confidence interval <span class="tag">Slides p.39</span></h3>
 
 <p>This section shows what "95%" describes. The answer: it describes the <b>method</b> that makes the interval. It does not describe one interval that we already calculated.</p>
 
@@ -2457,7 +2450,7 @@ If we were to draw samples repeatedly and construct intervals in the same way, a
 <p>Line 4 is a property of the method before we take the sample. Line 5 is one result of the method. ∎ Thus 95% is the success rate of the method. The parameter \(\beta_1\) is fixed, and the interval is random. The next unit uses the same t statistic for hypothesis tests.</p>
 
 <!-- ================= Practice ================= -->
-<h3>05.4 Practice <span class="tag">Added</span></h3>
+<h3 id="u0305-4"><span class="sn">05.4</span>Practice <span class="tag">Added</span></h3>
 <p>The three questions use the brainhead data. Given: \(n=236\), \(\hat\beta_0=335.4323150\), \(\hat\beta_1=0.2608207\), \(\mathrm{SE}(\hat\beta_1)=0.01306914\), \(\mathrm{SE}(\hat\beta_0)=47.77644\).</p>
 
 <p><b>Q1.</b> Calculate a 90% confidence interval for \(\beta_1\). Use \(t_{0.95,\,234}=1.651391\).</p>
@@ -2490,7 +2483,7 @@ If we were to draw samples repeatedly and construct intervals in the same way, a
 </section>
 
 <section id="u0306">
-<h2>06 · Hypothesis tests for \(\beta_1\): p-value, coefficient table, and one-sided tests</h2>
+<h2><span class="un">Unit 06</span>Hypothesis tests for \(\beta_1\): p-value, coefficient table, and one-sided tests</h2>
 
 <p>This unit shows how to use data to test a claim that \(\beta_1\) is equal to a given number. The tools are a test statistic and a p-value.</p>
 
@@ -2513,7 +2506,7 @@ If we were to draw samples repeatedly and construct intervals in the same way, a
 <p>With these results, the next section makes a test.</p>
 
 <!-- ============ 1. setup ============ -->
-<h3>06.1 Hypothesis test setup and test statistic <span class="tag">Slides p.40–41</span></h3>
+<h3 id="u0306-1"><span class="sn">06.1</span>Hypothesis test setup and test statistic <span class="tag">Slides p.40–41</span></h3>
 <p>This section writes the two claims to test. Then it finds a quantity with a fully known distribution when the null hypothesis is true.</p>
 <p>Slides p.40 is the section page "Hypothesis Tests for \(\beta_1\)". It has no formulas.</p>
 
@@ -2596,7 +2589,7 @@ Want to test a null hypothesis \(H_0:\beta_1=\theta_0\) vs. some alternative hyp
 <p>∎ Under \(H_0\), the distribution of the test statistic has no unknown parameter. The next section uses this distribution to calculate a probability.</p>
 
 <!-- ============ 2. p-value ============ -->
-<h3>06.2 The p-value <span class="tag">Slides p.42</span></h3>
+<h3 id="u0306-2"><span class="sn">06.2</span>The p-value <span class="tag">Slides p.42</span></h3>
 <p>This section changes the observed test statistic into a probability, the p-value. A smaller p-value shows less support for \(H_0\).</p>
 
 <div class="claim">p-value: the probability, under \(H_0\), that the test statistic is as extreme as the observed value or more extreme.</div>
@@ -2709,7 +2702,7 @@ Under \(H_0\): \(\frac{\hat\beta_1-\theta_0}{\hat\sigma/\sqrt{S_{xx}}}\sim t_{(n
 <p>∎ Lines 2 and 3 also give \(P(|T|\ge|t|)=2P(T\le-|t|)\). This section gives the formula for the p-value. The next section uses it to make a decision.</p>
 
 <!-- ============ 3. example ============ -->
-<h3>06.3 Example: test \(H_0:\beta_1=0\) <span class="tag">Slides p.43–44</span></h3>
+<h3 id="u0306-3"><span class="sn">06.3</span>Example: test \(H_0:\beta_1=0\) <span class="tag">Slides p.43–44</span></h3>
 <p>This section uses the two previous sections together. It finds the p-value for the brainhead data and makes a decision at the 5% level.</p>
 
 <div class="claim">Significance level \(\alpha\): a limit that we set before the test. When the p-value is less than \(\alpha\), we reject \(H_0\). This course uses \(\alpha=0.05\).</div>
@@ -2757,7 +2750,7 @@ The pval &lt; 0.05. Hence we reject the null hypothesis at the 5% level.
 <p>This section gives the brainhead result: we reject \(H_0:\beta_1=0\). ▲ The next section shows a table that gives the same numbers for each coefficient.</p>
 
 <!-- ============ 4. coefficient table ============ -->
-<h3>06.4 Read the coefficient table <span class="tag">Slides p.45</span></h3>
+<h3 id="u0306-4"><span class="sn">06.4</span>Read the coefficient table <span class="tag">Slides p.45</span></h3>
 <p>This section reads the coefficient table on Slides p.45. Each row of the table is a test of \(H_0:\text{coefficient}=0\).</p>
 
 <p><b>What</b> <span class="tag">Slides p.45</span></p>
@@ -2812,7 +2805,7 @@ Intercept row: estimate 335.43231, standard error 47.77644, t value 7.021, p-val
 <p>This example shows that both rows reject their \(H_0:\text{coefficient}=0\) at the 5% level. ▲ The next section shows how to interpret a p-value in words.</p>
 
 <!-- ============ 5. interpreting ============ -->
-<h3>06.5 Interpret the p-value <span class="tag">Slides p.46–47</span></h3>
+<h3 id="u0306-5"><span class="sn">06.5</span>Interpret the p-value <span class="tag">Slides p.46–47</span></h3>
 <p>This section gives the correct interpretation of a p-value. Then it defines the Type-I error rate.</p>
 
 <div class="claim">Type-I error: \(H_0\) is true, but the test rejects \(H_0\).</div>
@@ -2886,7 +2879,7 @@ Does this mean pval \(=P(\beta_1=0)\)? No! Instead, it means that under the null
 <p>∎ Thus the limit 5% gives a Type-I error rate of 5%. All tests so far are two-sided. The next section gives one-sided tests.</p>
 
 <!-- ============ 6. one-sided ============ -->
-<h3>06.6 One-sided tests <span class="tag">Slides p.48–49</span></h3>
+<h3 id="u0306-6"><span class="sn">06.6</span>One-sided tests <span class="tag">Slides p.48–49</span></h3>
 <p>This section uses an alternative hypothesis in one direction only. The test statistic does not change. The p-value uses only one tail.</p>
 
 <div class="claim">Two-sided alternative: \(H_1:\beta_1\ne\theta_0\). Evidence for \(\beta_1>\theta_0\) and evidence for \(\beta_1&lt;\theta_0\) both count against \(H_0\).</div>
@@ -2987,7 +2980,7 @@ Above we conducted a hypothesis test of the null \(H_0:\beta_1=\theta_0\) vs the
 <p>∎ When \(t>0\), the symmetry in Section 06.2 gives \(P(T\ge t)=\tfrac12P(|T|\ge|t|)\). This section gives the one-sided p-value: the area of the right tail.</p>
 
 <!-- ============ Exercises ============ -->
-<h3>06.7 Practice <span class="tag">Added</span></h3>
+<h3 id="u0306-7"><span class="sn">06.7</span>Practice <span class="tag">Added</span></h3>
 <p>These three questions check this unit: a two-sided test with nonzero \(\theta_0\), a one-sided test, and the coefficient table. All numbers come from the brainhead data.</p>
 
 <p><b>Q1.</b> For the brainhead data, \(\hat\beta_1=0.2608207\), \(\hat\sigma/\sqrt{S_{xx}}=0.01306914\), and \(n=236\). Test \(H_0:\beta_1=0.25\) vs. \(H_1:\beta_1\ne0.25\) at the 5% level. Give the test statistic, the p-value, and the result.</p>
@@ -3014,7 +3007,8 @@ Above we conducted a hypothesis test of the null \(H_0:\beta_1=\theta_0\) vs the
 
 <p>This unit gives the full test procedure for \(\beta_1\). Calculate \(t=\frac{\hat\beta_1-\theta_0}{\hat\sigma/\sqrt{S_{xx}}}\). Find the two-tail or one-tail area under \(t_{(n-2)}\) as the p-value. Then compare it with 5%. The coefficient table gives the same result for each coefficient when \(\theta_0=0\).</p>
 </section>
-</main>
-</div>
+</main><nav class="pager2" aria-label="Lectures"><a class="prev" href="L02.html"><span>Previous: Lecture 2</span>Simple Linear Regression: Estimation</a><a class="next" href="L04.html"><span>Next: Lecture 4</span>Simple Linear Regression: Prediction</a></nav>
+</article></div>
+<script src="site.js"></script>
 </body>
 </html>

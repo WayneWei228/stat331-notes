@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>STAT 331 · Lecture 5 · Random Vectors and Multivariate Normal</title>
+<title>Lecture 5: Random Vectors and Multivariate Normal | STAT 331</title>
 <script>
 window.MathJax = {
   tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']], processEscapes: false },
@@ -273,23 +273,16 @@ hr.soft{border:none;border-top:1px solid var(--color-border);margin:36px 0;}
 .tag{display:inline-block;font-size:12px;font-weight:600;color:var(--color-text-secondary);background:var(--color-surface);border:1px solid var(--color-border);border-radius:6px;padding:0 7px;margin-left:6px;vertical-align:2px;}
 .kicker{font-size:12px;font-weight:600;letter-spacing:.05em;color:var(--color-text-secondary);text-transform:uppercase;}
 </style>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400..700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400&display=swap"><link rel="stylesheet" href="site.css">
 </head>
-<body>
-<nav class="topbar"><div class="inner"><a href="./">STAT 331 index</a><a href="L04.html">L04</a><a href="L06.html">L06</a><span class="spacer"></span><span class="dim">STAT 331 · Lecture 5 · Random Vectors and Multivariate Normal</span></div></nav>
-<div class="container">
-<header class="page"><h1>Lecture 5: Random Vectors and Multivariate Normal</h1>
-<p class="sub">This lecture writes regression in matrix form, reviews matrix rules, and defines random vectors and the multivariate normal distribution (Lecture 5 · p.1–48).</p></header>
-<div class="toccard"><div class="t">Contents</div>
-<a href="#u0501">01 · Recap and multiple linear regression in matrix form</a>
-<a href="#u0502">02 · Matrix review: transpose, inverse, trace</a>
-<a href="#u0503">03 · Matrix calculus</a>
-<a href="#u0504">04 · Random vectors: mean vector, covariance matrix, and linear transformations</a>
-<a href="#u0505">05 · Multivariate normal distribution: definition and properties</a>
-<a href="#u0506">06 · Exercises on the MVN, MLR as an MVN model, and practice</a>
-</div>
-<main>
+<body class="site">
+<a class="skip" href="#content">Skip to content</a>
+<div class="mbar"><button id="menu" aria-controls="side" aria-expanded="false">Contents</button><span class="t">Lecture 5: Random Vectors and Multivariate Normal</span></div>
+<aside class="side" id="side" aria-label="Course navigation"><a class="brand" href="./"><b>STAT 331</b><span>Applied Linear Models</span></a><nav><ol class="lecs"><li><a href="L01.html"><span class="n">1</span><span>Introduction and Motivation</span></a></li><li><a href="L02.html"><span class="n">2</span><span>Simple Linear Regression: Estimation</span></a></li><li><a href="L03.html"><span class="n">3</span><span>Simple Linear Regression: Inference</span></a></li><li><a href="L04.html"><span class="n">4</span><span>Simple Linear Regression: Prediction</span></a></li><li class="cur"><a href="L05.html" aria-current="page"><span class="n">5</span><span>Random Vectors and Multivariate Normal</span></a><ol class="units"><li><a href="#u0501" data-t="u0501"><span class="n">01</span><span>Recap and multiple linear regression in matrix form</span></a><ol class="subs"><li><a href="#u0501-1" data-t="u0501-1">01.1 Title page and section page</a></li><li><a href="#u0501-2" data-t="u0501-2">01.2 Recap: the simple linear regression model</a></li><li><a href="#u0501-3" data-t="u0501-3">01.3 Recap: estimating the mean response</a></li><li><a href="#u0501-4" data-t="u0501-4">01.4 Recap: predicting a new response</a></li><li><a href="#u0501-5" data-t="u0501-5">01.5 From simple to multiple linear regression</a></li><li><a href="#u0501-6" data-t="u0501-6">01.6 Matrix form of multiple linear regression</a></li><li><a href="#u0501-7" data-t="u0501-7">01.7 Practice</a></li></ol></li><li><a href="#u0502" data-t="u0502"><span class="n">02</span><span>Matrix review: transpose, inverse, trace</span></a><ol class="subs"><li><a href="#u0502-1" data-t="u0502-1">02.1 Transpose</a></li><li><a href="#u0502-2" data-t="u0502-2">02.2 Symmetric matrix</a></li><li><a href="#u0502-3" data-t="u0502-3">02.3 Transpose of a product</a></li><li><a href="#u0502-4" data-t="u0502-4">02.4 Inverse</a></li><li><a href="#u0502-5" data-t="u0502-5">02.5 Inverse of a product</a></li><li><a href="#u0502-6" data-t="u0502-6">02.6 Inverse of a transpose</a></li><li><a href="#u0502-7" data-t="u0502-7">02.7 Definition of the trace</a></li><li><a href="#u0502-8" data-t="u0502-8">02.8 Trace of a sum</a></li><li><a href="#u0502-9" data-t="u0502-9">02.9 Trace of a scalar multiple</a></li><li><a href="#u0502-10" data-t="u0502-10">02.10 Trace of a transpose</a></li><li><a href="#u0502-11" data-t="u0502-11">02.11 Trace of a product in either order</a></li><li><a href="#u0502-12" data-t="u0502-12">02.12 Practice</a></li></ol></li><li><a href="#u0503" data-t="u0503"><span class="n">03</span><span>Matrix calculus</span></a><ol class="subs"><li><a href="#u0503-1" data-t="u0503-1">03.1 The derivative with respect to a vector</a></li><li><a href="#u0503-2" data-t="u0503-2">03.2 Linear function: \(\partial(\mathbf{a}^T\mathbf{y})/\partial\mathbf{y}=\mathbf{a}\)</a></li><li><a href="#u0503-3" data-t="u0503-3">03.3 Quadratic form: \(\partial(\mathbf{y}^T\mathbf{A}\mathbf{y})/\partial\mathbf{y}=\mathbf{A}\mathbf{y}+\mathbf{A}^T\mathbf{y}\)</a></li><li><a href="#u0503-4" data-t="u0503-4">03.4 Practice</a></li></ol></li><li><a href="#u0504" data-t="u0504"><span class="n">04</span><span>Random vectors: mean vector, covariance matrix, and linear transformations</span></a><ol class="subs"><li><a href="#u0504-1" data-t="u0504-1">04.1 Random vector and mean vector</a></li><li><a href="#u0504-2" data-t="u0504-2">04.2 Covariance matrix</a></li><li><a href="#u0504-3" data-t="u0504-3">04.3 \(\mathbf{V}\) is symmetric</a></li><li><a href="#u0504-4" data-t="u0504-4">04.4 \(\mathbf{V}\) is positive semi-definite</a></li><li><a href="#u0504-5" data-t="u0504-5">04.5 Linear combinations and properties of random vectors</a></li><li><a href="#u0504-6" data-t="u0504-6">04.6 Linear transformations \(\mathbf{z}=\mathbf{A}\mathbf{y}\)</a></li><li><a href="#u0504-7" data-t="u0504-7">04.7 Practice</a></li></ol></li><li><a href="#u0505" data-t="u0505"><span class="n">05</span><span>Multivariate normal distribution: definition and properties</span></a><ol class="subs"><li><a href="#u0505-1" data-t="u0505-1">05.1 Definition: construction from a standard normal vector</a></li><li><a href="#u0505-2" data-t="u0505-2">05.2 Density function</a></li><li><a href="#u0505-3" data-t="u0505-3">05.3 Property 1: linearity</a></li><li><a href="#u0505-4" data-t="u0505-4">05.4 Property 2: marginal distribution</a></li><li><a href="#u0505-5" data-t="u0505-5">05.5 Property 3: conditional distribution</a></li><li><a href="#u0505-6" data-t="u0505-6">05.6 Property 4: independence</a></li><li><a href="#u0505-7" data-t="u0505-7">05.7 Practice</a></li></ol></li><li><a href="#u0506" data-t="u0506"><span class="n">06</span><span>Exercises on the MVN, MLR as an MVN model, and practice</span></a><ol class="subs"><li><a href="#u0506-1" data-t="u0506-1">06.1 Exercise: \(X_2\) has a normal distribution</a></li><li><a href="#u0506-2" data-t="u0506-2">06.2 Exercise continued: \(Y=X_1+X_2\) is not normal</a></li><li><a href="#u0506-3" data-t="u0506-3">06.3 Multiple linear regression as an MVN model</a></li><li><a href="#u0506-4" data-t="u0506-4">06.4 Practice Q1: mean vectors and covariance matrices</a></li><li><a href="#u0506-5" data-t="u0506-5">06.5 Practice Q2: the cross-covariance matrix</a></li><li><a href="#u0506-6" data-t="u0506-6">06.6 Practice</a></li></ol></li></ol></li><li><a href="L06.html"><span class="n">6</span><span>Multiple Linear Regression: Intro and Estimation</span></a></li><li><a href="L07.html"><span class="n">7</span><span>Multiple Linear Regression: Estimation and Inference I</span></a></li></ol></nav><div class="foot"><a href="stat331-all.md">All notes as one text file</a><a href="https://github.com/WayneWei228/stat331-notes">Source on GitHub</a></div></aside><div class="scrim"></div>
+<div class="pagewrap" id="content"><article class="doc">
+<header class="page"><p class="lnum">Lecture 5</p><h1>Random Vectors and Multivariate Normal</h1><p class="sub">This lecture writes regression in matrix form, reviews matrix rules, and defines random vectors and the multivariate normal distribution (Lecture 5 · p.1–48).</p></header><main>
 <section id="u0501">
-<h2>01 · Recap and multiple linear regression in matrix form</h2>
+<h2><span class="un">Unit 01</span>Recap and multiple linear regression in matrix form</h2>
 
 <p>This unit first repeats three results from Lecture 4. They are the simple linear regression model, the CI for the mean response, and the prediction interval for a new response. Then it extends the model to more than one explanatory variable. Last, it stacks the \(n\) equations into one matrix equation \(\mathbf{y}=\mathbf{X}\boldsymbol\beta+\boldsymbol\epsilon\). The rest of Lecture 5 gives the rules for this matrix equation.</p>
 
@@ -302,14 +295,14 @@ hr.soft{border:none;border-top:1px solid var(--color-border);margin:36px 0;}
 <p>Step 5: Stack the \(n\) equations into matrix form. Write the first 3 rows of the brainhead data in this form (Slides p.8).</p>
 </div>
 
-<h3>01.1 Title page and section page <span class="tag">Slides p.1–2</span></h3>
+<h3 id="u0501-1"><span class="sn">01.1</span>Title page and section page <span class="tag">Slides p.1–2</span></h3>
 <p>The first two pages give only the name of the lecture and the name of the first part.</p>
 <p class="claim">Page 1 is the title page: "Lecture 5: Random Vectors &amp; Multivariate normal".</p>
 <p class="claim">Page 2 is a section page with the title "Recap". Pages 3–5 are in this part.</p>
 <p>These two pages have no new content. The unit starts with the model on page 3.</p>
 
 <!-- ============ 1. SLR recap ============ -->
-<h3>01.2 Recap: the simple linear regression model <span class="tag">Slides p.3</span></h3>
+<h3 id="u0501-2"><span class="sn">01.2</span>Recap: the simple linear regression model <span class="tag">Slides p.3</span></h3>
 <p>This section repeats the simple linear regression model, because the model on page 7 extends it.</p>
 
 <p><b>What</b> <span class="tag">Slides p.3</span></p>
@@ -648,7 +641,7 @@ Or:
 <p>Thus the two forms give the same distribution. Page 7 shows the same result for the model with more variables.</p>
 
 <!-- ============ 2. mean response recap ============ -->
-<h3>01.3 Recap: estimating the mean response <span class="tag">Slides p.4</span></h3>
+<h3 id="u0501-3"><span class="sn">01.3</span>Recap: estimating the mean response <span class="tag">Slides p.4</span></h3>
 <p>This section repeats the estimate and the confidence interval for the mean of \(y\) at a given value \(x_0\).</p>
 
 <p><b>What</b> <span class="tag">Slides p.4</span></p>
@@ -728,7 +721,7 @@ Or:
 <p>Thus \(\hat\mu_0\) starts at \(\bar y\). It moves along the slope by the distance from \(\bar x\) to \(x_0\). Section 01.4 uses the same point estimate for a new response.</p>
 
 <!-- ============ 3. prediction recap ============ -->
-<h3>01.4 Recap: predicting a new response <span class="tag">Slides p.5</span></h3>
+<h3 id="u0501-4"><span class="sn">01.4</span>Recap: predicting a new response <span class="tag">Slides p.5</span></h3>
 <p>This section repeats the prediction interval for the \(y\) value of one new person. The only change from Section 01.3 is an extra 1 in the square root.</p>
 
 <p><b>What</b> <span class="tag">Slides p.5</span></p>
@@ -800,7 +793,7 @@ Or:
 <p>This ends the recap. Simple linear regression has one explanatory variable, and each formula uses sums. Section 01.5 starts the model with more explanatory variables.</p>
 
 <!-- ============ 4. SLR vs MLR ============ -->
-<h3>01.5 From simple to multiple linear regression <span class="tag">Slides p.6–7</span></h3>
+<h3 id="u0501-5"><span class="sn">01.5</span>From simple to multiple linear regression <span class="tag">Slides p.6–7</span></h3>
 <p>This section extends the model from one explanatory variable to \(p\) explanatory variables.</p>
 <p class="claim"><span class="tag">Slides p.6</span> Page 6 repeats the title page. It shows the start of the new material.</p>
 
@@ -866,7 +859,7 @@ Multiple Linear Regression:
 <p>Thus multiple linear regression is a set of \(n\) independent normal equations. Section 01.6 puts these \(n\) equations into one matrix equation.</p>
 
 <!-- ============ 5. matrix form ============ -->
-<h3>01.6 Matrix form of multiple linear regression <span class="tag">Slides p.8</span></h3>
+<h3 id="u0501-6"><span class="sn">01.6</span>Matrix form of multiple linear regression <span class="tag">Slides p.8</span></h3>
 <p>This section stacks the \(n\) equations. After this step, the full model is one line: \(\mathbf{y}=\mathbf{X}\boldsymbol\beta+\boldsymbol\epsilon\).</p>
 
 <p><b>What</b> <span class="tag">Slides p.8</span></p>
@@ -988,7 +981,7 @@ We can write this:
 <p>This unit repeated the model, the CI and the PI of simple linear regression. It extended the model to \(p\) explanatory variables and wrote it as \(\mathbf{y}=\mathbf{X}\boldsymbol\beta+\boldsymbol\epsilon\). Here \(\mathbf{X}\) is \(n\times(p+1)\), and column 1 has only 1s. The next unit reviews the matrix operations for this equation: transpose, inverse and trace.</p>
 
 <!-- ============ Practice ============ -->
-<h3>01.7 Practice <span class="tag">Added</span></h3>
+<h3 id="u0501-7"><span class="sn">01.7</span>Practice <span class="tag">Added</span></h3>
 <p>These three questions practice the two skills of this unit: write \(\mathbf{y}\) and \(\mathbf{X}\), and check the dimensions.</p>
 
 <p><b>Q1.</b> Rows 4 to 6 of brainhead.csv have head sizes 3777, 4177, 3585 and brain weights 1282, 1590, 1300. Use only these three observations and the model \(y_i=\beta_0+\beta_1x_{i1}+\epsilon_i\). Write \(\mathbf{y}\), \(\mathbf{X}\), \(\boldsymbol\beta\) and \(\boldsymbol\epsilon\). Give the dimension of each.</p>
@@ -1020,7 +1013,7 @@ We can write this:
 </section>
 
 <section id="u0502">
-<h2>02 · Matrix review: transpose, inverse, trace</h2>
+<h2><span class="un">Unit 02</span>Matrix review: transpose, inverse, trace</h2>
 
 <p>This unit reviews the 11 matrix rules on Slides p.9–19: transpose, symmetric matrix, inverse, and trace. Later units use these rules to write the regression model and its covariance matrices in matrix form.</p>
 
@@ -1049,7 +1042,7 @@ We can write this:
 </div>
 
 <!-- ================= 2.1 transpose ================= -->
-<h3>02.1 Transpose <span class="tag">Slides p.9</span></h3>
+<h3 id="u0502-1"><span class="sn">02.1</span>Transpose <span class="tag">Slides p.9</span></h3>
 <p>This subsection defines the transpose. The transpose changes the rows of a matrix into columns.</p>
 
 <p><b>What</b> <span class="tag">Slides p.9</span></p>
@@ -1114,7 +1107,7 @@ We can write this:
 <p>The transpose changes the order of the indices. All later transpose rules follow from this definition at the entry level.</p>
 
 <!-- ================= 2.2 symmetric ================= -->
-<h3>02.2 Symmetric matrix <span class="tag">Slides p.10</span></h3>
+<h3 id="u0502-2"><span class="sn">02.2</span>Symmetric matrix <span class="tag">Slides p.10</span></h3>
 <p>This subsection defines a symmetric matrix and uses \(\mathbf{X}^T\mathbf{X}\) as the example. In regression, \(\mathbf{X}^T\mathbf{X}\) is always symmetric.</p>
 
 <p><b>What</b> <span class="tag">Slides p.10</span></p>
@@ -1164,7 +1157,7 @@ We can write this:
 <p>A symmetric matrix is a square matrix equal to its transpose. \(\mathbf{X}^T\mathbf{X}\) is the most common example in this course.</p>
 
 <!-- ================= 2.3 (AB)^T ================= -->
-<h3>02.3 Transpose of a product <span class="tag">Slides p.11</span></h3>
+<h3 id="u0502-3"><span class="sn">02.3</span>Transpose of a product <span class="tag">Slides p.11</span></h3>
 <p>This subsection gives the rule for the transpose of a product. The rule reverses the order of the two factors.</p>
 
 <p><b>What</b> <span class="tag">Slides p.11</span></p>
@@ -1247,7 +1240,7 @@ We can write this:
 <p>The transpose of a product reverses the order of the factors. This rule shows that \(\mathbf{X}^T\mathbf{X}\) is always symmetric.</p>
 
 <!-- ================= 2.4 inverse ================= -->
-<h3>02.4 Inverse <span class="tag">Slides p.12</span></h3>
+<h3 id="u0502-4"><span class="sn">02.4</span>Inverse <span class="tag">Slides p.12</span></h3>
 <p>This subsection defines the identity matrix, a nonsingular matrix, and the inverse. The inverse does for a matrix what the reciprocal \(1/b\) does for a number.</p>
 
 <p><b>What</b> <span class="tag">Slides p.12</span></p>
@@ -1325,7 +1318,7 @@ If square matrix (i.e. \(n\times n\)) \(\mathbf{B}\) is nonsingular, then \(\mat
 <p>One condition defines and tests the inverse: the product must equal \(\mathbf{I}\). Sections 02.5 and 02.6 use this test.</p>
 
 <!-- ================= 2.5 (AB)^-1 ================= -->
-<h3>02.5 Inverse of a product <span class="tag">Slides p.13</span></h3>
+<h3 id="u0502-5"><span class="sn">02.5</span>Inverse of a product <span class="tag">Slides p.13</span></h3>
 <p>This subsection gives the rule for the inverse of a product. As with the transpose, the order of the factors reverses.</p>
 
 <p><b>What</b> <span class="tag">Slides p.13</span></p>
@@ -1391,7 +1384,7 @@ If square matrix (i.e. \(n\times n\)) \(\mathbf{B}\) is nonsingular, then \(\mat
 <p>The inverse of a product reverses the order of the factors, as the transpose does. The reverse order puts \(\mathbf{B}\) next to \(\mathbf{B}^{-1}\), so they give \(\mathbf{I}\) first.</p>
 
 <!-- ================= 2.6 (A^T)^-1 ================= -->
-<h3>02.6 Inverse of a transpose <span class="tag">Slides p.14</span></h3>
+<h3 id="u0502-6"><span class="sn">02.6</span>Inverse of a transpose <span class="tag">Slides p.14</span></h3>
 <p>This subsection shows that the order of the two operations "transpose" and "inverse" does not change the result.</p>
 
 <p><b>What</b> <span class="tag">Slides p.14</span></p>
@@ -1450,7 +1443,7 @@ If square matrix (i.e. \(n\times n\)) \(\mathbf{B}\) is nonsingular, then \(\mat
 <p>The transpose and the inverse can be done in either order. A result follows: the inverse of a symmetric nonsingular matrix, for example \(\mathbf{X}^T\mathbf{X}\), is also symmetric (Practice Q3).</p>
 
 <!-- ================= 2.7 trace ================= -->
-<h3>02.7 Definition of the trace <span class="tag">Slides p.15</span></h3>
+<h3 id="u0502-7"><span class="sn">02.7</span>Definition of the trace <span class="tag">Slides p.15</span></h3>
 <p>This subsection defines the trace. The trace is the sum of the diagonal entries of a square matrix.</p>
 
 <p><b>What</b> <span class="tag">Slides p.15</span></p>
@@ -1489,7 +1482,7 @@ If square matrix (i.e. \(n\times n\)) \(\mathbf{B}\) is nonsingular, then \(\mat
 <p>The trace is the sum of the diagonal. Sections 02.8 to 02.11 give four rules that use this sum.</p>
 
 <!-- ================= 2.8 tr(A+B) ================= -->
-<h3>02.8 Trace of a sum <span class="tag">Slides p.16</span></h3>
+<h3 id="u0502-8"><span class="sn">02.8</span>Trace of a sum <span class="tag">Slides p.16</span></h3>
 <p>This subsection shows that the trace of a sum equals the sum of the traces.</p>
 
 <p><b>What</b> <span class="tag">Slides p.16</span></p>
@@ -1542,7 +1535,7 @@ If square matrix (i.e. \(n\times n\)) \(\mathbf{B}\) is nonsingular, then \(\mat
 <p>The trace splits over a sum, term by term.</p>
 
 <!-- ================= 2.9 tr(cA) ================= -->
-<h3>02.9 Trace of a scalar multiple <span class="tag">Slides p.17</span></h3>
+<h3 id="u0502-9"><span class="sn">02.9</span>Trace of a scalar multiple <span class="tag">Slides p.17</span></h3>
 <p>This subsection shows that a constant can move outside the trace.</p>
 
 <p><b>What</b> <span class="tag">Slides p.17</span></p>
@@ -1590,7 +1583,7 @@ If square matrix (i.e. \(n\times n\)) \(\mathbf{B}\) is nonsingular, then \(\mat
 <p>The trace splits over sums and scalar multiples. Together, 02.8 and 02.9 say that the trace is linear.</p>
 
 <!-- ================= 2.10 tr(A^T) ================= -->
-<h3>02.10 Trace of a transpose <span class="tag">Slides p.18</span></h3>
+<h3 id="u0502-10"><span class="sn">02.10</span>Trace of a transpose <span class="tag">Slides p.18</span></h3>
 <p>This subsection shows that the transpose does not change the trace.</p>
 
 <p><b>What</b> <span class="tag">Slides p.18</span></p>
@@ -1628,7 +1621,7 @@ If square matrix (i.e. \(n\times n\)) \(\mathbf{B}\) is nonsingular, then \(\mat
 <p>Inside a trace, you can remove or add a transpose.</p>
 
 <!-- ================= 2.11 tr(AB)=tr(BA) ================= -->
-<h3>02.11 Trace of a product in either order <span class="tag">Slides p.19</span></h3>
+<h3 id="u0502-11"><span class="sn">02.11</span>Trace of a product in either order <span class="tag">Slides p.19</span></h3>
 <p>This subsection shows that \(\mathbf{AB}\) and \(\mathbf{BA}\) have the same trace. This is true when the two products are different, and also when their dimensions are different.</p>
 
 <p><b>What</b> <span class="tag">Slides p.19</span></p>
@@ -1748,7 +1741,7 @@ If square matrix (i.e. \(n\times n\)) \(\mathbf{B}\) is nonsingular, then \(\mat
 <p>Inside a trace, the two factors of a product can change places. Lecture 7 uses this rule.</p>
 
 <!-- ================= practice ================= -->
-<h3>02.12 Practice <span class="tag">Added</span></h3>
+<h3 id="u0502-12"><span class="sn">02.12</span>Practice <span class="tag">Added</span></h3>
 <p>The three questions below use the style of the course exams. They cover the transpose, the inverse, and the trace.</p>
 
 <p><b>Q1.</b> Let \(\mathbf{X}\) be any \(n\times(p+1)\) matrix. Using only the rules on Lecture 5 p.9–19, show that \(\mathbf{X}^T\mathbf{X}\) is symmetric, and show that \(tr(\mathbf{X}^T\mathbf{X})=tr(\mathbf{XX}^T)\). What are the dimensions of \(\mathbf{X}^T\mathbf{X}\) and \(\mathbf{XX}^T\)?</p>
@@ -1788,7 +1781,7 @@ If square matrix (i.e. \(n\times n\)) \(\mathbf{B}\) is nonsingular, then \(\mat
 </section>
 
 <section id="u0503">
-<h2>03 · Matrix calculus</h2>
+<h2><span class="un">Unit 03</span>Matrix calculus</h2>
 
 <p>This unit shows how to take the derivative of a function with respect to a vector.</p>
 
@@ -1810,7 +1803,7 @@ If square matrix (i.e. \(n\times n\)) \(\mathbf{B}\) is nonsingular, then \(\mat
 <p>With these symbols, the next section defines the derivative with respect to a vector.</p>
 
 <!-- ============ 03.1 Definition p.20 ============ -->
-<h3>03.1 The derivative with respect to a vector <span class="tag">Slides p.20</span></h3>
+<h3 id="u0503-1"><span class="sn">03.1</span>The derivative with respect to a vector <span class="tag">Slides p.20</span></h3>
 <p>This section gives the meaning of the symbol \(\frac{\partial z}{\partial \mathbf{y}}\). The two rules in 03.2 and 03.3 use this definition.</p>
 
 <p><b>What</b> <span class="tag">Slides p.20</span></p>
@@ -1853,7 +1846,7 @@ Let \(z=f(y_1,\dots,y_k)\) and \(\mathbf{y}=\left[\begin{array}{c}y_1\\ \vdots\\
 <p>The definition changes one vector derivative into \(k\) usual derivatives. The next two sections give rules for two common types of function.</p>
 
 <!-- ============ 03.2 Linear p.20 ============ -->
-<h3>03.2 Linear function: \(\partial(\mathbf{a}^T\mathbf{y})/\partial\mathbf{y}=\mathbf{a}\) <span class="tag">Slides p.20</span></h3>
+<h3 id="u0503-2"><span class="sn">03.2</span>Linear function: \(\partial(\mathbf{a}^T\mathbf{y})/\partial\mathbf{y}=\mathbf{a}\) <span class="tag">Slides p.20</span></h3>
 <p>This section gives the rule for a weighted sum of the \(y_i\). The derivative is the vector of weights.</p>
 
 <p><b>What</b> <span class="tag">Slides p.20</span></p>
@@ -1942,7 +1935,7 @@ If \(z=\mathbf{a}^T\mathbf{y}\), where \(\mathbf{a}=(a_1,\dots,a_k)^T\) is a vec
 <p>The gradient of a linear function is its coefficient vector \(\mathbf{a}\). The next section uses terms of power 2.</p>
 
 <!-- ============ 03.3 Quadratic form p.21 ============ -->
-<h3>03.3 Quadratic form: \(\partial(\mathbf{y}^T\mathbf{A}\mathbf{y})/\partial\mathbf{y}=\mathbf{A}\mathbf{y}+\mathbf{A}^T\mathbf{y}\) <span class="tag">Slides p.21</span></h3>
+<h3 id="u0503-3"><span class="sn">03.3</span>Quadratic form: \(\partial(\mathbf{y}^T\mathbf{A}\mathbf{y})/\partial\mathbf{y}=\mathbf{A}\mathbf{y}+\mathbf{A}^T\mathbf{y}\) <span class="tag">Slides p.21</span></h3>
 <p>This section gives the rule when \(z\) is a sum of terms \(y_iy_j\). It gives the general rule, then the shorter rule for a symmetric matrix.</p>
 
 <p><b>What</b> <span class="tag">Slides p.21</span></p>
@@ -2067,7 +2060,7 @@ and if \(\mathbf{A}\) is symmetric, then: \(\frac{\partial z}{\partial \mathbf{y
 </div>
 
 <!-- ============ Practice ============ -->
-<h3>03.4 Practice <span class="tag">Added</span></h3>
+<h3 id="u0503-4"><span class="sn">03.4</span>Practice <span class="tag">Added</span></h3>
 <p>These three questions practice the three rules. Each answer shows all arithmetic steps.</p>
 
 <p><b>Q1.</b> Let \(\mathbf{y}=(y_1,y_2,y_3)^T\), \(\mathbf{a}=(2,0,-1)^T\), and \(z=\mathbf{a}^T\mathbf{y}+\mathbf{y}^T\mathbf{y}\). Find \(\frac{\partial z}{\partial \mathbf{y}}\) and evaluate it at \(\mathbf{y}=(1,1,1)^T\).</p>
@@ -2101,7 +2094,7 @@ and if \(\mathbf{A}\) is symmetric, then: \(\frac{\partial z}{\partial \mathbf{y
 </section>
 
 <section id="u0504">
-<h2>04 · Random vectors: mean vector, covariance matrix, and linear transformations</h2>
+<h2><span class="un">Unit 04</span>Random vectors: mean vector, covariance matrix, and linear transformations</h2>
 
 <p>This unit extends the mean and the variance of one random variable to a column of random variables. The formulas of this unit give the mean and the variance of the regression estimator \(\hat{\boldsymbol\beta}\) in later units.</p>
 
@@ -2127,7 +2120,7 @@ and if \(\mathbf{A}\) is symmetric, then: \(\frac{\partial z}{\partial \mathbf{y
 </div>
 
 <!-- ============ 4.1 ============ -->
-<h3>04.1 Random vector and mean vector <span class="tag">Slides p.22</span></h3>
+<h3 id="u0504-1"><span class="sn">04.1</span>Random vector and mean vector <span class="tag">Slides p.22</span></h3>
 <p>This section defines a random vector and its mean. The mean vector is the column of the means of the entries, in the same order.</p>
 
 <p><b>What</b> <span class="tag">Slides p.22</span></p>
@@ -2426,7 +2419,7 @@ Let \(\mathbf{y}=(y_1,\dots,y_n)^T\) be a random vector. The mean of \(\mathbf{y
 <p>We now have the center \(\boldsymbol\mu\) of the random vector. The next section measures the spread around this center.</p>
 
 <!-- ============ 4.2 ============ -->
-<h3>04.2 Covariance matrix <span class="tag">Slides p.23</span></h3>
+<h3 id="u0504-2"><span class="sn">04.2</span>Covariance matrix <span class="tag">Slides p.23</span></h3>
 <p>This section defines the variance of a random vector. It is an \(n\times n\) matrix, not one number. The diagonal holds the variances, and the other entries hold the covariances.</p>
 
 <p><b>What</b> <span class="tag">Slides p.23</span></p>
@@ -2475,7 +2468,7 @@ The variance is
 <p>The covariance matrix \(\mathbf{V}\) holds all variances and covariances of \(\mathbf{y}\). The next two sections give two properties that every \(\mathbf{V}\) has.</p>
 
 <!-- ============ 4.3 ============ -->
-<h3>04.3 \(\mathbf{V}\) is symmetric <span class="tag">Slides p.24</span></h3>
+<h3 id="u0504-3"><span class="sn">04.3</span>\(\mathbf{V}\) is symmetric <span class="tag">Slides p.24</span></h3>
 <p>This section shows that \(\mathbf{V}\) has the same entries on the two sides of its main diagonal. Thus you calculate only one half of the entries off the diagonal.</p>
 
 <p><b>What</b> <span class="tag">Slides p.24</span></p>
@@ -2510,7 +2503,7 @@ The variance is
 <p>Every covariance matrix is symmetric. Section 04.6 uses this property to check the result \(\mathbf{A}\mathbf{V}\mathbf{A}^T\).</p>
 
 <!-- ============ 4.4 ============ -->
-<h3>04.4 \(\mathbf{V}\) is positive semi-definite <span class="tag">Slides p.25</span></h3>
+<h3 id="u0504-4"><span class="sn">04.4</span>\(\mathbf{V}\) is positive semi-definite <span class="tag">Slides p.25</span></h3>
 <p>This section shows that \(\mathbf{a}^T\mathbf{V}\mathbf{a}\) is never negative, for every constant vector \(\mathbf{a}\). The reason is that this number is a variance.</p>
 
 <p><b>What</b> <span class="tag">Slides p.25</span></p>
@@ -2554,7 +2547,7 @@ The variance is
 <p>Every covariance matrix is symmetric and positive semi-definite. The next section uses \(\boldsymbol\mu\) and \(\mathbf{V}\) to get the mean and the variance of new variables.</p>
 
 <!-- ============ 4.5 ============ -->
-<h3>04.5 Linear combinations and properties of random vectors <span class="tag">Slides p.26–29</span></h3>
+<h3 id="u0504-5"><span class="sn">04.5</span>Linear combinations and properties of random vectors <span class="tag">Slides p.26–29</span></h3>
 <p>This section gives the mean and the covariance of weighted sums of the \(y_i\). It writes the sum form as a matrix form, which needs only \(\boldsymbol\mu\) and \(\mathbf{V}\). Then it lists three properties of random vectors (p.27–29).</p>
 
 <p><b>What (1)</b> <span class="tag">Slides p.26</span></p>
@@ -2684,7 +2677,7 @@ The sum is \(-39124.128+10204.383+34014.61-14084.06=-8989.195\). This agrees wit
 <p>A linear combination \(\mathbf{a}^T\mathbf{y}+b\) has mean \(\mathbf{a}^TE[\mathbf{y}]+b\) and variance \(\mathbf{a}^TVar(\mathbf{y})\mathbf{a}\). The next section does \(k\) linear combinations at the same time.</p>
 
 <!-- ============ 4.6 ============ -->
-<h3>04.6 Linear transformations \(\mathbf{z}=\mathbf{A}\mathbf{y}\) <span class="tag">Slides p.30–35</span></h3>
+<h3 id="u0504-6"><span class="sn">04.6</span>Linear transformations \(\mathbf{z}=\mathbf{A}\mathbf{y}\) <span class="tag">Slides p.30–35</span></h3>
 <p>This section puts \(k\) linear combinations into one random vector \(\mathbf{z}=\mathbf{A}\mathbf{y}\). It gives the mean vector and the covariance matrix of \(\mathbf{z}\). Slides p.30–31 give the result, and p.32–35 give the two proofs.</p>
 
 <p><b>What</b> <span class="tag">Slides p.30–31</span></p>
@@ -2753,7 +2746,7 @@ We can equivalently write \(\mathbf{z}=\mathbf{A}\mathbf{y}\) for \([\mathbf{A}]
 <p>A linear transformation \(\mathbf{A}\mathbf{y}\) has mean \(\mathbf{A}E[\mathbf{y}]\) and variance \(\mathbf{A}Var(\mathbf{y})\mathbf{A}^T\). Later units write the estimator \(\hat{\boldsymbol\beta}\) as a constant matrix times \(\mathbf{y}\) and use these two formulas.</p>
 
 <!-- ============ practice ============ -->
-<h3>04.7 Practice <span class="tag">Added</span></h3>
+<h3 id="u0504-7"><span class="sn">04.7</span>Practice <span class="tag">Added</span></h3>
 <p>The three questions use the same \(\boldsymbol\mu\) and \(\mathbf{V}\) as the examples. They practice a linear combination, a linear transformation, and a proof.</p>
 <p>In all three questions, let \(\mathbf{y}=(y_1,y_2)^T\) with \(\boldsymbol\mu=E[\mathbf{y}]=(3637.864,\ 1284.263)^T\) and \(\mathbf{V}=var(\mathbf{y})=\left[\begin{array}{cc}130413.76&amp;34014.61\\34014.61&amp;14084.06\end{array}\right]\).</p>
 
@@ -2791,7 +2784,7 @@ We can equivalently write \(\mathbf{z}=\mathbf{A}\mathbf{y}\) for \([\mathbf{A}]
 </section>
 
 <section id="u0505">
-<h2>05 · Multivariate normal distribution: definition and properties</h2>
+<h2><span class="un">Unit 05</span>Multivariate normal distribution: definition and properties</h2>
 
 <p>This unit defines the multivariate normal distribution and gives its four properties. Later units write the error vector of the regression model \(\mathbf{y}=\mathbf{X}\boldsymbol\beta+\boldsymbol\epsilon\) as multivariate normal. Thus later units use these four properties to find the distributions of the estimators.</p>
 
@@ -2807,7 +2800,7 @@ We can equivalently write \(\mathbf{z}=\mathbf{A}\mathbf{y}\) for \([\mathbf{A}]
 </div>
 
 <!-- ============ 1. definition ============ -->
-<h3>05.1 Definition: construction from a standard normal vector <span class="tag">Slides p.36</span></h3>
+<h3 id="u0505-1"><span class="sn">05.1</span>Definition: construction from a standard normal vector <span class="tag">Slides p.36</span></h3>
 <p>This section gives the construction of a multivariate normal vector. Then it finds the mean vector and the covariance matrix of that vector.</p>
 
 <p><b>What</b> <span class="tag">Slides p.36</span></p>
@@ -3709,7 +3702,7 @@ Then \(\mathbf{y}=\mathbf{A}\mathbf{z}+\boldsymbol\mu\) has multivariate normal 
 <p>Thus the two MVN parameters \(\boldsymbol\mu\) and \(\boldsymbol\Sigma\) are the mean vector and the covariance matrix of \(\mathbf{y}\). The next section writes the density of \(\mathbf{y}\).</p>
 
 <!-- ============ 2. density ============ -->
-<h3>05.2 Density function <span class="tag">Slides p.36</span></h3>
+<h3 id="u0505-2"><span class="sn">05.2</span>Density function <span class="tag">Slides p.36</span></h3>
 <p>This section gives the joint density of \(\mathbf{y}\sim MVN(\boldsymbol\mu,\boldsymbol\Sigma)\). Then it calculates the density at one point.</p>
 
 <p><b>What</b> <span class="tag">Slides p.36</span></p>
@@ -3763,7 +3756,7 @@ Then \(\mathbf{y}=\mathbf{A}\mathbf{z}+\boldsymbol\mu\) has multivariate normal 
 <p>Thus the MVN density extends the normal density: \(\sigma^2\) becomes \(\boldsymbol\Sigma\), and division by \(\sigma^2\) becomes multiplication by \(\boldsymbol\Sigma^{-1}\). The next four sections give the four MVN properties.</p>
 
 <!-- ============ 3. linearity ============ -->
-<h3>05.3 Property 1: linearity <span class="tag">Slides p.37</span></h3>
+<h3 id="u0505-3"><span class="sn">05.3</span>Property 1: linearity <span class="tag">Slides p.37</span></h3>
 <p>This section shows that a linear transformation of an MVN vector is MVN. It also gives the new mean and covariance matrix.</p>
 
 <p><b>What</b> <span class="tag">Slides p.37</span></p>
@@ -3810,7 +3803,7 @@ Then \(\mathbf{y}=\mathbf{A}\mathbf{z}+\boldsymbol\mu\) has multivariate normal 
 <p>Thus a linear transformation keeps the vector normal and changes only the parameters, by Rule E and Rule V. The next section uses linearity to get the marginal distribution.</p>
 
 <!-- ============ 4. marginal ============ -->
-<h3>05.4 Property 2: marginal distribution <span class="tag">Slides p.38</span></h3>
+<h3 id="u0505-4"><span class="sn">05.4</span>Property 2: marginal distribution <span class="tag">Slides p.38</span></h3>
 <p>This section shows that a subset of the components of an MVN vector is also MVN.</p>
 
 <p><b>What</b> <span class="tag">Slides p.38</span></p>
@@ -3902,7 +3895,7 @@ Then \(\mathbf{y}=\mathbf{A}\mathbf{z}+\boldsymbol\mu\) has multivariate normal 
 <p>In the example, \(\mathbf{C}=(1,0)\). Then \(\mathbf{C}\boldsymbol\mu=1\) and \(\mathbf{C}\boldsymbol\Sigma\mathbf{C}^T=\Sigma_{11}=4\), the same values as above. The next section looks at one part of \(\mathbf{y}\) when we know the other part.</p>
 
 <!-- ============ 5. conditional ============ -->
-<h3>05.5 Property 3: conditional distribution <span class="tag">Slides p.39</span></h3>
+<h3 id="u0505-5"><span class="sn">05.5</span>Property 3: conditional distribution <span class="tag">Slides p.39</span></h3>
 <p>This section shows that if we split \(\mathbf{y}\) into two parts, the first part given the second part is MVN.</p>
 
 <p><b>What</b> <span class="tag">Slides p.39</span></p>
@@ -3996,7 +3989,7 @@ Then \(\mathbf{y}=\mathbf{A}\mathbf{z}+\boldsymbol\mu\) has multivariate normal 
 <p>Thus, to identify the type of a conditional distribution, cite p.39. The next section gives the last property: zero covariance gives independence.</p>
 
 <!-- ============ 6. independence ============ -->
-<h3>05.6 Property 4: independence <span class="tag">Slides p.40</span></h3>
+<h3 id="u0505-6"><span class="sn">05.6</span>Property 4: independence <span class="tag">Slides p.40</span></h3>
 <p>This section shows that, for an MVN vector, zero covariance gives independence.</p>
 
 <p><b>What</b> <span class="tag">Slides p.40</span></p>
@@ -4047,7 +4040,7 @@ Then \(\mathbf{y}=\mathbf{A}\mathbf{z}+\boldsymbol\mu\) has multivariate normal 
 <p>This unit made \(\mathbf{y}=\mathbf{A}\mathbf{z}+\boldsymbol\mu\sim MVN(\boldsymbol\mu,\mathbf{A}\mathbf{A}^T)\) from an i.i.d. standard normal vector and gave its density. It also gave four properties: linear, marginal, and conditional distributions are MVN, and zero covariance gives independence. Unit 06 uses these results to write multiple linear regression in MVN form.</p>
 
 <!-- ============ practice ============ -->
-<h3>05.7 Practice <span class="tag">Added</span></h3>
+<h3 id="u0505-7"><span class="sn">05.7</span>Practice <span class="tag">Added</span></h3>
 <p>The three questions below practice linearity, marginal distributions with independence, and the density calculation.</p>
 
 <p><b>Q1.</b> Let \(\mathbf{y}=(y_1,y_2)^T\sim MVN(\boldsymbol\mu,\boldsymbol\Sigma)\) with \(\boldsymbol\mu=\left[\begin{array}{c}1\\2\end{array}\right]\) and \(\boldsymbol\Sigma=\left[\begin{array}{cc}4&amp;2\\2&amp;2\end{array}\right]\). Find the distribution of \(u=2y_1+y_2-1\).</p>
@@ -4088,7 +4081,7 @@ Then \(\mathbf{y}=\mathbf{A}\mathbf{z}+\boldsymbol\mu\) has multivariate normal 
 </section>
 
 <section id="u0506">
-<h2>06 · Exercises on the MVN, MLR as an MVN model, and practice</h2>
+<h2><span class="un">Unit 06</span>Exercises on the MVN, MLR as an MVN model, and practice</h2>
 
 <p>This unit uses the definition of the multivariate normal distribution in three exercises and two practice questions. It covers the last eight pages of Lecture 5.</p>
 
@@ -4104,7 +4097,7 @@ Then \(\mathbf{y}=\mathbf{A}\mathbf{z}+\boldsymbol\mu\) has multivariate normal 
 <p>The exercise on Slides p.41 uses these two facts. The next section starts it.</p>
 
 <!-- ================= 1. X2 is normal ================= -->
-<h3>06.1 Exercise: \(X_2\) has a normal distribution <span class="tag">Slides p.41–42</span></h3>
+<h3 id="u0506-1"><span class="sn">06.1</span>Exercise: \(X_2\) has a normal distribution <span class="tag">Slides p.41–42</span></h3>
 <p>This section makes a new variable \(X_2\) from \(X_1\) and a coin. It shows that \(X_2\) has the \(N(0,1)\) distribution.</p>
 
 <p><b>What (1)</b> <span class="tag">Slides p.41</span></p>
@@ -4192,7 +4185,7 @@ Now consider r.v. \(X_2=\left\{\begin{array}{ll}X_1 &amp; \text{if } B=0\\ -X_1 
 <p>Result: \(X_1\) and \(X_2\) each have the \(N(0,1)\) distribution. The next section asks if the vector \((X_1,X_2)^T\) is MVN.</p>
 
 <!-- ================= 2. Y = X1 + X2 ================= -->
-<h3>06.2 Exercise continued: \(Y=X_1+X_2\) is not normal <span class="tag">Slides p.43–44</span></h3>
+<h3 id="u0506-2"><span class="sn">06.2</span>Exercise continued: \(Y=X_1+X_2\) is not normal <span class="tag">Slides p.43–44</span></h3>
 <p>This section shows that normal components do not make an MVN vector. It uses the sum \(Y=X_1+X_2\).</p>
 
 <p><b>What</b> <span class="tag">Slides p.43–44</span></p>
@@ -4282,7 +4275,7 @@ What's going on here?<br>
 <p>Result: MVN is a property of the full vector, not of each component. Thus the regression model on the next page assumes that the full error vector is MVN.</p>
 
 <!-- ================= 3. MLR as MVN ================= -->
-<h3>06.3 Multiple linear regression as an MVN model <span class="tag">Slides p.45</span></h3>
+<h3 id="u0506-3"><span class="sn">06.3</span>Multiple linear regression as an MVN model <span class="tag">Slides p.45</span></h3>
 <p>This section writes the multiple linear regression model as one MVN statement.</p>
 
 <p><b>What</b> <span class="tag">Slides p.45</span></p>
@@ -4335,7 +4328,7 @@ Or more simply:
 <p>Result: the full distribution assumption of MLR is one line, \(\mathbf{y}\sim MVN(\mathbf{X}\boldsymbol\beta,\sigma^2\mathbf{I})\). Later lectures use this line to find the distribution of \(\hat{\boldsymbol\beta}\).</p>
 
 <!-- ================= 4. Practice Q1 ================= -->
-<h3>06.4 Practice Q1: mean vectors and covariance matrices <span class="tag">Slides p.46–47</span></h3>
+<h3 id="u0506-4"><span class="sn">06.4</span>Practice Q1: mean vectors and covariance matrices <span class="tag">Slides p.46–47</span></h3>
 <p>This section does Practice Q1. It finds the mean and the variance of two linear transformations of \(\mathbf{y}\).</p>
 <div class="claim">Slides p.46 is the title page "Practice". Slides p.47–48 give the two questions.</div>
 
@@ -4394,7 +4387,7 @@ Compute \(E[\mathbf{a}^T\mathbf{y}]\), \(E[\mathbf{A}\mathbf{y}]\), \(Var(\mathb
 <p>Result: the mean of \(\mathbf{A}\mathbf{y}\) is \(\mathbf{A}E[\mathbf{y}]\), and its variance is \(\mathbf{A}\mathbf{V}\mathbf{A}^T\). The next question uses the same method for two different transformations.</p>
 
 <!-- ================= 5. Practice Q2 ================= -->
-<h3>06.5 Practice Q2: the cross-covariance matrix <span class="tag">Slides p.48</span></h3>
+<h3 id="u0506-5"><span class="sn">06.5</span>Practice Q2: the cross-covariance matrix <span class="tag">Slides p.48</span></h3>
 <p>This section finds the covariance matrix between two linear transformations \(\mathbf{y}=\mathbf{A}\mathbf{x}\) and \(\mathbf{w}=\mathbf{B}\mathbf{x}\).</p>
 
 <p><b>What</b> <span class="tag">Slides p.48</span></p>
@@ -4456,7 +4449,7 @@ Write \(\mathbf{C}\) in terms of \(\boldsymbol\mu,\mathbf{V},\mathbf{A},\mathbf{
 <p>Result: the covariance between two linear transformations is \(\mathbf{A}\mathbf{V}\mathbf{B}^T\). It does not depend on \(\boldsymbol\mu\). If \(\mathbf{B}=\mathbf{A}\), it is the \(\mathbf{A}\mathbf{V}\mathbf{A}^T\) of Q1.</p>
 
 <!-- ================= 6. Extra practice ================= -->
-<h3>06.6 Practice <span class="tag">Added</span></h3>
+<h3 id="u0506-6"><span class="sn">06.6</span>Practice <span class="tag">Added</span></h3>
 <p>The two questions below practice the two methods of this unit. P1 uses the MVN form of MLR. P2 uses the mean, variance, and covariance of linear combinations.</p>
 
 <p><b>P1.</b> Use the small data set of Section 06.3: \((x_{i1},x_{i2})=(2,1),\ (3,0),\ (5,4)\). Assume \(\mathbf{y}=\mathbf{X}\boldsymbol\beta+\boldsymbol\epsilon\), \(\boldsymbol\epsilon\sim MVN(\mathbf{0},\sigma^2\mathbf{I})\). Find the distribution of \(y_1-y_2\).</p>
@@ -4479,7 +4472,8 @@ Write \(\mathbf{C}\) in terms of \(\boldsymbol\mu,\mathbf{V},\mathbf{A},\mathbf{
 </details>
 <p>This unit showed that normal components do not make an MVN vector. The MLR model assumes \(\mathbf{y}\sim MVN(\mathbf{X}\boldsymbol\beta,\sigma^2\mathbf{I})\). For a linear transformation, the mean is \(\mathbf{A}E[\mathbf{y}]\), the variance is \(\mathbf{A}\mathbf{V}\mathbf{A}^T\), and the cross-covariance is \(\mathbf{A}\mathbf{V}\mathbf{B}^T\). Lecture 6 and Lecture 7 use these results for the MLR estimators.</p>
 </section>
-</main>
-</div>
+</main><nav class="pager2" aria-label="Lectures"><a class="prev" href="L04.html"><span>Previous: Lecture 4</span>Simple Linear Regression: Prediction</a><a class="next" href="L06.html"><span>Next: Lecture 6</span>Multiple Linear Regression: Intro and Estimation</a></nav>
+</article></div>
+<script src="site.js"></script>
 </body>
 </html>

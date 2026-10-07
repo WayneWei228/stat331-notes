@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>STAT 331 · Lecture 4 · Simple Linear Regression: Prediction</title>
+<title>Lecture 4: Simple Linear Regression: Prediction | STAT 331</title>
 <script>
 window.MathJax = {
   tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']], processEscapes: false },
@@ -273,23 +273,16 @@ hr.soft{border:none;border-top:1px solid var(--color-border);margin:36px 0;}
 .tag{display:inline-block;font-size:12px;font-weight:600;color:var(--color-text-secondary);background:var(--color-surface);border:1px solid var(--color-border);border-radius:6px;padding:0 7px;margin-left:6px;vertical-align:2px;}
 .kicker{font-size:12px;font-weight:600;letter-spacing:.05em;color:var(--color-text-secondary);text-transform:uppercase;}
 </style>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400..700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400&display=swap"><link rel="stylesheet" href="site.css">
 </head>
-<body>
-<nav class="topbar"><div class="inner"><a href="./">STAT 331 index</a><a href="L03.html">L03</a><a href="L05.html">L05</a><span class="spacer"></span><span class="dim">STAT 331 · Lecture 4 · Simple Linear Regression: Prediction</span></div></nav>
-<div class="container">
-<header class="page"><h1>Lecture 4: Simple Linear Regression: Prediction</h1>
-<p class="sub">This lecture estimates the mean response at a given \(x_0\), gives a confidence interval for it, and gives a prediction interval for a new response (Lecture 4 · p.1–43).</p></header>
-<div class="toccard"><div class="t">Contents</div>
-<a href="#u0401">01 · Recap: the model, the estimators, and inference for \(\beta_1\)</a>
-<a href="#u0402">02 · Point estimate of the mean response and its distribution</a>
-<a href="#u0403">03 · Confidence interval for the mean response</a>
-<a href="#u0404">04 · Predicting a new response: the prediction interval</a>
-<a href="#u0405">05 · Prediction intervals over a range of \(x\) values</a>
-<a href="#u0406">06 · Practice questions Q1 and Q2</a>
-</div>
-<main>
+<body class="site">
+<a class="skip" href="#content">Skip to content</a>
+<div class="mbar"><button id="menu" aria-controls="side" aria-expanded="false">Contents</button><span class="t">Lecture 4: Simple Linear Regression: Prediction</span></div>
+<aside class="side" id="side" aria-label="Course navigation"><a class="brand" href="./"><b>STAT 331</b><span>Applied Linear Models</span></a><nav><ol class="lecs"><li><a href="L01.html"><span class="n">1</span><span>Introduction and Motivation</span></a></li><li><a href="L02.html"><span class="n">2</span><span>Simple Linear Regression: Estimation</span></a></li><li><a href="L03.html"><span class="n">3</span><span>Simple Linear Regression: Inference</span></a></li><li class="cur"><a href="L04.html" aria-current="page"><span class="n">4</span><span>Simple Linear Regression: Prediction</span></a><ol class="units"><li><a href="#u0401" data-t="u0401"><span class="n">01</span><span>Recap: the model, the estimators, and inference for \(\beta_1\)</span></a><ol class="subs"><li><a href="#u0401-1" data-t="u0401-1">01.1 Title page and section page</a></li><li><a href="#u0401-2" data-t="u0401-2">01.2 The simple linear regression model and its assumptions</a></li><li><a href="#u0401-3" data-t="u0401-3">01.3 The least squares estimators and the distribution of \(\hat\beta_1\)</a></li><li><a href="#u0401-4" data-t="u0401-4">01.4 The confidence interval for \(\beta_1\)</a></li><li><a href="#u0401-5" data-t="u0401-5">01.5 The hypothesis test for \(\beta_1\)</a></li><li><a href="#u0401-6" data-t="u0401-6">01.6 The brainhead results on Slides p.7</a></li><li><a href="#u0401-7" data-t="u0401-7">01.7 Practice</a></li></ol></li><li><a href="#u0402" data-t="u0402"><span class="n">02</span><span>Point estimate of the mean response and its distribution</span></a><ol class="subs"><li><a href="#u0402-1" data-t="u0402-1">02.1 The mean response \(\mu_0\) and its point estimate \(\hat\mu_0\)</a></li><li><a href="#u0402-2" data-t="u0402-2">02.2 \(\hat\mu_0\) is unbiased</a></li><li><a href="#u0402-3" data-t="u0402-3">02.3 The variance of \(\hat\mu_0\)</a></li><li><a href="#u0402-4" data-t="u0402-4">02.4 The distribution of \(\hat\mu_0\)</a></li><li><a href="#u0402-5" data-t="u0402-5">02.5 Practice</a></li></ol></li><li><a href="#u0403" data-t="u0403"><span class="n">03</span><span>Confidence interval for the mean response</span></a><ol class="subs"><li><a href="#u0403-1" data-t="u0403-1">03.1 Standardize: from \(N(0,1)\) to \(t_{n-2}\)</a></li><li><a href="#u0403-2" data-t="u0403-2">03.2 The \(100(1-\alpha)\%\) confidence interval for \(\mu_0\)</a></li><li><a href="#u0403-3" data-t="u0403-3">03.3 Confidence intervals at a range of \(x_0\) values</a></li><li><a href="#u0403-4" data-t="u0403-4">03.4 Why the intervals become wider toward the edges</a></li><li><a href="#u0403-5" data-t="u0403-5">03.5 Why most points are outside the lines</a></li><li><a href="#u0403-6" data-t="u0403-6">03.6 When we want to predict a new observation</a></li><li><a href="#u0403-7" data-t="u0403-7">03.7 Practice</a></li></ol></li><li><a href="#u0404" data-t="u0404"><span class="n">04</span><span>Predicting a new response: the prediction interval</span></a><ol class="subs"><li><a href="#u0404-1" data-t="u0404-1">04.1 The new response and the predicted value</a></li><li><a href="#u0404-2" data-t="u0404-2">04.2 Expectation and variance of the prediction error</a></li><li><a href="#u0404-3" data-t="u0404-3">04.3 The prediction interval</a></li><li><a href="#u0404-4" data-t="u0404-4">04.4 Practice</a></li></ol></li><li><a href="#u0405" data-t="u0405"><span class="n">05</span><span>Prediction intervals over a range of \(x\) values</span></a><ol class="subs"><li><a href="#u0405-1" data-t="u0405-1">05.1 Calculate the prediction interval at many values of \(x_{new}\)</a></li><li><a href="#u0405-2" data-t="u0405-2">05.2 Read the plot: the PI is much wider than the CI</a></li><li><a href="#u0405-3" data-t="u0405-3">05.3 Fitted values, the CI for the mean, and the PI together</a></li><li><a href="#u0405-4" data-t="u0405-4">05.4 Practice</a></li></ol></li><li><a href="#u0406" data-t="u0406"><span class="n">06</span><span>Practice questions Q1 and Q2</span></a><ol class="subs"><li><a href="#u0406-1" data-t="u0406-1">06.1 Practice Q1: MLEs and the ratio \(\hat\sigma/\hat\sigma_{MLE}\)</a></li><li><a href="#u0406-2" data-t="u0406-2">06.2 Practice Q2: two confidence intervals and one prediction interval</a></li><li><a href="#u0406-3" data-t="u0406-3">06.3 Practice</a></li></ol></li></ol></li><li><a href="L05.html"><span class="n">5</span><span>Random Vectors and Multivariate Normal</span></a></li><li><a href="L06.html"><span class="n">6</span><span>Multiple Linear Regression: Intro and Estimation</span></a></li><li><a href="L07.html"><span class="n">7</span><span>Multiple Linear Regression: Estimation and Inference I</span></a></li></ol></nav><div class="foot"><a href="stat331-all.md">All notes as one text file</a><a href="https://github.com/WayneWei228/stat331-notes">Source on GitHub</a></div></aside><div class="scrim"></div>
+<div class="pagewrap" id="content"><article class="doc">
+<header class="page"><p class="lnum">Lecture 4</p><h1>Simple Linear Regression: Prediction</h1><p class="sub">This lecture estimates the mean response at a given \(x_0\), gives a confidence interval for it, and gives a prediction interval for a new response (Lecture 4 · p.1–43).</p></header><main>
 <section id="u0401">
-<h2>01 · Recap: the model, the estimators, and inference for \(\beta_1\)</h2>
+<h2><span class="un">Unit 01</span>Recap: the model, the estimators, and inference for \(\beta_1\)</h2>
 
 <p>This unit reviews four tools from Lectures 2–3: the model, the estimators, the confidence interval, and the hypothesis test. The prediction methods in the rest of Lecture 4 use these four tools. Thus, this unit uses each tool again with numbers.</p>
 
@@ -311,7 +304,7 @@ hr.soft{border:none;border-top:1px solid var(--color-border);margin:36px 0;}
 </div>
 
 <!-- ============ 01.1 title pages ============ -->
-<h3>01.1 Title page and section page <span class="tag">Slides p.1–2</span></h3>
+<h3 id="u0401-1"><span class="sn">01.1</span>Title page and section page <span class="tag">Slides p.1–2</span></h3>
 <p>These two pages give only names. They have no new mathematics.</p>
 <div class="claim">Slides p.1 is the title page: "Lecture 4: Simple Linear Regression: Prediction".</div>
 <div class="claim">Prediction is the use of a fitted model to give a value for a new response. Unit 04 of this lecture teaches it.</div>
@@ -319,7 +312,7 @@ hr.soft{border:none;border-top:1px solid var(--color-border);margin:36px 0;}
 <p>The next section starts with the model on Slides p.3.</p>
 
 <!-- ============ 01.2 model ============ -->
-<h3>01.2 The simple linear regression model and its assumptions <span class="tag">Slides p.3</span></h3>
+<h3 id="u0401-2"><span class="sn">01.2</span>The simple linear regression model and its assumptions <span class="tag">Slides p.3</span></h3>
 <p>This section writes the model. This unit gets all distribution results from this model.</p>
 
 <p><b>What</b> <span class="tag">Slides p.3</span></p>
@@ -656,7 +649,7 @@ Assumptions:
 <p>Thus, the second form is the distribution of \(y_i\). Section 01.3 uses this distribution to get the distribution of \(\hat\beta_1\).</p>
 
 <!-- ============ 01.3 estimators ============ -->
-<h3>01.3 The least squares estimators and the distribution of \(\hat\beta_1\) <span class="tag">Slides p.4</span></h3>
+<h3 id="u0401-3"><span class="sn">01.3</span>The least squares estimators and the distribution of \(\hat\beta_1\) <span class="tag">Slides p.4</span></h3>
 <p>This section gives the formulas for the estimates of \(\beta_0\) and \(\beta_1\). Then it gives the distribution of \(\hat\beta_1\), which the interval and the test use.</p>
 
 <p><b>What</b> <span class="tag">Slides p.4</span></p>
@@ -743,7 +736,7 @@ So the least squares estimators are:
 <p>Thus, the \(t_{n-2}\) result has only one unknown, \(\beta_1\). Section 01.4 solves it for \(\beta_1\). Section 01.5 puts \(\beta_1=\theta_0\) into it.</p>
 
 <!-- ============ 01.4 CI ============ -->
-<h3>01.4 The confidence interval for \(\beta_1\) <span class="tag">Slides p.5</span></h3>
+<h3 id="u0401-4"><span class="sn">01.4</span>The confidence interval for \(\beta_1\) <span class="tag">Slides p.5</span></h3>
 <p>This section uses the \(t_{n-2}\) result of Section 01.3 to make an interval for \(\beta_1\). The interval gives a range of values for \(\beta_1\).</p>
 
 <p><b>What</b> <span class="tag">Slides p.5</span></p>
@@ -822,7 +815,7 @@ More generally a \(100\times(1-\alpha)\%\) CI is: \(\hat\beta_1\pm t_{1-\alpha/2
 <p>In line 5, the random values are \(\hat\beta_1\) and \(\hat\sigma\), not \(\beta_1\). Thus, 0.95 is the probability that the interval covers \(\beta_1\). Section 01.5 uses the same \(t_{n-2}\) result for a test.</p>
 
 <!-- ============ 01.5 test ============ -->
-<h3>01.5 The hypothesis test for \(\beta_1\) <span class="tag">Slides p.6</span></h3>
+<h3 id="u0401-5"><span class="sn">01.5</span>The hypothesis test for \(\beta_1\) <span class="tag">Slides p.6</span></h3>
 <p>This section uses the same \(t_{n-2}\) result to test if \(\beta_1\) is equal to a given value.</p>
 
 <p><b>What</b> <span class="tag">Slides p.6</span></p>
@@ -900,7 +893,7 @@ Under \(H_0\): \(\dfrac{\hat\beta_1-\theta_0}{\hat\sigma/\sqrt{S_{xx}}}\sim t_{n
 <p>Thus, the test and the interval use the same \(t_{n-2}\) result. The interval solves for \(\beta_1\), and the test puts in \(\beta_1=\theta_0\).</p>
 
 <!-- ============ 01.6 slide p.7 ============ -->
-<h3>01.6 The brainhead results on Slides p.7 <span class="tag">Slides p.7</span></h3>
+<h3 id="u0401-6"><span class="sn">01.6</span>The brainhead results on Slides p.7 <span class="tag">Slides p.7</span></h3>
 <p>This section lists the statistical numbers that Slides p.7 prints. Then it connects each number to a formula of Sections 01.3–01.5.</p>
 
 <p><b>What</b> <span class="tag">Slides p.7</span></p>
@@ -943,7 +936,7 @@ Under \(H_0\): \(\dfrac{\hat\beta_1-\theta_0}{\hat\sigma/\sqrt{S_{xx}}}\sim t_{n
 <p>This unit reviewed the SLR model, the result \(\hat\beta_1\sim N(\beta_1,\sigma^2/S_{xx})\), the \(t_{n-2}\) result, and the CI and test that it gives. Unit 02 uses the same method to estimate the mean response \(\mu_0\) at a given value \(x_0\).</p>
 
 <!-- ============ practice ============ -->
-<h3>01.7 Practice <span class="tag">Added</span></h3>
+<h3 id="u0401-7"><span class="sn">01.7</span>Practice <span class="tag">Added</span></h3>
 <p>The three questions below use only the numbers on Slides p.7.</p>
 
 <p><b>Q1.</b> Using the results on Slides p.7, calculate a 90% confidence interval for \(\beta_1\). You may use \(t_{0.95,234}=1.651391\). Interpret the interval.</p>
@@ -976,7 +969,7 @@ Under \(H_0\): \(\dfrac{\hat\beta_1-\theta_0}{\hat\sigma/\sqrt{S_{xx}}}\sim t_{n
 </section>
 
 <section id="u0402">
-<h2>02 · Point estimate of the mean response and its distribution</h2>
+<h2><span class="un">Unit 02</span>Point estimate of the mean response and its distribution</h2>
 
 <p class="nav">This unit estimates the mean of \(y\) at a given value \(x_0\). It then finds the expectation, the variance and the distribution of this estimator. The next unit uses these three results to make a confidence interval for the mean response.</p>
 
@@ -1007,7 +1000,7 @@ Under \(H_0\): \(\dfrac{\hat\beta_1-\theta_0}{\hat\sigma/\sqrt{S_{xx}}}\sim t_{n
 </div>
 
 <!-- ================= 2.1 ================= -->
-<h3>02.1 The mean response \(\mu_0\) and its point estimate \(\hat\mu_0\) <span class="tag">Slides p.10–13</span></h3>
+<h3 id="u0402-1"><span class="sn">02.1</span>The mean response \(\mu_0\) and its point estimate \(\hat\mu_0\) <span class="tag">Slides p.10–13</span></h3>
 
 <p>This section gives the mean of \(y\) at a new value \(x_0\). It also shows how to estimate this mean from the data.</p>
 
@@ -1374,7 +1367,7 @@ Intuition?<br>
 <p>\(\hat\mu_0\) equals the center height \(\bar y\) plus the slope times the distance from the center. The next section finds the expectation of \(\hat\mu_0\).</p>
 
 <!-- ================= 2.2 ================= -->
-<h3>02.2 \(\hat\mu_0\) is unbiased <span class="tag">Slides p.14–15</span></h3>
+<h3 id="u0402-2"><span class="sn">02.2</span>\(\hat\mu_0\) is unbiased <span class="tag">Slides p.14–15</span></h3>
 
 <p>This section shows that the average of \(\hat\mu_0\) over repeated samples equals the true value \(\mu_0\).</p>
 
@@ -1444,7 +1437,7 @@ Intuition?<br>
 <p>\(\hat\mu_0\) is an unbiased estimator of \(\mu_0\), so its distribution has its center at \(\mu_0\). The next section finds the spread of this distribution, which is the variance.</p>
 
 <!-- ================= 2.3 ================= -->
-<h3>02.3 The variance of \(\hat\mu_0\) <span class="tag">Slides p.16–17</span></h3>
+<h3 id="u0402-3"><span class="sn">02.3</span>The variance of \(\hat\mu_0\) <span class="tag">Slides p.16–17</span></h3>
 
 <p>This section finds \(\mathrm{Var}[\hat\mu_0]\). The result shows how the precision of \(\hat\mu_0\) changes with \(x_0\).</p>
 
@@ -1580,7 +1573,7 @@ Intuition?<br>
 <p>\(\mathrm{Var}[\hat\mu_0]\) has two parts. The first part is the variance \(\sigma^2/n\) of \(\bar y\). The second part is the slope error multiplied by the distance \(x_0-\bar x\). The cross term is 0 because \(\sum(x_i-\bar x)=0\). The next section uses this variance in the distribution of \(\hat\mu_0\).</p>
 
 <!-- ================= 2.4 ================= -->
-<h3>02.4 The distribution of \(\hat\mu_0\) <span class="tag">Slides p.18</span></h3>
+<h3 id="u0402-4"><span class="sn">02.4</span>The distribution of \(\hat\mu_0\) <span class="tag">Slides p.18</span></h3>
 
 <p>This section puts the expectation and the variance together. The result is the full distribution of \(\hat\mu_0\).</p>
 
@@ -1627,7 +1620,7 @@ Intuition?<br>
 <p><b>Unit summary:</b> At any \(x_0\), \(\hat\mu_0=\hat\beta_0+\hat\beta_1x_0=\bar y+\hat\beta_1(x_0-\bar x)\) is an unbiased estimator of \(\mu_0\). Its distribution is \(\hat\mu_0\sim N\!\left[\mu_0,\sigma^2\left(\frac1n+\frac{(x_0-\bar x)^2}{S_{xx}}\right)\right]\).</p>
 
 <!-- ================= Practice ================= -->
-<h3>02.5 Practice <span class="tag">Added</span></h3>
+<h3 id="u0402-5"><span class="sn">02.5</span>Practice <span class="tag">Added</span></h3>
 <p>These three questions use the formulas of this unit and the brainhead numbers.</p>
 
 <p><b>Q1.</b> Use the brainhead data: \(n=236\), \(\bar x=3637.864\), \(\bar y=1284.263\), \(\hat\beta_0=335.4323\), \(\hat\beta_1=0.2608207\). Calculate \(\hat\mu_0\) at \(x_0=3000\) cm³ in two ways: (a) \(\hat\beta_0+\hat\beta_1x_0\); (b) \(\bar y+\hat\beta_1(x_0-\bar x)\).</p>
@@ -1660,7 +1653,7 @@ Intuition?<br>
 </section>
 
 <section id="u0403">
-<h2>03 · Confidence interval for the mean response</h2>
+<h2><span class="un">Unit 03</span>Confidence interval for the mean response</h2>
 
 <p class="nav">This unit makes an interval for the mean response \(\mu_0\). The interval has its center at \(\hat\mu_0\). The quantile \(t_{1-\alpha/2,\,n-2}\) and the standard error set its width. The unit has six steps. Step 1 (Slides p.19) standardizes \(\hat\mu_0\) and gets a quantity with a \(t_{n-2}\) distribution. Step 2 (Slides p.20) changes this quantity into the interval.</p>
 <p>Step 3 (Slides p.21–22) calculates the interval at many values of \(x_0\) and draws the result. Steps 4 and 5 (Slides p.23–24) answer two questions from the slides. Step 4 shows why the intervals become wider at the edges. Step 5 shows why most points are outside the lines. Step 6 (Slides p.25) shows why we also need a prediction interval.</p>
@@ -1679,7 +1672,7 @@ Intuition?<br>
 <p>With this notation, the unit starts with the standardization.</p>
 
 <!-- ================= 3.1 p.19 ================= -->
-<h3>03.1 Standardize: from \(N(0,1)\) to \(t_{n-2}\) <span class="tag">Slides p.19</span></h3>
+<h3 id="u0403-1"><span class="sn">03.1</span>Standardize: from \(N(0,1)\) to \(t_{n-2}\) <span class="tag">Slides p.19</span></h3>
 <p>This section makes a quantity with a fully known distribution. We need a known distribution to find quantiles and to make an interval.</p>
 
 <p><b>What</b> <span class="tag">Slides p.19</span></p>
@@ -1767,7 +1760,7 @@ And by the same logic as before:
 <p>This section gives a quantity with a known distribution and a denominator that we can calculate from data. The next section uses its quantiles to make the interval.</p>
 
 <!-- ================= 3.2 p.20 ================= -->
-<h3>03.2 The \(100(1-\alpha)\%\) confidence interval for \(\mu_0\) <span class="tag">Slides p.20</span></h3>
+<h3 id="u0403-2"><span class="sn">03.2</span>The \(100(1-\alpha)\%\) confidence interval for \(\mu_0\) <span class="tag">Slides p.20</span></h3>
 <p>This section changes the \(t_{n-2}\) quantity of Section 03.1 into an interval for \(\mu_0\).</p>
 
 <p><b>What</b> <span class="tag">Slides p.20</span></p>
@@ -1848,7 +1841,7 @@ and a 100(1-α)% CI is:
 <p>This section gives the interval formula at one value \(x_0\). The next section uses the formula at many values of \(x_0\).</p>
 
 <!-- ================= 3.3 p.21-22 ================= -->
-<h3>03.3 Confidence intervals at a range of \(x_0\) values <span class="tag">Slides p.21–22</span></h3>
+<h3 id="u0403-3"><span class="sn">03.3</span>Confidence intervals at a range of \(x_0\) values <span class="tag">Slides p.21–22</span></h3>
 <p>This section applies the formula of Section 03.2 at each \(x_0\) from the smallest \(x\) to the largest \(x\). Then it draws the limits as two curves.</p>
 
 <p><b>What</b> <span class="tag">Slides p.21–22</span></p>
@@ -1941,7 +1934,7 @@ Estimating mean outcomes and report corresponding CIs at a range of x0 values
 <p>This section gives the confidence band. The next two sections use Figure 3-1 to answer the two questions on the slides.</p>
 
 <!-- ================= 3.4 p.23 ================= -->
-<h3>03.4 Why the intervals become wider toward the edges <span class="tag">Slides p.23</span></h3>
+<h3 id="u0403-4"><span class="sn">03.4</span>Why the intervals become wider toward the edges <span class="tag">Slides p.23</span></h3>
 <p>This section answers the first question on the slides. The answer is in the term \((x_0-\bar x)^2\) of the standard error.</p>
 
 <p><b>What</b> <span class="tag">Slides p.23</span></p>
@@ -2020,7 +2013,7 @@ Why do the CIs get wider toward the edges?
 <p>Thus the interval is narrowest at \(\bar x\) and becomes wider toward the edges. The next section answers the second question on the slides.</p>
 
 <!-- ================= 3.5 p.24 ================= -->
-<h3>03.5 Why most points are outside the lines <span class="tag">Slides p.24</span></h3>
+<h3 id="u0403-5"><span class="sn">03.5</span>Why most points are outside the lines <span class="tag">Slides p.24</span></h3>
 <p>This section answers the second question on the slides. The answer: the target of the interval is the mean \(\mu_0\), not one observation \(y\).</p>
 
 <p><b>What</b> <span class="tag">Slides p.24</span></p>
@@ -2134,7 +2127,7 @@ Why do most of the points fall outside the lines?
 <p>The width of the interval shows only the error of \(\hat\mu_0\) as an estimate of \(\mu_0\). When \(n\) increases, \(\frac1n\) and \(\frac{(x_0-\bar x)^2}{S_{xx}}\) decrease, and the interval becomes narrower. The spread \(\sigma\) of each point about \(\mu_i\) does not decrease with \(n\). Thus this interval cannot contain most single observations. The next section states the new problem that this result gives.</p>
 
 <!-- ================= 3.6 p.25 ================= -->
-<h3>03.6 When we want to predict a new observation <span class="tag">Slides p.25</span></h3>
+<h3 id="u0403-6"><span class="sn">03.6</span>When we want to predict a new observation <span class="tag">Slides p.25</span></h3>
 <p>This section only states the problem. The next unit gives the answer.</p>
 <div class="enstmt"><span class="who">Lecture 4 · p.25</span>
 What if we don't just care about the mean, but predictions? I.e. even if we got the mean absolutely perfect—the new points wouldn't fall directly on this line!
@@ -2152,7 +2145,7 @@ What if we don't just care about the mean, but predictions? I.e. even if we got 
 </div>
 
 <!-- ================= Practice ================= -->
-<h3>03.7 Practice <span class="tag">Added</span></h3>
+<h3 id="u0403-7"><span class="sn">03.7</span>Practice <span class="tag">Added</span></h3>
 <p>The three questions use the brainhead data. Given: \(n=236\), \(\bar x=3637.864407\), \(S_{xx}=30647233.66\), \(\hat\beta_0=335.432315\), \(\hat\beta_1=0.2608207153\), \(\hat\sigma=72.35066237\).</p>
 
 <p><b>Q1.</b> Calculate a 90% CI for the mean brain weight of persons with head size \(x_0=4000\) cm³. Use \(t_{0.95,\,234}=1.651391475\). Give the half-width and the interval.</p>
@@ -2195,7 +2188,7 @@ What if we don't just care about the mean, but predictions? I.e. even if we got 
 </section>
 
 <section id="u0404">
-<h2>04 · Predicting a new response: the prediction interval</h2>
+<h2><span class="un">Unit 04</span>Predicting a new response: the prediction interval</h2>
 
 <p class="nav">Units 02 and 03 estimate the mean response \(\mu_0\), which is a fixed number. This unit predicts the response \(y_{new}\) of one new observation. This response is a random variable. It also gives an interval for \(y_{new}\). The unit has three steps, in the order of Slides p.26–37:</p>
 <ol>
@@ -2215,7 +2208,7 @@ What if we don't just care about the mean, but predictions? I.e. even if we got 
 </div>
 
 <!-- ============ 4.1 ============ -->
-<h3>04.1 The new response and the predicted value <span class="tag">Slides p.26–30</span></h3>
+<h3 id="u0404-1"><span class="sn">04.1</span>The new response and the predicted value <span class="tag">Slides p.26–30</span></h3>
 
 <p>This section defines the response of a new observation and its predicted value. Then it answers the two questions on the slide.</p>
 
@@ -2267,7 +2260,7 @@ Define the predicted value
 <p>The predicted value \(\hat y_{new}\) has the same number as \(\hat\mu_0\), but the target \(y_{new}\) has the extra random error \(\epsilon_{new}\). The next section measures this extra error.</p>
 
 <!-- ============ 4.2 ============ -->
-<h3>04.2 Expectation and variance of the prediction error <span class="tag">Slides p.31–35</span></h3>
+<h3 id="u0404-2"><span class="sn">04.2</span>Expectation and variance of the prediction error <span class="tag">Slides p.31–35</span></h3>
 
 <p>This section defines the prediction error and finds its expectation and variance. Section 04.3 uses these two results to make the prediction interval.</p>
 
@@ -2365,7 +2358,7 @@ Now note that \(\hat y_{new}\) and \(y_{new}\) are independent (why?)
 <p>We now have \(E[\hat y_{new}-y_{new}]=0\) and \(\mathrm{Var}[\hat y_{new}-y_{new}]=\sigma^2\left(1+\frac1n+\frac{(x_{new}-\bar x)^2}{S_{xx}}\right)\). The next section uses these two results to make the prediction interval.</p>
 
 <!-- ============ 4.3 ============ -->
-<h3>04.3 The prediction interval <span class="tag">Slides p.36–37</span></h3>
+<h3 id="u0404-3"><span class="sn">04.3</span>The prediction interval <span class="tag">Slides p.36–37</span></h3>
 
 <p>This section standardizes the prediction error and replaces \(\sigma\) with \(\hat\sigma\) to get a \(t_{n-2}\) distribution. Then it solves the probability statement for \(y_{new}\).</p>
 
@@ -2446,7 +2439,7 @@ So a 100(1−α)% prediction interval is:
 <p>The prediction interval is \(\hat y_{new}\pm t_{1-\alpha/2,\,n-2}\,\hat\sigma\sqrt{1+\frac1n+\frac{(x_{new}-\bar x)^2}{S_{xx}}}\). It differs from the confidence interval only by the "1" under the square root. Unit 05 compares the two intervals over a range of \(x\) values.</p>
 
 <!-- ============ Practice ============ -->
-<h3>04.4 Practice <span class="tag">Added</span></h3>
+<h3 id="u0404-4"><span class="sn">04.4</span>Practice <span class="tag">Added</span></h3>
 <p>All three questions use the brainhead data and the How steps of Section 04.3. Given: \(n=236\), \(\bar x=3637.864407\), \(S_{xx}=30647233.66\), \(\hat\beta_0=335.432315\), \(\hat\beta_1=0.2608207153\), \(\hat\sigma=72.35066237\).</p>
 
 <p><b>Q1.</b> A new person has a head size of 4000 cm³. Calculate a 90% prediction interval for the brain weight of this person. You may use \(t_{0.95,\,234}=1.651391\).</p>
@@ -2486,7 +2479,7 @@ So a 100(1−α)% prediction interval is:
 </section>
 
 <section id="u0405">
-<h2>05 · Prediction intervals over a range of \(x\) values</h2>
+<h2><span class="un">Unit 05</span>Prediction intervals over a range of \(x\) values</h2>
 
 <p class="nav">This unit calculates prediction intervals at many values of \(x_{new}\) in the brainhead data. Then it compares them with the confidence intervals for the mean response. The unit has three steps. Step 1 (Slides p.38) gives the calculation at one \(x_{new}\) and repeats it over a grid. Step 2 (Slides p.39) reads the plot and its two notes. Step 3 (Slides p.40) puts the fitted values, the mean-response CI, and the PI side by side.</p>
 
@@ -2503,7 +2496,7 @@ So a 100(1−α)% prediction interval is:
 </div>
 
 <!-- ================= 5.1 p.38 ================= -->
-<h3>05.1 Calculate the prediction interval at many values of \(x_{new}\) <span class="tag">Slides p.38</span></h3>
+<h3 id="u0405-1"><span class="sn">05.1</span>Calculate the prediction interval at many values of \(x_{new}\) <span class="tag">Slides p.38</span></h3>
 
 <p>This section turns the prediction interval formula into four calculation steps. Then it applies the steps at one value of \(x_{new}\) and at a grid of values.</p>
 
@@ -2588,7 +2581,7 @@ So a 100(1-α)% prediction interval is:
 <p>Result: the PI at \(x_{new}=2773\) is (914.119, 1203.257) g, and the same steps give a PI at every grid value. Section 05.2 uses the four PIs above to read the plot on p.39.</p>
 
 <!-- ================= 5.2 p.39 ================= -->
-<h3>05.2 Read the plot: the PI is much wider than the CI <span class="tag">Slides p.39</span></h3>
+<h3 id="u0405-2"><span class="sn">05.2</span>Read the plot: the PI is much wider than the CI <span class="tag">Slides p.39</span></h3>
 
 <p>This section puts the PI band and the CI band for the mean response on one plot. Then it uses widths to support the two notes on p.39.</p>
 
@@ -2925,7 +2918,7 @@ Computing prediction intervals at a range of \(x_{new}\) values:<br>
 <p>Result: the PI is wider than the CI because it has the extra variance \(\sigma^2\) of the new error \(\epsilon_{new}\). The PI is a little wider at the edges because \(k\) grows away from \(\bar x\), but \(k\) is much smaller than 1. Section 05.3 puts all three quantities at one \(x\).</p>
 
 <!-- ================= 5.3 p.40 ================= -->
-<h3>05.3 Fitted values, the CI for the mean, and the PI together <span class="tag">Slides p.40</span></h3>
+<h3 id="u0405-3"><span class="sn">05.3</span>Fitted values, the CI for the mean, and the PI together <span class="tag">Slides p.40</span></h3>
 
 <p>Slides p.40 is computer code only. It gives no numbers. This section states the three statistical quantities that the code gives, and calculates them by hand at one \(x\).</p>
 
@@ -2999,7 +2992,7 @@ Computing prediction intervals at a range of \(x_{new}\) values:<br>
 <p class="nav">Unit summary: the prediction interval is \(\hat y_{new}\pm t_{1-\alpha/2,\,n-2}\,\hat\sigma\sqrt{1+\frac1n+\frac{(x_{new}-\bar x)^2}{S_{xx}}}\). In the brainhead data, it is 4.85 to 15.39 times as wide as the CI for the mean. It is only a little wider at the edges. It contains 226 of the 236 data points (95.8%).</p>
 
 <!-- ================= Practice ================= -->
-<h3>05.4 Practice <span class="tag">Added</span></h3>
+<h3 id="u0405-4"><span class="sn">05.4</span>Practice <span class="tag">Added</span></h3>
 <p>These three questions use the brainhead data. Use \(n=236\), \(\hat\beta_0=335.432315\), \(\hat\beta_1=0.2608207\), \(\hat\sigma=72.35066\), \(\bar x=3637.8644\), and \(S_{xx}=30647233.66\).</p>
 
 <p><b>Q1.</b> A new person has a head size of 3500 cm³. Calculate a 90% prediction interval for the brain weight of this person by hand. Use \(t_{0.95,\,234}=1.651391\).</p>
@@ -3036,7 +3029,7 @@ Computing prediction intervals at a range of \(x_{new}\) values:<br>
 </section>
 
 <section id="u0406">
-<h2>06 · Practice questions Q1 and Q2</h2>
+<h2><span class="un">Unit 06</span>Practice questions Q1 and Q2</h2>
 
 <p>This unit solves the two practice questions at the end of Lecture 4 (Slides p.41–43). Q1 uses the estimator formulas. Q2 uses confidence intervals and a prediction interval.</p>
 
@@ -3053,7 +3046,7 @@ Computing prediction intervals at a range of \(x_{new}\) values:<br>
 <p>Slides p.41 shows only the title "Practice". The next two pages give two practice questions. The two questions use no data set. They use only the numbers in the question.</p>
 
 <!-- ================= Q1 ================= -->
-<h3>06.1 Practice Q1: MLEs and the ratio \(\hat\sigma/\hat\sigma_{MLE}\) <span class="tag">Slides p.42</span></h3>
+<h3 id="u0406-1"><span class="sn">06.1</span>Practice Q1: MLEs and the ratio \(\hat\sigma/\hat\sigma_{MLE}\) <span class="tag">Slides p.42</span></h3>
 
 <p>This section reads Q1, repeats the earlier results that Q1 needs, and then calculates parts (a), (b), and (c).</p>
 
@@ -3208,7 +3201,7 @@ For observations \(y_1,\dots,y_n\), the sample variance is: \(\displaystyle s_y^
 <p>Summary: Q1 uses two sets of earlier formulas (\(\hat\beta\) and \(\hat\sigma\)) and one sum identity. Q2 puts estimates of this type into interval formulas.</p>
 
 <!-- ================= Q2 ================= -->
-<h3>06.2 Practice Q2: two confidence intervals and one prediction interval <span class="tag">Slides p.43</span></h3>
+<h3 id="u0406-2"><span class="sn">06.2</span>Practice Q2: two confidence intervals and one prediction interval <span class="tag">Slides p.43</span></h3>
 
 <p>This section reads Q2 and repeats the three interval formulas. Then it reads the t quantiles from the question and calculates the three intervals.</p>
 
@@ -3453,7 +3446,7 @@ So a 100(1−\(\alpha\))% prediction interval is:
 <p>Summary: each of the three intervals in Q2 has the form "point estimate ± t quantile × standard error". Only the center, the terms under the square root, and the quantile change.</p>
 
 <!-- ================= Exercises ================= -->
-<h3>06.3 Practice <span class="tag">Added</span></h3>
+<h3 id="u0406-3"><span class="sn">06.3</span>Practice <span class="tag">Added</span></h3>
 <p>The three questions below have the same type as Slides p.42–43. Do each calculation first. Then open the answer.</p>
 
 <div class="case"><div class="case-h">Exercise 6.1</div>
@@ -3491,7 +3484,8 @@ So a 100(1−\(\alpha\))% prediction interval is:
 
 <p>Unit summary: the two practice questions use \(\hat\beta_1=S_{xy}/S_{xx}\), \(\hat\beta_0=\bar y-\hat\beta_1\bar x\), and \(\hat\sigma/\hat\sigma_{MLE}=\sqrt{n/(n-2)}\). They also use three intervals of the form "point estimate ± \(t_{1-\alpha/2,n-2}\) × standard error". In an exam, read the correct t quantile first. Then use the formula.</p>
 </section>
-</main>
-</div>
+</main><nav class="pager2" aria-label="Lectures"><a class="prev" href="L03.html"><span>Previous: Lecture 3</span>Simple Linear Regression: Inference</a><a class="next" href="L05.html"><span>Next: Lecture 5</span>Random Vectors and Multivariate Normal</a></nav>
+</article></div>
+<script src="site.js"></script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>STAT 331 · Lecture 2 · Simple Linear Regression: Estimation</title>
+<title>Lecture 2: Simple Linear Regression: Estimation | STAT 331</title>
 <script>
 window.MathJax = {
   tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']], processEscapes: false },
@@ -273,23 +273,16 @@ hr.soft{border:none;border-top:1px solid var(--color-border);margin:36px 0;}
 .tag{display:inline-block;font-size:12px;font-weight:600;color:var(--color-text-secondary);background:var(--color-surface);border:1px solid var(--color-border);border-radius:6px;padding:0 7px;margin-left:6px;vertical-align:2px;}
 .kicker{font-size:12px;font-weight:600;letter-spacing:.05em;color:var(--color-text-secondary);text-transform:uppercase;}
 </style>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400..700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400&display=swap"><link rel="stylesheet" href="site.css">
 </head>
-<body>
-<nav class="topbar"><div class="inner"><a href="./">STAT 331 index</a><a href="L01.html">L01</a><a href="L03.html">L03</a><span class="spacer"></span><span class="dim">STAT 331 · Lecture 2 · Simple Linear Regression: Estimation</span></div></nav>
-<div class="container">
-<header class="page"><h1>Lecture 2: Simple Linear Regression: Estimation</h1>
-<p class="sub">This lecture estimates \(\beta_0\), \(\beta_1\), and \(\sigma^2\) in the simple linear regression model with least squares and maximum likelihood (Lecture 2 · p.1–38).</p></header>
-<div class="toccard"><div class="t">Contents</div>
-<a href="#u0201">01 · Recap: mean, variance, covariance, and correlation</a>
-<a href="#u0202">02 · The simple linear regression model and its coefficients</a>
-<a href="#u0203">03 · Least squares estimation</a>
-<a href="#u0204">04 · Maximum likelihood estimation and its equality to least squares</a>
-<a href="#u0205">05 · Fitted values and residuals</a>
-<a href="#u0206">06 · Estimating \(\sigma^2\): the MLE and the unbiased estimator</a>
-</div>
-<main>
+<body class="site">
+<a class="skip" href="#content">Skip to content</a>
+<div class="mbar"><button id="menu" aria-controls="side" aria-expanded="false">Contents</button><span class="t">Lecture 2: Simple Linear Regression: Estimation</span></div>
+<aside class="side" id="side" aria-label="Course navigation"><a class="brand" href="./"><b>STAT 331</b><span>Applied Linear Models</span></a><nav><ol class="lecs"><li><a href="L01.html"><span class="n">1</span><span>Introduction and Motivation</span></a></li><li class="cur"><a href="L02.html" aria-current="page"><span class="n">2</span><span>Simple Linear Regression: Estimation</span></a><ol class="units"><li><a href="#u0201" data-t="u0201"><span class="n">01</span><span>Recap: mean, variance, covariance, and correlation</span></a><ol class="subs"><li><a href="#u0201-1" data-t="u0201-1">01.1 Title page, section page, and housekeeping</a></li><li><a href="#u0201-2" data-t="u0201-2">01.2 Mean and expectation</a></li><li><a href="#u0201-3" data-t="u0201-3">01.3 Variance</a></li><li><a href="#u0201-4" data-t="u0201-4">01.4 Covariance</a></li><li><a href="#u0201-5" data-t="u0201-5">01.5 Correlation</a></li><li><a href="#u0201-6" data-t="u0201-6">01.6 Goals and notation of regression</a></li><li><a href="#u0201-7" data-t="u0201-7">01.7 Practice</a></li></ol></li><li><a href="#u0202" data-t="u0202"><span class="n">02</span><span>The simple linear regression model and its coefficients</span></a><ol class="subs"><li><a href="#u0202-1" data-t="u0202-1">02.1 Title page</a></li><li><a href="#u0202-2" data-t="u0202-2">02.2 Data example: the brainhead data</a></li><li><a href="#u0202-3" data-t="u0202-3">02.3 Exploratory data analysis: histograms</a></li><li><a href="#u0202-4" data-t="u0202-4">02.4 Exploratory data analysis: scatterplot</a></li><li><a href="#u0202-5" data-t="u0202-5">02.5 The simple linear regression model</a></li><li><a href="#u0202-6" data-t="u0202-6">02.6 The meaning of the regression coefficients \(\beta_0,\beta_1\)</a></li><li><a href="#u0202-7" data-t="u0202-7">02.7 A picture of the model</a></li><li><a href="#u0202-8" data-t="u0202-8">02.8 The four assumptions</a></li><li><a href="#u0202-9" data-t="u0202-9">02.9 Practice</a></li></ol></li><li><a href="#u0203" data-t="u0203"><span class="n">03</span><span>Least squares estimation</span></a><ol class="subs"><li><a href="#u0203-1" data-t="u0203-1">03.1 Section page and the line of best fit</a></li><li><a href="#u0203-2" data-t="u0203-2">03.2 The least squares rule: make the sum of squares a minimum</a></li><li><a href="#u0203-3" data-t="u0203-3">03.3 The derivative for \(\beta_0\): solve for \(\hat\beta_0\)</a></li><li><a href="#u0203-4" data-t="u0203-4">03.4 The derivative for \(\beta_1\): solve for \(\hat\beta_1\)</a></li><li><a href="#u0203-5" data-t="u0203-5">03.5 The short form: \(\hat\beta_1^{LS}=S_{xy}/S_{xx}\)</a></li><li><a href="#u0203-6" data-t="u0203-6">03.6 The open question: why least squares</a></li><li><a href="#u0203-7" data-t="u0203-7">03.7 Practice</a></li></ol></li><li><a href="#u0204" data-t="u0204"><span class="n">04</span><span>Maximum likelihood estimation and its equality to least squares</span></a><ol class="subs"><li><a href="#u0204-1" data-t="u0204-1">04.1 Likelihood and log-likelihood</a></li><li><a href="#u0204-2" data-t="u0204-2">04.2 The three partial derivatives of the log-likelihood</a></li><li><a href="#u0204-3" data-t="u0204-3">04.3 MLE and LS give the same estimates (\(\hat\beta^{LS}=\hat\beta^{ML}\))</a></li><li><a href="#u0204-4" data-t="u0204-4">04.4 Practice</a></li></ol></li><li><a href="#u0205" data-t="u0205"><span class="n">05</span><span>Fitted values and residuals</span></a><ol class="subs"><li><a href="#u0205-1" data-t="u0205-1">05.1 Section page</a></li><li><a href="#u0205-2" data-t="u0205-2">05.2 Fitted values</a></li><li><a href="#u0205-3" data-t="u0205-3">05.3 Residuals</a></li><li><a href="#u0205-4" data-t="u0205-4">05.4 Residuals and errors</a></li><li><a href="#u0205-5" data-t="u0205-5">05.5 A picture of the fitted values and residuals</a></li><li><a href="#u0205-6" data-t="u0205-6">05.6 Practice</a></li></ol></li><li><a href="#u0206" data-t="u0206"><span class="n">06</span><span>Estimating \(\sigma^2\): the MLE and the unbiased estimator</span></a><ol class="subs"><li><a href="#u0206-1" data-t="u0206-1">06.1 Section page</a></li><li><a href="#u0206-2" data-t="u0206-2">06.2 The maximum likelihood estimate of \(\sigma^2\)</a></li><li><a href="#u0206-3" data-t="u0206-3">06.3 The estimator \(\hat\sigma^2\) that the course uses</a></li><li><a href="#u0206-4" data-t="u0206-4">06.4 The unbiased estimator</a></li><li><a href="#u0206-5" data-t="u0206-5">06.5 Data example: all three estimates in order</a></li><li><a href="#u0206-6" data-t="u0206-6">06.6 Estimates and fitted values for the brainhead data</a></li><li><a href="#u0206-7" data-t="u0206-7">06.7 Practice</a></li></ol></li></ol></li><li><a href="L03.html"><span class="n">3</span><span>Simple Linear Regression: Inference</span></a></li><li><a href="L04.html"><span class="n">4</span><span>Simple Linear Regression: Prediction</span></a></li><li><a href="L05.html"><span class="n">5</span><span>Random Vectors and Multivariate Normal</span></a></li><li><a href="L06.html"><span class="n">6</span><span>Multiple Linear Regression: Intro and Estimation</span></a></li><li><a href="L07.html"><span class="n">7</span><span>Multiple Linear Regression: Estimation and Inference I</span></a></li></ol></nav><div class="foot"><a href="stat331-all.md">All notes as one text file</a><a href="https://github.com/WayneWei228/stat331-notes">Source on GitHub</a></div></aside><div class="scrim"></div>
+<div class="pagewrap" id="content"><article class="doc">
+<header class="page"><p class="lnum">Lecture 2</p><h1>Simple Linear Regression: Estimation</h1><p class="sub">This lecture estimates \(\beta_0\), \(\beta_1\), and \(\sigma^2\) in the simple linear regression model with least squares and maximum likelihood (Lecture 2 · p.1–38).</p></header><main>
 <section id="u0201">
-<h2>01 · Recap: mean, variance, covariance, and correlation</h2>
+<h2><span class="un">Unit 01</span>Recap: mean, variance, covariance, and correlation</h2>
 
 <p>This unit reviews four basic quantities: the mean, the variance, the covariance, and the correlation. The least squares estimate \(\hat\beta_1=S_{xy}/S_{xx}\) in the next units uses \(S_{xy}\) and \(S_{xx}\) from this unit. Thus, this unit calculates each quantity by hand on a small data set.</p>
 
@@ -311,7 +304,7 @@ hr.soft{border:none;border-top:1px solid var(--color-border);margin:36px 0;}
 <p>\(y_1,\dots,y_5\): 1530, 1297, 1335, 1282, 1590.</p>
 </div>
 
-<h3>01.1 Title page, section page, and housekeeping <span class="tag">Slides p.1–3</span></h3>
+<h3 id="u0201-1"><span class="sn">01.1</span>Title page, section page, and housekeeping <span class="tag">Slides p.1–3</span></h3>
 <p>The first three pages have no new mathematical content.</p>
 <div class="claim">Page 1 is the title page: Lecture 2: Simple Linear Regression: Estimation.</div>
 <div class="claim">Page 2 is the section page: Recap. Pages 3 to 8 belong to this section.</div>
@@ -320,7 +313,7 @@ hr.soft{border:none;border-top:1px solid var(--color-border);margin:36px 0;}
 <p>The next section starts with the mean on page 4.</p>
 
 <!-- ============ 1. Mean ============ -->
-<h3>01.2 Mean and expectation <span class="tag">Slides p.4</span></h3>
+<h3 id="u0201-2"><span class="sn">01.2</span>Mean and expectation <span class="tag">Slides p.4</span></h3>
 <p>This section defines two types of average: the expectation of a population and the mean of a sample. The variance and the covariance in the next sections use the expectation.</p>
 
 <p><b>What</b> <span class="tag">Slides p.4</span></p>
@@ -395,7 +388,7 @@ For observations \(y_1,\dots,y_n\), the sample mean is:
 <p>∎ With linearity, a constant factor moves outside \(E\). The next section uses it in each proof of a variance property.</p>
 
 <!-- ============ 2. Variance ============ -->
-<h3>01.3 Variance <span class="tag">Slides p.5</span></h3>
+<h3 id="u0201-3"><span class="sn">01.3</span>Variance <span class="tag">Slides p.5</span></h3>
 <p>This section defines the variance. The variance measures how far a quantity spreads around its mean. The numerators of the sample variances are \(S_{xx}\) and \(S_{yy}\) in least squares.</p>
 
 <p><b>What</b> <span class="tag">Slides p.5</span></p>
@@ -476,7 +469,7 @@ Properties:
 <p>∎ The proof of the independence property uses the covariance, so it is in Section 01.4. The variance gives the spread of one quantity. The next section extends this idea to two quantities.</p>
 
 <!-- ============ 3. Covariance ============ -->
-<h3>01.4 Covariance <span class="tag">Slides p.6</span></h3>
+<h3 id="u0201-4"><span class="sn">01.4</span>Covariance <span class="tag">Slides p.6</span></h3>
 <p>This section defines the covariance. The covariance shows whether two quantities increase together or move in opposite directions. The numerator of the sample covariance is \(S_{xy}\).</p>
 
 <p><b>What</b> <span class="tag">Slides p.6</span></p>
@@ -581,7 +574,7 @@ Properties:
 <p>∎ The sign of the covariance shows whether two quantities move in the same direction. Its size depends on the units, so the next section scales it to give the correlation.</p>
 
 <!-- ============ 4. Correlation ============ -->
-<h3>01.5 Correlation <span class="tag">Slides p.7</span></h3>
+<h3 id="u0201-5"><span class="sn">01.5</span>Correlation <span class="tag">Slides p.7</span></h3>
 <p>This section divides the covariance by two standard deviations. The result does not depend on the units. This section also gives the first definition of \(S_{xy},S_{xx},S_{yy}\), which all of least squares uses.</p>
 
 <p><b>What</b> <span class="tag">Slides p.7</span></p>
@@ -663,7 +656,7 @@ Correlation quantifies strength of linear relationship
 <p>∎ The correlation measures only the strength of a linear relationship. Units and scale factors do not change it. The next unit uses \(S_{xy}\) and \(S_{xx}\) again in the least squares estimate.</p>
 
 <!-- ============ 5. Goals and notation ============ -->
-<h3>01.6 Goals and notation of regression <span class="tag">Slides p.8</span></h3>
+<h3 id="u0201-6"><span class="sn">01.6</span>Goals and notation of regression <span class="tag">Slides p.8</span></h3>
 <p>This section sets the notation for all later units. It says which variable is \(y\), which is \(x\), and what \(i\) counts.</p>
 
 <p><b>What</b> <span class="tag">Slides p.8</span></p>
@@ -703,7 +696,7 @@ Possible goals:
 <p>This page sets notation, so it has no derivation. With fixed notation, the later formula \(\hat\beta_1=S_{xy}/S_{xx}\) has one clear meaning.</p>
 
 <!-- ============ Practice ============ -->
-<h3>01.7 Practice <span class="tag">Added</span></h3>
+<h3 id="u0201-7"><span class="sn">01.7</span>Practice <span class="tag">Added</span></h3>
 <p>The three questions below check the four quantities and their properties.</p>
 
 <p><b>Q1.</b> For the five people, brain weight \(y\) is in grams. Change it to kilograms: \(y^*=y/1000\). Use \(S_{xy}=133363\) and \(r=0.7068\). Find \(S_{xy^*}\) and \(r^*\) for \((y^*,x)\).</p>
@@ -736,7 +729,7 @@ Possible goals:
 </section>
 
 <section id="u0202">
-<h2>02 · The simple linear regression model and its coefficients</h2>
+<h2><span class="un">Unit 02</span>The simple linear regression model and its coefficients</h2>
 
 <p>This unit looks at the brainhead data first. Then it writes the simple linear regression model and tells what \(\beta_0\) and \(\beta_1\) mean. The unit ends with the question of how to estimate \(\beta_0\) and \(\beta_1\). The next unit answers that question.</p>
 
@@ -752,14 +745,14 @@ Possible goals:
 </div>
 
 <!-- ============ p.9 ============ -->
-<h3>02.1 Title page <span class="tag">Slides p.9</span></h3>
+<h3 id="u0202-1"><span class="sn">02.1</span>Title page <span class="tag">Slides p.9</span></h3>
 <p>Slides p.9 repeats the title page of Lecture 2. It marks the start of the new material.</p>
 <div class="claim">Title: Lecture 2: Simple Linear Regression: Estimation.</div>
 <div class="claim">Slides p.1–8 are a review (Unit 01). The new material starts at Slides p.10.</div>
 <p>This page has no new formula. The next section starts with the data on Slides p.10.</p>
 
 <!-- ============ 1. Data ============ -->
-<h3>02.2 Data example: the brainhead data <span class="tag">Slides p.10</span></h3>
+<h3 id="u0202-2"><span class="sn">02.2</span>Data example: the brainhead data <span class="tag">Slides p.10</span></h3>
 <p>This section reads the data first, because each symbol in the model refers to one column of the data.</p>
 
 <p><b>What</b> <span class="tag">Slides p.10</span></p>
@@ -807,7 +800,7 @@ The slide gives two columns of the brainhead data: \(x\) = head size, \(y\) = br
 <p>The brainhead data has 236 pairs \((x_i,y_i)\), and this section showed the first 6 pairs. The next section looks at the values of \(x\) and of \(y\) one variable at a time.</p>
 
 <!-- ============ 2. Histograms ============ -->
-<h3>02.3 Exploratory data analysis: histograms <span class="tag">Slides p.11</span></h3>
+<h3 id="u0202-3"><span class="sn">02.3</span>Exploratory data analysis: histograms <span class="tag">Slides p.11</span></h3>
 <p>This section looks at histograms. Before we write a model, we must know the range and the shape of each variable.</p>
 
 <p><b>What</b> <span class="tag">Slides p.11</span></p>
@@ -922,7 +915,7 @@ Two histograms: "Head Size (cm^3)" and "Brain Weight (grams)". The vertical axis
 <p>The histograms show the range and the shape of each variable alone. The next section puts the two variables on one plot.</p>
 
 <!-- ============ 3. Scatterplot ============ -->
-<h3>02.4 Exploratory data analysis: scatterplot <span class="tag">Slides p.12</span></h3>
+<h3 id="u0202-4"><span class="sn">02.4</span>Exploratory data analysis: scatterplot <span class="tag">Slides p.12</span></h3>
 <p>This section looks at a scatterplot. Regression describes how \(y\) changes with \(x\), and a histogram cannot show this relation.</p>
 
 <p><b>What</b> <span class="tag">Slides p.12</span></p>
@@ -1225,7 +1218,7 @@ Scatterplot: Brain Weight (grams) against Head Size (cm^3).
 <p>The EDA ends here. Its result: \(y\) increases approximately linearly with \(x\), with random spread. The next section writes this result as a model.</p>
 
 <!-- ============ 4. Model ============ -->
-<h3>02.5 The simple linear regression model <span class="tag">Slides p.13</span></h3>
+<h3 id="u0202-5"><span class="sn">02.5</span>The simple linear regression model <span class="tag">Slides p.13</span></h3>
 <p>This section writes the model. It shows which symbols are unknown constants, which are random, and which are data.</p>
 
 <p><b>What</b> <span class="tag">Slides p.13</span></p>
@@ -1330,7 +1323,7 @@ Or:
 <p>Thus, "line plus error" and "\(y_i\) is normal with its centre on the line" are the same model. The next section uses line 3, \(\beta_0+\beta_1x_i\), to tell what the two coefficients mean. ∎</p>
 
 <!-- ============ 5. Coefficients ============ -->
-<h3>02.6 The meaning of the regression coefficients \(\beta_0,\beta_1\) <span class="tag">Slides p.14–16</span></h3>
+<h3 id="u0202-6"><span class="sn">02.6</span>The meaning of the regression coefficients \(\beta_0,\beta_1\) <span class="tag">Slides p.14–16</span></h3>
 <p>This section tells which question \(\beta_0\) answers and which question \(\beta_1\) answers. Slides p.14–16 are three build steps of one slide (footer 12/27). This section uses the full content of the last step.</p>
 
 <p><b>What</b> <span class="tag">Slides p.14–16</span></p>
@@ -1467,7 +1460,7 @@ Or:
 <p>Thus, \(\beta_0\) is the mean at \(x=0\), and \(\beta_1\) is the change in the mean when \(x\) increases by 1. The next section draws the mean line and the errors on one figure. ∎</p>
 
 <!-- ============ 6. Figure ============ -->
-<h3>02.7 A picture of the model <span class="tag">Slides p.17 · figure Added</span></h3>
+<h3 id="u0202-7"><span class="sn">02.7</span>A picture of the model <span class="tag">Slides p.17 · figure Added</span></h3>
 <p>Slides p.17 has only the title "Simple Linear Regression". Figure 2-4 is Added. It shows the model of Sections 02.5 and 02.6 as one picture.</p>
 <div class="figwrap">
 <svg viewBox="0 0 640 350" width="640" role="img" aria-label="normal distributions centred on the regression line">
@@ -1508,7 +1501,7 @@ Or:
 <p>This figure shows all parts of the model. The line gives the mean, and the bell curves give the spread. The points of Figure 2-2 follow a line and spread above and below it, as in Figure 2-4. The next slide lists the properties of this figure as four assumptions.</p>
 
 <!-- ============ 7. Assumptions ============ -->
-<h3>02.8 The four assumptions <span class="tag">Slides p.18</span></h3>
+<h3 id="u0202-8"><span class="sn">02.8</span>The four assumptions <span class="tag">Slides p.18</span></h3>
 <p>This section splits the model into four assumptions. Each later estimation and inference result uses some of these assumptions.</p>
 
 <p><b>What</b> <span class="tag">Slides p.18</span></p>
@@ -1573,7 +1566,7 @@ How to estimate \(\beta_0\) and \(\beta_1\)?
 <p>Slides p.18 ends with a question: "How to estimate \(\beta_0\) and \(\beta_1\)?" We do not know \(\beta_0\) and \(\beta_1\). We have only the 236 pairs \((x_i,y_i)\). An estimate is a number that we calculate from the data to use in place of an unknown parameter. The next unit uses least squares to answer the question.</p>
 
 <!-- ============ Practice ============ -->
-<h3>02.9 Practice <span class="tag">Added</span></h3>
+<h3 id="u0202-9"><span class="sn">02.9</span>Practice <span class="tag">Added</span></h3>
 <p>These three questions check the three skills of this unit: write the model, tell what the coefficients mean, and find the assumptions.</p>
 
 <p><b>Q1.</b> Use row 3 of the brainhead data on Slides p.10. Write the model for observation 3 in both forms. Which quantities in your answer are observed, and which are unknown?</p>
@@ -1618,7 +1611,7 @@ How to estimate \(\beta_0\) and \(\beta_1\)?
 </section>
 
 <section id="u0203">
-<h2>03 · Least squares estimation</h2>
+<h2><span class="un">Unit 03</span>Least squares estimation</h2>
 
 <p>This unit shows how to calculate the intercept \(\beta_0\) and the slope \(\beta_1\) of a line from data. The method is least squares. It selects the line with the smallest sum of squared vertical distances.</p>
 
@@ -1647,7 +1640,7 @@ How to estimate \(\beta_0\) and \(\beta_1\)?
 <p>The two sums are \(\sum x_i=4512+3738+4261+3777+4177+3585=24050\) and \(\sum y_i=1530+1297+1335+1282+1590+1300=8334\). The sections below use these sums.</p>
 
 <!-- ============ 0. Section title and line of best fit ============ -->
-<h3>03.1 Section page and the line of best fit <span class="tag">Slides p.19–20</span></h3>
+<h3 id="u0203-1"><span class="sn">03.1</span>Section page and the line of best fit <span class="tag">Slides p.19–20</span></h3>
 <p>These two slides state the problem of this unit: which line is the best line for a scatterplot.</p>
 
 <div class="claim">Slides p.19 is the section page: "Estimating \(\beta_0,\beta_1\)". Slides p.20–26 are in this section.</div>
@@ -1918,7 +1911,7 @@ How to estimate \(\beta_0\) and \(\beta_1\)?
 <p>All three lines are near the points. A look at the plot cannot select the best line. Thus we need a rule that gives a number for each line. Slides p.21 gives this rule.</p>
 
 <!-- ============ 1. LS criterion ============ -->
-<h3>03.2 The least squares rule: make the sum of squares a minimum <span class="tag">Slides p.21</span></h3>
+<h3 id="u0203-2"><span class="sn">03.2</span>The least squares rule: make the sum of squares a minimum <span class="tag">Slides p.21</span></h3>
 <p>This section gives one number for each line: the sum of squares \(S(\beta_0,\beta_1)\). A smaller value means that the line is nearer to the data.</p>
 
 <p><b>What</b> <span class="tag">Slides p.21</span></p>
@@ -2489,7 +2482,7 @@ Minimize the sum of squares:
 <p>The minimum must thus satisfy two equations. There are two equations and two unknowns. The next two sections solve them for \(\hat\beta_0\) and \(\hat\beta_1\).</p>
 
 <!-- ============ 2. beta0 ============ -->
-<h3>03.3 The derivative for \(\beta_0\): solve for \(\hat\beta_0\) <span class="tag">Slides p.22–23</span></h3>
+<h3 id="u0203-3"><span class="sn">03.3</span>The derivative for \(\beta_0\): solve for \(\hat\beta_0\) <span class="tag">Slides p.22–23</span></h3>
 <p>This section uses the first equation, \(\partial S/\partial\beta_0=0\). It gives \(\hat\beta_0\) as a function of \(\hat\beta_1\).</p>
 
 <p><b>What</b> <span class="tag">Slides p.22–23</span></p>
@@ -2546,7 +2539,7 @@ Minimize the sum of squares:
 <p>The first equation gives \(\hat\beta_0\), but \(\hat\beta_0\) contains the unknown \(\hat\beta_1\). The next section uses the second equation to get \(\hat\beta_1\).</p>
 
 <!-- ============ 3. beta1 ============ -->
-<h3>03.4 The derivative for \(\beta_1\): solve for \(\hat\beta_1\) <span class="tag">Slides p.24–25</span></h3>
+<h3 id="u0203-4"><span class="sn">03.4</span>The derivative for \(\beta_1\): solve for \(\hat\beta_1\) <span class="tag">Slides p.24–25</span></h3>
 <p>This section uses the second equation, \(\partial S/\partial\beta_1=0\). It puts \(\hat\beta_0=\bar y-\hat\beta_1\bar x\) into this equation and solves for \(\hat\beta_1\).</p>
 
 <p><b>What</b> <span class="tag">Slides p.24–25</span></p>
@@ -2604,7 +2597,7 @@ Minimize the sum of squares:
 <p>Now we have the solution of both equations. Slides p.25 gives \(\hat\beta_1\), and then Slides p.23 gives \(\hat\beta_0\). The next section writes \(\hat\beta_1\) in the shorter form \(S_{xy}/S_{xx}\).</p>
 
 <!-- ============ 4. Sxy/Sxx ============ -->
-<h3>03.5 The short form: \(\hat\beta_1^{LS}=S_{xy}/S_{xx}\) <span class="tag">Slides p.26</span></h3>
+<h3 id="u0203-5"><span class="sn">03.5</span>The short form: \(\hat\beta_1^{LS}=S_{xy}/S_{xx}\) <span class="tag">Slides p.26</span></h3>
 <p>This section writes the formula from Slides p.25 with deviations from the mean. The result \(\hat\beta_1^{LS}=S_{xy}/S_{xx}\) is the form that the course uses from now on.</p>
 
 <p><b>What</b> <span class="tag">Slides p.26</span></p>
@@ -2950,7 +2943,7 @@ because \(\sum\bar y(x_i-\bar x)=\bar y\sum(x_i-\bar x)=\bar y(\sum x_i-n\bar x)
 <p>The least squares estimators are thus \(\hat\beta_1^{LS}=S_{xy}/S_{xx}\) and \(\hat\beta_0^{LS}=\bar y-\hat\beta_1^{LS}\bar x\). All later inference and prediction start from these two formulas.</p>
 
 <!-- ============ 5. why LS ============ -->
-<h3>03.6 The open question: why least squares <span class="tag">Slides p.26</span></h3>
+<h3 id="u0203-6"><span class="sn">03.6</span>The open question: why least squares <span class="tag">Slides p.26</span></h3>
 <p>Slides p.26 ends with a question. This unit does not answer it.</p>
 <div class="enstmt"><span class="who">Lecture 2 · p.26</span>
 But why minimize least squares? Why not some other objective function?
@@ -2960,7 +2953,7 @@ But why minimize least squares? Why not some other objective function?
 <p>Unit 04 gives the answer. When the errors have a normal distribution, maximum likelihood estimation gives the same \(\hat\beta_0,\hat\beta_1\) as least squares.</p>
 
 <!-- ============ practice ============ -->
-<h3>03.7 Practice <span class="tag">Added</span></h3>
+<h3 id="u0203-7"><span class="sn">03.7</span>Practice <span class="tag">Added</span></h3>
 <p>The three questions below practice three tasks: the short form, the long form, and one identity from the derivation.</p>
 
 <p><b>Q1.</b> Consider the data \((x_i,y_i)\): (1, 2), (2, 4), (3, 5), (4, 4), (5, 5). Calculate the least squares estimates \(\hat\beta_0^{LS}\) and \(\hat\beta_1^{LS}\) with \(\hat\beta_1^{LS}=S_{xy}/S_{xx}\).</p>
@@ -2999,7 +2992,7 @@ But why minimize least squares? Why not some other objective function?
 </section>
 
 <section id="u0204">
-<h2>04 · Maximum likelihood estimation and its equality to least squares</h2>
+<h2><span class="un">Unit 04</span>Maximum likelihood estimation and its equality to least squares</h2>
 
 <p>This unit uses a second method to estimate \(\beta_0\) and \(\beta_1\). The method is maximum likelihood estimation (MLE). The result is this: with normal errors, MLE gives the same \(\hat\beta_0\) and \(\hat\beta_1\) as least squares. This result answers the question on Slides p.26: "But why minimize least squares?"</p>
 
@@ -3020,7 +3013,7 @@ But why minimize least squares? Why not some other objective function?
 </div>
 
 <!-- ================= Concept 1 ================= -->
-<h3>04.1 Likelihood and log-likelihood <span class="tag">Slides p.27</span></h3>
+<h3 id="u0204-1"><span class="sn">04.1</span>Likelihood and log-likelihood <span class="tag">Slides p.27</span></h3>
 
 <p>This section writes a function that gives the probability density of the data for given parameter values. This function is the likelihood. Then it takes the log to get the log-likelihood, which is easier to use.</p>
 
@@ -3134,7 +3127,7 @@ It's more convenient to work with the log-likelihood:
 <p>\(\ell\) has three terms. Only the third term contains \(\beta_0\) and \(\beta_1\), and it is the sum of squares times \(-\frac{1}{2\sigma^2}\). Section 04.2 finds the partial derivatives of \(\ell\).</p>
 
 <!-- ================= Concept 2 ================= -->
-<h3>04.2 The three partial derivatives of the log-likelihood <span class="tag">Slides p.28</span></h3>
+<h3 id="u0204-2"><span class="sn">04.2</span>The three partial derivatives of the log-likelihood <span class="tag">Slides p.28</span></h3>
 
 <p>This section finds the derivatives of \(\ell\) for the three parameters. At the maximum, these derivatives are 0. Thus they give the equations for the MLE.</p>
 
@@ -3217,7 +3210,7 @@ Setting \((\star)\) and \((\star\star)\) to 0 and solving
 <p>All three partial derivatives are now derived. (⋆) and (⋆⋆) both start with the positive constant \(1/\sigma^2\). Section 04.3 uses this fact.</p>
 
 <!-- ================= Concept 3 ================= -->
-<h3>04.3 MLE and LS give the same estimates (\(\hat\beta^{LS}=\hat\beta^{ML}\)) <span class="tag">Slides p.29</span></h3>
+<h3 id="u0204-3"><span class="sn">04.3</span>MLE and LS give the same estimates (\(\hat\beta^{LS}=\hat\beta^{ML}\)) <span class="tag">Slides p.29</span></h3>
 
 <p>This section shows that two problems are the same. Problem 1 solves (⋆) = 0 and (⋆⋆) = 0. Problem 2 minimizes the sum of squares \(S(\beta_0,\beta_1)\). Thus the two methods give the same estimates.</p>
 
@@ -3341,7 +3334,7 @@ Setting \((\star)\) and \((\star\star)\) to 0 and solving is equivalent to minim
 <p>Under \(y_i\overset{indep}{\sim}N(\beta_0+\beta_1x_i,\sigma^2)\), the log-likelihood is \(\ell=-\frac n2\log(2\pi)-\frac n2\log(\sigma^2)-\frac{1}{2\sigma^2}S(\beta_0,\beta_1)\). Setting (⋆) and (⋆⋆) to 0 is the same as minimizing \(S\). Thus \(\hat\beta_0^{LS}=\hat\beta_0^{ML}\) and \(\hat\beta_1^{LS}=\hat\beta_1^{ML}\). Unit 06 solves \(\partial\ell/\partial\sigma^2=0\).</p>
 
 <!-- ================= Practice ================= -->
-<h3>04.4 Practice <span class="tag">Added</span></h3>
+<h3 id="u0204-4"><span class="sn">04.4</span>Practice <span class="tag">Added</span></h3>
 <p>These three questions use the formulas of this unit. The answers use slide numbers or the small data set.</p>
 
 <p><b>Q1.</b> In the brainhead data, observation 2 has \(x_2=3738\) and \(y_2=1297\) (Slides p.10). Its fitted value is 1310.380 (Slides p.38). Use \(\sigma^2=5000\). Calculate (a) the normal density of \(y_2\), and (b) its contribution to the log-likelihood \(\ell\).</p>
@@ -3380,7 +3373,7 @@ Setting \((\star)\) and \((\star\star)\) to 0 and solving is equivalent to minim
 </section>
 
 <section id="u0205">
-<h2>05 · Fitted values and residuals</h2>
+<h2><span class="un">Unit 05</span>Fitted values and residuals</h2>
 
 <p>This unit defines two new quantities: the fitted value \(\hat y_i\) and the residual \(e_i\). Unit 06 uses the residuals to estimate \(\sigma^2\) with \(\hat\sigma^2=\sum_{i=1}^n e_i^2/(n-2)\). Thus, this unit calculates fitted values and residuals first.</p>
 
@@ -3400,13 +3393,13 @@ Setting \((\star)\) and \((\star\star)\) to 0 and solving is equivalent to minim
 </div>
 
 <!-- ============ 05.1 section page ============ -->
-<h3>05.1 Section page <span class="tag">Slides p.30</span></h3>
+<h3 id="u0205-1"><span class="sn">05.1</span>Section page <span class="tag">Slides p.30</span></h3>
 <p>This page gives only the name of the new part of the lecture.</p>
 <div class="claim">Slides p.30 is the section page "Fitted Values &amp; Residuals". Slides p.31–32 belong to this part.</div>
 <p>The next section starts with the fitted values on Slides p.31.</p>
 
 <!-- ============ 05.2 fitted values ============ -->
-<h3>05.2 Fitted values <span class="tag">Slides p.31</span></h3>
+<h3 id="u0205-2"><span class="sn">05.2</span>Fitted values <span class="tag">Slides p.31</span></h3>
 <p>This section defines the fitted value. A fitted value is the height of the least squares line at one observed \(x_i\).</p>
 
 <p><b>What</b> <span class="tag">Slides p.31</span></p>
@@ -3462,7 +3455,7 @@ Define the fitted values:
 <p>∎ Thus, \(\hat y_i\) is the estimate of the mean \(E[y_i|x_i]\). The next section uses \(\hat y_i\) to find the distance of each point from the fitted line.</p>
 
 <!-- ============ 05.3 residuals ============ -->
-<h3>05.3 Residuals <span class="tag">Slides p.31</span></h3>
+<h3 id="u0205-3"><span class="sn">05.3</span>Residuals <span class="tag">Slides p.31</span></h3>
 <p>This section defines the residual. A residual is the vertical distance from an observed point to the fitted line, with a sign.</p>
 
 <p><b>What</b> <span class="tag">Slides p.31</span></p>
@@ -3543,7 +3536,7 @@ Define the residuals:
 <p>∎ Thus, the least squares line is the line with the smallest sum of squared residuals \(\sum e_i^2\). Unit 06 uses the same \(\sum e_i^2\) to estimate \(\sigma^2\).</p>
 
 <!-- ============ 05.4 residuals vs errors ============ -->
-<h3>05.4 Residuals and errors <span class="tag">Slides p.31</span></h3>
+<h3 id="u0205-4"><span class="sn">05.4</span>Residuals and errors <span class="tag">Slides p.31</span></h3>
 <p>This section compares two quantities with a similar form: the residual \(e_i\) and the error \(\epsilon_i\). The difference is the line that each one subtracts.</p>
 
 <p><b>What</b> <span class="tag">Slides p.31</span></p>
@@ -3589,7 +3582,7 @@ Note the residuals \(e_i\) are different from the errors: \(\epsilon_i=y_i-(\bet
 <p>∎ The difference comes only from \(\hat\beta_0-\beta_0\) and \(\hat\beta_1-\beta_1\). These two differences are unknown, so \(\epsilon_i\) is also unknown. The next section shows the residuals of the brainhead data in one figure.</p>
 
 <!-- ============ 05.5 p.32 figure ============ -->
-<h3>05.5 A picture of the fitted values and residuals <span class="tag">Slides p.32</span></h3>
+<h3 id="u0205-5"><span class="sn">05.5</span>A picture of the fitted values and residuals <span class="tag">Slides p.32</span></h3>
 <p>Slides p.32 has only the title "Fitted Values and Residuals". Figure 5-2 is Added. It shows the brainhead data, the fitted line, and the residuals of the first six observations.</p>
 <div class="claim">Gray points: observations 7 to 236 of the brainhead data.</div>
 <div class="claim">Purple points with numbers 1–6: the six observations of Slides p.10.</div>
@@ -3874,7 +3867,7 @@ Note the residuals \(e_i\) are different from the errors: \(\epsilon_i=y_i-(\bet
 <p>Each of the 236 points has one such vertical segment. The sum of the 236 squared lengths is \(\sum_{i=1}^{236}e_i^2\). The fitted line makes this sum as small as possible.</p>
 
 <!-- ============ 05.6 practice ============ -->
-<h3>05.6 Practice <span class="tag">Added</span></h3>
+<h3 id="u0205-6"><span class="sn">05.6</span>Practice <span class="tag">Added</span></h3>
 <p>The three questions below check the fitted values, the residuals, and one property of the residuals.</p>
 
 <p><b>Q1.</b> Use \(\hat\beta_0=335.4323150\) and \(\hat\beta_1=0.2608207\) (Slides p.38). Observation 6 has \(x_6=3585\) and \(y_6=1300\) (Slides p.10). Calculate \(\hat y_6\) and \(e_6\). Is point 6 above or below the fitted line?</p>
@@ -3914,7 +3907,7 @@ Note the residuals \(e_i\) are different from the errors: \(\epsilon_i=y_i-(\bet
 </section>
 
 <section id="u0206">
-<h2>06 · Estimating \(\sigma^2\): the MLE and the unbiased estimator</h2>
+<h2><span class="un">Unit 06</span>Estimating \(\sigma^2\): the MLE and the unbiased estimator</h2>
 
 <p>This unit estimates the last unknown parameter of the model: the error variance \(\sigma^2\). First, it finds the maximum likelihood estimate \(\hat\sigma^2_{ML}=\sum e_i^2/n\). Then it gives the estimator that the course uses, \(\hat\sigma^2=\sum e_i^2/(n-2)\), and shows why the course uses it. Last, it calculates \(\hat\beta_0\), \(\hat\beta_1\), and \(\hat\sigma\) together by hand.</p>
 
@@ -3939,13 +3932,13 @@ Note the residuals \(e_i\) are different from the errors: \(\epsilon_i=y_i-(\bet
 <p>With this notation, the unit starts at the section title page.</p>
 
 <!-- ============ 0. title page ============ -->
-<h3>06.1 Section page <span class="tag">Slides p.33</span></h3>
+<h3 id="u0206-1"><span class="sn">06.1</span>Section page <span class="tag">Slides p.33</span></h3>
 <p>This page gives only the name of the new part.</p>
 <div class="claim">Slides p.33 is the section page "Estimating \(\sigma^2\)". Slides p.34–38 are in this part.</div>
 <p>The earlier units estimated \(\beta_0\) and \(\beta_1\). The model still has one unknown parameter, \(\sigma^2\), and this part estimates it.</p>
 
 <!-- ============ 1. MLE ============ -->
-<h3>06.2 The maximum likelihood estimate of \(\sigma^2\) <span class="tag">Slides p.34</span></h3>
+<h3 id="u0206-2"><span class="sn">06.2</span>The maximum likelihood estimate of \(\sigma^2\) <span class="tag">Slides p.34</span></h3>
 <p>This section estimates \(\sigma^2\) with maximum likelihood. The method is the same as for \(\beta_0\) and \(\beta_1\): take a partial derivative of the log-likelihood and set it to 0.</p>
 
 <p><b>What</b> <span class="tag">Slides p.34</span></p>
@@ -4041,7 +4034,7 @@ or equivalently
 <p>Result: \(\hat\sigma^2_{ML}\) is the mean of the squared residuals. The next section changes the denominator from \(n\) to \(n-2\).</p>
 
 <!-- ============ 2. sigma hat ============ -->
-<h3>06.3 The estimator \(\hat\sigma^2\) that the course uses <span class="tag">Slides p.35</span></h3>
+<h3 id="u0206-3"><span class="sn">06.3</span>The estimator \(\hat\sigma^2\) that the course uses <span class="tag">Slides p.35</span></h3>
 <p>This section gives the estimator of \(\sigma^2\) that the course uses. It is different from \(\hat\sigma^2_{ML}\) only in the denominator.</p>
 
 <p><b>What</b> <span class="tag">Slides p.35</span></p>
@@ -4072,7 +4065,7 @@ However we typically adopt a different estimator:
 <p>Result: for this data set, \(\hat\sigma^2=0.8\) and \(\hat\sigma=0.894\). With only 5 points, \(\hat\sigma^2\) is 5/3 times \(\hat\sigma^2_{ML}\). The next section answers the "Why?" of Slides p.35.</p>
 
 <!-- ============ 3. unbiased ============ -->
-<h3>06.4 The unbiased estimator <span class="tag">Slides p.36</span></h3>
+<h3 id="u0206-4"><span class="sn">06.4</span>The unbiased estimator <span class="tag">Slides p.36</span></h3>
 <p>This section shows why the denominator is \(n-2\): with \(n-2\), the estimator is unbiased. The slide gives only the intuition. It uses a chi-squared result and does not prove that result.</p>
 
 <p><b>What</b> <span class="tag">Slides p.36</span></p>
@@ -4151,7 +4144,7 @@ Often doesn't matter when \(n\ge50\)
 <p>Result: the division by \(n-2\) cancels the chi-squared mean \(n-2\), so \(\hat\sigma^2\) is unbiased. The next section uses \(\hat\sigma^2\) in the full calculation.</p>
 
 <!-- ============ 4. full procedure ============ -->
-<h3>06.5 Data example: all three estimates in order <span class="tag">Slides p.37</span></h3>
+<h3 id="u0206-5"><span class="sn">06.5</span>Data example: all three estimates in order <span class="tag">Slides p.37</span></h3>
 <p>This section puts all the formulas of Lecture 2 in one order. Slides p.37 shows this order as code. This section gives only the statistical steps.</p>
 
 <p><b>What</b> <span class="tag">Slides p.37</span></p>
@@ -4195,7 +4188,7 @@ Fitted values: \(\hat y_i=\hat\beta_0+\hat\beta_1x_i\). Residuals: \(e_i=y_i-\ha
 <p>Result: the three point estimates are \(\hat\beta_0=2\), \(\hat\beta_1=1.1429\), and \(\hat\sigma=1.134\). The next section reads the same estimates for the brainhead data on the slide.</p>
 
 <!-- ============ 5. slide p.38 ============ -->
-<h3>06.6 Estimates and fitted values for the brainhead data <span class="tag">Slides p.38</span></h3>
+<h3 id="u0206-6"><span class="sn">06.6</span>Estimates and fitted values for the brainhead data <span class="tag">Slides p.38</span></h3>
 <p>This section reads the statistical results that Slides p.38 prints for the brainhead data. Then it checks two fitted values by hand.</p>
 
 <p><b>What</b> <span class="tag">Slides p.38</span></p>
@@ -4237,7 +4230,7 @@ Fitted values of observations 1–6: 1512.255, 1310.380, 1446.789, 1320.552, 142
 </div>
 
 <!-- ============ Practice ============ -->
-<h3>06.7 Practice <span class="tag">Added</span></h3>
+<h3 id="u0206-7"><span class="sn">06.7</span>Practice <span class="tag">Added</span></h3>
 <p>These questions practice the calculations and the derivation of this unit.</p>
 
 <p><b>Q1.</b> Consider the data \(x=(0,1,2,3)\) and \(y=(1,3,2,6)\). Calculate \(\hat\beta_0\), \(\hat\beta_1\), the residuals, \(\hat\sigma^2_{ML}\), \(\hat\sigma^2\), and \(\hat\sigma\).</p>
@@ -4276,7 +4269,8 @@ Fitted values of observations 1–6: 1512.255, 1310.380, 1446.789, 1320.552, 142
 
 <p>This unit is complete: the course estimates \(\sigma^2\) with the unbiased \(\hat\sigma^2=\sum e_i^2/(n-2)\). Lecture 3 uses \(\hat\sigma\) in the standard errors, the confidence intervals, and the tests.</p>
 </section>
-</main>
-</div>
+</main><nav class="pager2" aria-label="Lectures"><a class="prev" href="L01.html"><span>Previous: Lecture 1</span>Introduction and Motivation</a><a class="next" href="L03.html"><span>Next: Lecture 3</span>Simple Linear Regression: Inference</a></nav>
+</article></div>
+<script src="site.js"></script>
 </body>
 </html>
