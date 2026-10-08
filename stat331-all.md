@@ -4690,6 +4690,8 @@ This gives two equations in two unknowns.
 
 Least Squares Estimation · Lecture 2 · p.23 \[\frac{\partial S(\beta_0,\beta_1)}{\partial\beta_0}=\sum_{i=1}^n 2(y_i-\beta_0-\beta_1x_i)(-1),\quad\text{set to 0 and solve:}\] \[0=\sum_{i=1}^n(y_i-\hat\beta_0-\hat\beta_1x_i)\] \[0=\sum_{i=1}^n y_i-n\hat\beta_0-\hat\beta_1\sum_{i=1}^n x_i\] \[\hat\beta_0=\left(\frac1n\sum_{i=1}^n y_i\right)-\hat\beta_1\left(\frac1n\sum_{i=1}^n x_i\right)=\bar y-\hat\beta_1\bar x\]
 
+Why the hat appears on line 2: before "set to 0", \(\beta_0,\beta_1\) can have any value. "Set to 0" keeps only the values that make \(S\) a minimum. These values are the estimates, so they get a hat.
+
 When you know \(\hat\beta_1\), the two sample means give \(\hat\beta_0\). The same equation, \(\bar y=\hat\beta_0+\hat\beta_1\bar x\), puts \((\bar x,\bar y)\) on the least squares line.
 
 Slides p.22 shows only the first line. Slides p.23 shows the full slide.
